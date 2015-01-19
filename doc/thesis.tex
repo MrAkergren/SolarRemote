@@ -1,0 +1,110 @@
+\documentclass{article}
+
+%%--LANGUAGE AND ENCODING--%%
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{--}
+
+%%--BIBLOPGRAPHY--%%
+\usepackage[natbib=true, style=authoryear, citestyle=authoryear, backend=biber, dateabbrev=false, urldate=iso8601,  maxcitenames=2 ]{biblatex}
+
+%%--SPACING AND MARGIN--%
+\usepackage[margin=1.8in]{geometry}
+%\usepackage{setspace} (Requires preamble)
+
+%%--HEADER/FOORER--%%
+% \usepackage{fancyhdr}
+
+%%--SANS-SERIF FONTS FOR SECTIONS--%%
+\usepackage{sectsty}
+\usepackage{helvet}
+\allsectionsfont{\bfseries\sffamily}
+
+%%--MATHPACKAGES--%%
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{amsmath}
+
+%%--GRAPHICS--%%  (Requires preamble)
+% \usepackage{tikz}
+% \usepackage{graphicx}
+
+%%--ADVANCE TABULARS--%%
+% \usepackage{tabularx}
+
+%PREAMBLE%
+%%-SECTION NUMMBERING DEPTH-%%
+%\setcounter{secnumdepth}{3} %3=Default
+
+%%-GRAPHICS-%%
+% \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+%%-SPACING-%
+% \doublespacing
+% \setlength\parindent{0pt}
+
+%&-BIBLIOGRAPHY-%%
+%Adds references library and formats it.
+% To  refere to a reference in the library use \citep{}
+\addbibresource{ref.bib} \setlength{\bibitemsep}{\baselineskip} 
+%Always shows the authors in bibliography as Lastname, Firstname
+\DeclareNameAlias{sortname}{last-first} 
+
+%%-DOCUMENT INFORMATION-%%
+%Header/Footer%
+\author{	Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
+			Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
+			Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
+}
+\title{\underline{\small{WORKING TITLE}} \\ SolarRemote}
+
+% \pagestyle{fancy}
+% \lhead{AUTHOR}
+% \rhead{\today}
+% \chead{\thepage}
+
+\begin{document}
+
+	\maketitle
+	\thispagestyle{empty}
+
+	\newpage 
+	\section{Introduktion} % (fold)
+	\label{sec:introduktion}
+	% section section_name (end)
+
+		\subsection{Bakgrund} % (fold)
+		\label{sub:bakgrund}
+
+		% subsection bakgrund (end)
+
+		\subsection{Frågeställning} % (fold)
+		\label{sub:fragestallning}
+		
+		% subsection fr_gest_llning (end)
+
+		\subsection{Avgränsning} % (fold)
+		\label{sub:avgransning}
+		
+		% subsection avgr_nsning (end)
+	\section{Huvudtext} % (fold)
+	\label{sec:huvudtext}
+
+	% section huvudtext (end)
+
+	\section{Resultat} % (fold)
+	\label{sec:resultat}
+
+	% section resultat (end)
+
+	\section{Sammanfattning} % (fold)
+	\label{sec:sammanfattning}
+
+	% section sammanfattning (end)
+
+
+
+	\printbibliography		
+\end{document}
