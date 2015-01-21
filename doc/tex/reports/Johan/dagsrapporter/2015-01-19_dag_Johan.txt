@@ -1,0 +1,10 @@
+﻿Måndag
+---
+
+Kursen startades upp och projektet valdes.
+Vi kommer att ihop med företaget Parans ta fram en fjärrkontroll
+för att konfigurera de solinfångare som Parans tillverkar.
+Kontakt togs med Parans och möte bokades i morgon tisdag.
+
+--
+Tid: 2h
