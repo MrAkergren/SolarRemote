@@ -77,43 +77,42 @@
 	\subsection*{Ställda krav} % (fold)
 	\label{sub:stallda_krav}
 
-	
-		\noindent Bör/skall ingå:
-		\begin{itemize}
-			\item run u
-			\item run d
-			\item run l
-			\item run r
-			\item run stop
-			\item run auto
-			\item setup
-			\item restart 
-		\end{itemize}
+		\begin{minipage}[t]{0.5\textwidth}
+		\noindent \textbf{Kommandon som ska ingå:}
+			\begin{itemize}
+				\item run u
+				\item run d
+				\item run l
+				\item run r
+				\item run stop
+				\item run auto
+				\item setup
+				\item restart 
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\noindent \textbf{Funktioner som helst ska ingå:}
+			\begin{itemize}
+				\item  diod som indikerar ”SP3-power”
+				\item  diod som indikerar ”remote-power”
+				\item  ”Get time” - date (printar till display)
+				\item  ”Get pos” - lon och lat (printar till display)
+			\end{itemize}
+		\end{minipage} \\
 
-	\noindent Vid närmare eftertanke så bör dessa två, setup och restart, vara två olika då man vid vissa tillfällen vill använda enbart setup.
+		\vspace{2mm}\noindent 'setup' och 'restart' bör vara två olika knappar då man vid vissa tillfällen endast vill använda enbart 'setup'.\\
+
+		\noindent 'Get pos' kan vara en knapp så länge displayen kan visa ''lon xx.xxxx'' och ''lat yy.yyyyy'' samtidigt, annars två olika. \\
+
+		\noindent \textbf{Önskvärda funktioner steg 1} \\
+		-	”Verify position” eller liknande där GPS ger referenstid och lon/lat och som ger signal/diod/utskrift på displayen som OK eller liknande. \\
 
 
-	\noindent Skall helst ingå:
-	\begin{itemize}
-		\item  diod som indikerar ”SP3-power”
-		\item  diod som indikerar ”remote-pwer”
-		\item  ”Get time” - date (printar till display)
-		\item  ”Get pos” - lon och lat (printar till display)
-	\end{itemize}
+		\noindent \textbf{Önskvärda funktioner steg 2} \\
+		-	”Set pos” och ”Set time” som ställer in \hbox{''lon xx.xxxxx''}, \hbox{''lat yy.yyyyyy''} och \hbox{''date 2015-01-20 13:50:32''} baserat på värden från GPS:en \\
 
-	\noindent Eventuellt kan dessa två vara samma knapp så länge displayen kan printa ”lon xx.xxxx och lat yy.yyyyy” samtidigt. Annars två	 olika. \\
-
-	\noindent Lyx: \\
-	-	”Verify position” eller liknande där GPS ger referens-tid och lon/lat och som ger signal/diod/printat på displayen som OK eller liknande. \\
-
-
-	\noindent Lyx-lyx: \\
-	-	”Set pos” och ”Set time” som ställer in \hbox{''lon xx.xxxxx''}, \hbox{''lat yy.yyyyyy''} och \hbox{''date 2015-01-20 13:50:32''} baserat på värden från GPS:en \\
-
-	\noindent Lite utanför men kanske värt att diskutera: \\
--	Diod eller knapp som printar ”OK” eller ”not verified” om det är så att sensorn har tagit kommando över calculated pos. Detta kan ses genom att utläsa specifika värden i den raden som loggen skriver varje sekund. Återkommer med info om det om det blir aktuellt.
-	
-	% subsection stallda_krav (end)
-% section projekt (end)
+		\noindent- Diod eller knapp som skriver ut ”OK” eller ”not verified” om det är så att sensorn har tagit kommando över beräknad position. Detta kan ses genom att utläsa specifika värden i den raden som loggen skriver varje sekund.
+		% subsection stallda_krav (end)
+	% section projekt (end)
 
 \end{document}
