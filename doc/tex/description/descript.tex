@@ -72,7 +72,25 @@
 	\subsection*{Bakgrund} % (fold)
 	\label{sub:bakgrund}
 
+	\noindent Parans har en unik teknologi där vi levererar naturligt solljus via optiska fibrer.
+	Som ett av endast två bolag i världen levererar vi system över hela jorden och har just nu våra två största installationer i Malaysia och Los Angeles.\\
+
+	\noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm, som baserat på position (lon, lat) och tid ger en sol-position i grader, och dels från en sol-sensor med fotocell som - då solen är framme - ger data för en finstyrning av panelens positionering.
+	Detta för att alltid maximera solljusets fokusering in i fibern.\\
+
+	\noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32 och
+	koden är skriven i C. Vi kommunicerar med enheten via USB-port och PUTTy
+
 	% subsection bakgrund (end)
+
+	\subsection*{Problembeskrivning} % (fold)
+	\label{sub:problem}
+
+	\noindent Idag styrs panelen till rätt position via en terminal/puTTy vilket är en tröskel för Parans kunder vid installation och felsökning. 
+	Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB-portar så att kommunikation kan ske med panelen. \\
+
+	\noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. \\
+	Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
 
 	\subsection*{Ställda krav} % (fold)
 	\label{sub:stallda_krav}
