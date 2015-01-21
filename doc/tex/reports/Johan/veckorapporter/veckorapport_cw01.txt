@@ -1,0 +1,12 @@
+﻿Måndag 2015-01-19
+	- Uppstart av kursen, val av projekt
+	- Kontakt med handledare på både Chalmers och på företag
+	- Planering av möte med handledarna
+
+Tisdag 2015-01-20
+	- Inläsning av dokument på PingPong
+	- Möte handledare på företag
+
+Ondag 2015-01-21
+	- Möte med handledare på Chalmers.
+	- Tittat på Arduinos
