@@ -5,7 +5,11 @@ Måndag 2015-01-19
 	- Mötesbokning med handledare från Chalmers och Parans
 
 Tisdag 2015-01-20
-	- Möte med Parans på deras kontor
+	- Möte med Parans på deras kontor för produktdemonstration och diskussion om projektet
+	- Bestämde oss för att använda arduino
+	- Började undersöka varianter på arduino och shields
 
 Onsdag 2015-01-21
-	
+	- Möte med handledare från Chalmers på Lindholmen
+	- Vidare undersökning och diskussion av arduinoenheter
+	- Skrivit text till projektbeskrivning

@@ -1,7 +1,9 @@
 Onsdag
 ---
 
-Möte med handledare från Chalmers. Vidare undersökning av Arduinovarianter.
+Möte med handledare från Chalmers. Vidare undersökning av Arduinovarianter och
+shields som kan vara lämpliga. Skrivit text om val av plattform till
+projektbeskrivningen.
 
 ---
-Tidsåtgång: 
+Tidsåtgång: 4h
