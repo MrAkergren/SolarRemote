@@ -1,0 +1,119 @@
+\documentclass{article}
+
+%%--LANGUAGE AND ENCODING--%%
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{--}
+
+%%--BIBLOPGRAPHY--%%
+%\usepackage[natbib=true, style=authoryear, citestyle=authoryear, backend=biber, dateabbrev=false, urldate=iso8601,  maxcitenames=2 ]{biblatex}
+
+%%--SPACING AND MARGIN--%
+\usepackage[margin=1.8in]{geometry}
+%\usepackage{setspace} (Requires preamble)
+
+%%--HEADER/FOORER--%%
+% \usepackage{fancyhdr}
+
+%%--SANS-SERIF FONTS FOR SECTIONS--%%
+\usepackage{sectsty}
+\usepackage{helvet}
+\allsectionsfont{\bfseries\sffamily}
+
+%%--MATHPACKAGES--%%
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{amsmath}
+
+%%--GRAPHICS--%%  (Requires preamble)
+% \usepackage{tikz}
+% \usepackage{graphicx}
+
+%%--ADVANCE TABULARS--%%
+% \usepackage{tabularx}
+
+%PREAMBLE%
+%%-SECTION NUMMBERING DEPTH-%%
+%\setcounter{secnumdepth}{3} %3=Default
+
+%%-GRAPHICS-%%
+% \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+%%-SPACING-%
+% \doublespacing
+% \setlength\parindent{0pt}
+
+%&-BIBLIOGRAPHY-%%
+%Adds references library and formats it.
+% To  refere to a reference in the library use \citep{}
+%\addbibresource{ref.bib} \setlength{\bibitemsep}{\baselineskip} 
+%Always shows the authors in bibliography as Lastname, Firstname
+%\DeclareNameAlias{sortname}{last-first} 
+
+%%-DOCUMENT INFORMATION-%%
+%Header/Footer%
+\author{	Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
+			Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
+			Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
+}
+\title{Projektbeskrivning  \\ SolarRemote}
+
+% \pagestyle{fancy}
+% \lhead{AUTHOR}
+% \rhead{\today}
+% \chead{\thepage}
+
+\begin{document}
+\section*{Projektbeskrivning -- SolarRemote} % (fold)
+\label{sec:projekt}
+
+	\subsection*{Bakgrund} % (fold)
+	\label{sub:bakgrund}
+
+	% subsection bakgrund (end)
+
+	\subsection*{Ställda krav} % (fold)
+	\label{sub:stallda_krav}
+
+	
+		\noindent Bör/skall ingå:
+		\begin{itemize}
+			\item run u
+			\item run d
+			\item run l
+			\item run r
+			\item run stop
+			\item run auto
+			\item setup
+			\item restart 
+		\end{itemize}
+
+	\noindent Vid närmare eftertanke så bör dessa två, setup och restart, vara två olika då man vid vissa tillfällen vill använda enbart setup.
+
+
+	\noindent Skall helst ingå:
+	\begin{itemize}
+		\item  diod som indikerar ”SP3-power”
+		\item  diod som indikerar ”remote-pwer”
+		\item  ”Get time” - date (printar till display)
+		\item  ”Get pos” - lon och lat (printar till display)
+	\end{itemize}
+
+	\noindent Eventuellt kan dessa två vara samma knapp så länge displayen kan printa ”lon xx.xxxx och lat yy.yyyyy” samtidigt. Annars två	 olika. \\
+
+	\noindent Lyx: \\
+	-	”Verify position” eller liknande där GPS ger referens-tid och lon/lat och som ger signal/diod/printat på displayen som OK eller liknande. \\
+
+
+	\noindent Lyx-lyx: \\
+	-	”Set pos” och ”Set time” som ställer in \hbox{''lon xx.xxxxx''}, \hbox{''lat yy.yyyyyy''} och \hbox{''date 2015-01-20 13:50:32''} baserat på värden från GPS:en \\
+
+	\noindent Lite utanför men kanske värt att diskutera: \\
+-	Diod eller knapp som printar ”OK” eller ”not verified” om det är så att sensorn har tagit kommando över calculated pos. Detta kan ses genom att utläsa specifika värden i den raden som loggen skriver varje sekund. Återkommer med info om det om det blir aktuellt.
+	
+	% subsection stallda_krav (end)
+% section projekt (end)
+
+\end{document}
