@@ -1,0 +1,38 @@
+Val av plattform
+
+För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.
+
+androidenhet
+	fördelar
+		- stor skärmyta
+		- etablerat OS
+	
+	nackdelar
+		- otydligt vilka enheter som stöder USB-host
+		- relativt dyr
+		- mer prestanda än nödvändigt
+	
+Raspberry Pi
+	fördelar
+		- stor community med tillgång till mycket information
+		- tillgänglighet till utbyggnadsmoduler
+	nackdelar
+		- mer prestanda än nödvändigt
+		- saknar display och knappar i grundutförande
+		- kan bli otymplig vid användande av många tilläggsmoduler
+		
+	
+arduinosystem
+	fördelar
+		- stor community med tillgång till mycket information
+		- stor tillgänglighet till utbyggnadsmoduler
+		- modulär uppbyggnad
+		- mest använda systemet till små elektronikprojekt
+		- låg energiförbrukning
+		- open source
+	nackdelar
+		- saknar display och knappar i grundutförande
+		- kan bli otymplig vid användande av många tilläggsmoduler
+		
+
+Efter en mindre diskussion enades projektgruppen och uppdragsgivaren om att utgå ifrån ett arduinosystem. Beslutet grundade sig på att arduino är väl lämpat för mindre elektronikprojekt, då det har tillgång till en stor mängd tilläggsmoduler och ej innehåller fler komponenter än nödvändigt. Att plattformen är open source lämnar också möjligheten öppen för att i framtiden kunna anpassa lösningen till en egen tilläggsmodul.
