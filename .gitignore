@@ -1,2 +1,5 @@
 latex.out/
 *.pdf
+*.aux
+*.log
+*.synctex.gz
