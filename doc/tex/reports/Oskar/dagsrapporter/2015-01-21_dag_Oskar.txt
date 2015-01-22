@@ -4,10 +4,13 @@ Onsdag
 Handledningsmöte med Lennart Hansson, första mötet för projektet.
 
 Vi hade också ett möte med Sakib för mer information gällande projektet, 
-fick tillgång till en Arduino att låna tills vi har fått tag på en mer permanent
+fick tillgång till en Arduino att låna tills vi har fått tag på en mer permanent.
 
-Skrev klart projektbeskrivningen och laddade upp den.
+Jag införskaffade dessutom en lcd+knapp-sköld till Arduinon för att kunna påbörja 
+prototyp utveckling, samt kontrollerade att den fungerade. 
+
+Jag påbörjade även skrivandet av projektbeskrivningen, bör kunna färdigställa den imorgon.
 
 ---
 Tidsåtgång i timmar
-3
+4
