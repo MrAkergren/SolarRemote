@@ -22,31 +22,48 @@ void setup() {
   Serial.begin(9600);
 }
 
+int x;
+int lastCmd;
+  
 void loop() { 
-  int x;
   x = analogRead (0);                  // Read the analog value for buttons
   
+  if (x == 1023) {      //no button is pressed
+    if (abs(lastCmd-x) > 2) {
+      Serial.println("run stop");
+    }
+    delay(300);
+  }  
   if (x < 100) {                       // Right button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Right ");
-    Serial.println("run r"); 
+    if (abs(lastCmd-x) > 2) {
+      Serial.println("run r");
+    } 
   }
   else if (x < 200) {                  // Up button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Up    ");
-    Serial.println("run u");
+    if (abs(lastCmd-x) > 2) {
+      Serial.println("run u");
+    }
     //Serial.write("run u");
     //Serial.write("\r");
   }
   else if (x < 450){                   // Down button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Down  ");
-    Serial.println("run d");
+    Serial.println(x);
+    if (abs(lastCmd-x) > 2) {
+      Serial.println("run d");
+    }
   }
   else if (x < 680){                   // Left button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Left  ");
-    Serial.println("run l");
+    if (abs(lastCmd-x) > 2) {
+      Serial.println("run l");
+    }
   }
   else if (x < 1000){                   // Select button is pressed
     lcd.setCursor(0,1);
@@ -56,4 +73,7 @@ void loop() {
   if (x != 1023) { //x == 1023 if no button is pressed
     delay(300);  //wait 300ms until input
   }
+  
+  lastCmd = x;
 }
+
