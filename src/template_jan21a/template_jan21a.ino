@@ -18,30 +18,42 @@ void setup() {
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Press any Key:");
+ 
+  Serial.begin(9600);
 }
 
 void loop() { 
   int x;
   x = analogRead (0);                  // Read the analog value for buttons
+  
   if (x < 100) {                       // Right button is pressed
     lcd.setCursor(0,1);
-    lcd.print ("Right "); 
+    lcd.print ("Right ");
+    Serial.println("run r"); 
   }
   else if (x < 200) {                  // Up button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Up    ");
+    Serial.println("run u");
+    //Serial.write("run u");
+    //Serial.write("\r");
   }
   else if (x < 450){                   // Down button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Down  ");
-    lcd.setCursor(0,0);
-    lcd.print(
+    Serial.println("run d");
   }
   else if (x < 680){                   // Left button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Left  ");
+    Serial.println("run l");
   }
   else if (x < 1000){                   // Select button is pressed
     lcd.setCursor(0,1);
-    lcd.print ("Select"); }
+    lcd.print ("Select"); 
+  }
+  
+  if (x != 1023) { //x == 1023 if no button is pressed
+    delay(300);  //wait 300ms until input
+  }
 }
