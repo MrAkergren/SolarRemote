@@ -1,0 +1,8 @@
+﻿Torsdag
+---
+Oskar hade köpt in en Arduino Shield med display och tryckknappar som jag satt och testprogrammerade.
+Vi gjorde även en del research på hur kommunikationen sker mellan Arduino och en annan enhet.
+Avslutningsvis började vi skriva en project brief för kursen LSP127.
+
+--
+Tid: 4h
