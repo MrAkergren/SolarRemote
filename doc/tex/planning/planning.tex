@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 
 %%--LANGUAGE AND ENCODING--%%
 \usepackage[swedish]{babel}
@@ -7,11 +7,13 @@
 \usepackage[yyyymmdd]{datetime}
 \renewcommand{\dateseparator}{--}
 
+\usepackage[hidelinks]{hyperref}
+
 %%--BIBLOPGRAPHY--%%
 %\usepackage[natbib=true, style=authoryear, citestyle=authoryear, backend=biber, dateabbrev=false, urldate=iso8601,  maxcitenames=2 ]{biblatex}
 
 %%--SPACING AND MARGIN--%
-\usepackage[margin=1.8in]{geometry}
+\usepackage[margin=4cm]{geometry}
 %\usepackage{setspace} (Requires preamble)
 
 %%--HEADER/FOORER--%%
@@ -58,7 +60,7 @@
 			Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
 			Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
 }
-\title{Projektbeskrivning  \\ SolarRemote}
+\title{Planeringsrapport \\ SolarRemote}
 
 \def\arraystretch{1.3}	
 
@@ -68,32 +70,83 @@
 % \chead{\thepage}
 
 \begin{document}
-	\maketitle\vspace*{-1cm}
+	\maketitle
+	\thispagestyle{empty}
+	
+	\newpage
 
-	\section*{Bakgrund} % (fold)
-	\label{sub:bakgrund}
+	\tableofcontents
+	\setcounter{page}{1}
+	
+	\newpage
 
-		\noindent Parans har en unik teknologi där vi levererar naturligt solljus via optiska fibrer.
-		Som ett av endast två bolag i världen levererar vi system över hela jorden och har just nu våra två största installationer i Malaysia och Los Angeles.\\
+	\section{Inledning} % (fold)
+	\label{sec:inledning}
+	
+		\subsection{Bakgrund} % (fold)
+		\label{sub:bakgrund}
 
-		\noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm, som baserat på position (lon, lat) och tid ger en sol-position i grader, och dels från en sol-sensor med fotocell som - då solen är framme - ger data för en finstyrning av panelens positionering.
-		Detta för att alltid maximera solljusets fokusering in i fibern.\\
+			Parans har en unik teknologi där vi levererar naturligt solljus via optiska fibrer.
+			Som ett av endast två bolag i världen levererar vi system över hela jorden och har just nu våra två största installationer i Malaysia och Los Angeles.\\
 
-		\noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32 och
-		koden är skriven i C. Vi kommunicerar med enheten via USB-port och PUTTy
-	% section bakgrund (end)
+			\noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm, som baserat på position (lon, lat) och tid ger en sol-position i grader, och dels från en sol-sensor med fotocell som - då solen är framme - ger data för en finstyrning av panelens positionering.
+			Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-	\section*{Problembeskrivning} % (fold)
-	\label{sub:problem}
+			\noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32 och koden är skriven i C. Vi kommunicerar med enheten via USB-port och PUTTy
+		% subsection bakgrund (end)
 
-		\noindent Idag styrs panelen till rätt position via en terminal/puTTy vilket är en tröskel för Parans kunder vid installation och felsökning. 
-		Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB-portar så att kommunikation kan ske med panelen. \\
+		\subsection{Syfte} % (fold)
+		\label{sub:problem}
 
-		\noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna.
-		Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
-	% section problem (end)
+			Idag styrs panelen till rätt position via en terminal/puTTy vilket är en tröskel för Parans kunder vid installation och felsökning. 
+			Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB-portar så att kommunikation kan ske med panelen. \\
 
-	\section*{Ställda krav} % (fold)
+			\noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna.
+			Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
+		%subsection syfte (end)
+
+		\subsection{Avgränsningar} % (fold)
+		\label{sub:avgransningar}
+			
+			Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
+
+			\noindent Dagens paneler kan kommunicera med externa enheter via en USB-port men saknar övriga kommunikationsmöjligheter i dagsläget. Detta gör att projektet begränsas till kommunikation via en ansluten USB-kabel och inte via någon trådlös kommunikation.
+
+		% subsection avgransningar (end)
+	% section inledning (end)
+
+	\newpage
+
+	\section{Metod} % (fold)
+	\label{sec:metod}
+		Arbetsgången i projektet kommer att ske i en så kallad agil arbetsmetod, 'Scrum' , som vi i gruppen har utbildats i en tidigare kurs och använt med framgång. I denna arbetsmetod delas arbetet upp i små steg där delar av projektet slutförs för att kunna visas upp och granskas av produktägaren. Detta möjliggör att ändringar i projektet kan implementeras smidigare än i en vattenfallsmodell där alla krav sätts innan projektet börjar. \\
+
+		\noindent Arbetsverktyg för att stötta oss i arbetsmetoden kommer att vara \texttt{git}, i kombination med 'GitHub' och Scrum-tillbehöret 'Waffle.io'  som är nära integrerat med GitHub. \\
+
+		\noindent Projektets olika steg kommer att vara att först införskaffa lämplig hårdvara som når upp till satta krav, därefter utveckla en simpel prototyp i syfte att låta utvecklarna sätta sig in i de system som panelen använder för kommunikation och utvecklingen mot den plattform som projektet kommer nyttja, se 'Val av plattform' s. \pageref{sec:val_av_plattform}
+
+	% section metod (end)
+
+	\section{Tidsplan} % (fold)
+	\label{sec:section_name}
+		Preliminär tidsplan för vårat projekt, där vi lägger ungefär 20 timmar per person och vecka på projektet för att nå upp till den arbetsbelastning som förväntas enligt kursen. \\
+
+		\noindent\begin{tabularx}{\textwidth}{@{}rX}
+			\textbf{Läsvecka} & \textbf{Mål}\\
+			lv 1 &	Upprättande av arbetsstruktur, uppstartsmöten med handledare, införskaffande av materiel. \\
+			lv 2 & Inläsning av dokumentation, utveckling av initial kod. \\
+			lv 3 & Programutveckling\\
+			lv 4 & Halvtidsredovisning, prototyp bör kunna uppvisas\\
+			lv 5 & Programutveckling\\
+			lv 6 & Undersöka vilka extra funktionaliteter som kan inkluderas\\
+			lv 7 & Slutgiltig programutveckling\\
+			lv 8 & Förberedelser för slutredovisning \\
+		\end{tabularx}
+	% section section_name (end)
+
+	\newpage
+
+	\section{Ställda krav} % (fold)
 	\label{sub:stallda_krav}
 
 		\begin{minipage}[t]{0.5\textwidth}
@@ -135,7 +188,7 @@
 
 	\newpage
 
-	\section*{Val av plattform} % (fold)
+	\section{Val av plattform} % (fold)
 	\label{sec:val_av_plattform}
 
 		För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
@@ -170,20 +223,5 @@
 
 		\vspace{2mm}\noindent Efter en mindre diskussion enades projektgruppen och uppdragsgivaren om att utgå ifrån ett arduinosystem. Beslutet grundade sig på att arduino är väl lämpat för mindre elektronikprojekt, då det har tillgång till en stor mängd tilläggsmoduler och ej innehåller fler komponenter än nödvändigt. Att plattformen är open source lämnar också möjligheten öppen för att i framtiden kunna anpassa lösningen till en egen tilläggsmodul.
 	% section val_av_plattform (end)
-	\section*{Tidsplan} % (fold)
-	\label{sec:section_name}
-	Preliminär tidsplan för vårat projekt, där vi lägger ungefär 20 timmar per person och vecka på projektet för att nå upp till den arbetsbelastning som förväntas enligt kursen. \\
 
-	\noindent\begin{tabularx}{\textwidth}{@{}rX}
-		\textbf{Läsvecka} & \textbf{Mål}\\
-		lv 1 &	Upprättande av arbetsstruktur, uppstartsmöten med handledare, införskaffande av materiel. \\
-		lv 2 & Inläsning av dokumentation, utveckling av initial kod. \\
-		lv 3 & Programutveckling\\
-		lv 4 & Halvtidsredovisning, prototyp bör kunna uppvisas\\
-		lv 5 & Programutveckling\\
-		lv 6 & Undersöka vilka extra funktionaliteter som kan inkluderas\\
-		lv 7 & Slutgiltig programutveckling\\
-		lv 8 & Förberedelser för slutredovisning \\
-	\end{tabularx}
-	% section section_name (end)
 \end{document}

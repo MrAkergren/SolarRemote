@@ -1,0 +1,61 @@
+Måndag
+---
+
+Uppstart av kurs, val av projekt
+
+Uppsättning av grupparbetsstruktur 
+	- Google grupp
+	- GitHub
+	- Latex-mall
+
+Planering av möten med handledare.
+---
+Tisdag
+---
+
+Inläsning av dokument från PingPong.
+
+Upprättande av struktur för rapporter.
+
+Möte med handledare på företag: Karl Richard Nilsson @ Parans
+	- Genomgång av vad som efterfrågas
+	- Inläsning av dokument från Parans
+	- Undersökning av lämpligt kretskort
+
+---
+Onsdag
+---
+
+Handledningsmöte med Lennart Hansson, första mötet för projektet.
+
+Vi hade också ett möte med Sakib för mer information gällande projektet, 
+fick tillgång till en Arduino att låna tills vi har fått tag på en mer permanent.
+
+Jag införskaffade dessutom en lcd+knapp-sköld till Arduinon för att kunna påbörja 
+prototyp utveckling, samt kontrollerade att den fungerade. 
+
+Jag påbörjade även skrivandet av projektbeskrivningen, bör kunna färdigställa 
+den imorgon.
+
+---
+Torsdag
+---
+
+Jag har sammanställt och skrivit om projektbeskrivningen något, samt tagit fram 
+en preliminär tidsplan för den. Jag har även kontrollerat mot PingPong vad som 
+förväntas tas upp i den, även om det är något oklart.
+
+Har även påbörjat ett nytt dokument som ska vara med i den engelskakurs som vi 
+läser tillsammans med det här projektet, och vad som ska göras där. 
+
+Jag har kollat något på koden för vår Arduino, men Johan har arbetat mest med den.
+---
+Fredag
+---
+Obligatiorisk föreläsning med Sakib och Burden gällande SCRUM
+
+---
+
+
+Tidsåtgång i timmar:
+17
