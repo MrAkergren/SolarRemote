@@ -10,7 +10,7 @@ Möte med handledare på företag: Karl Richard Nilsson @ Parans
 	- Inläsning av dokument från Parans
 	- Undersökning av lämpligt kretskort
 
----
 
+---
 Tidsåtgång i timmar:
 4

@@ -9,8 +9,7 @@ Har även påbörjat ett nytt dokument som ska vara med i den engelskakurs som v
 läser tillsammans med det här projektet, och vad som ska göras där. 
 
 Jag har kollat något på koden för vår Arduino, men Johan har arbetat mest med den.
----
 
+---
 Tidsåtgång i timmar:
 4
-

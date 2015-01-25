@@ -9,8 +9,7 @@ Jag har även lagt till 'user stories' till vår github -> issuses -> milestones
 
 Jag har även skrivit rubriken "Solutions" till engelska-briefen som ska tas fram
 inom ramen för vårt projekt.
----
 
+---
 Tidsåtgång i timmar
 4
-

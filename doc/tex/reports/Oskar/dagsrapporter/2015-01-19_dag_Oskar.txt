@@ -9,7 +9,7 @@ Uppsättning av grupparbetsstruktur
 	- Latex-mall
 
 Planering av möten med handledare.
----
 
+---
 Tidsåtgång i timmar:
 3
