@@ -10,3 +10,16 @@ Tisdag 2015-01-20
 Ondag 2015-01-21
 	- Möte med handledare på Chalmers.
 	- Tittat på Arduinos
+
+Torsdag
+---
+Oskar hade köpt in en Arduino Shield med display och tryckknappar som jag satt och testprogrammerade.
+Vi gjorde även en del research på hur kommunikationen sker mellan Arduino och en annan enhet.
+Avslutningsvis började vi skriva en project brief för kursen LSP127.
+
+Fredag
+---
+Obligatorisk SCRUM-övning med Sakib och Håkan. Var tvungna att avvika efter halvan tiden då föreläsning på Johanneberg krockade.
+Planering av hur vi ska gå vidare nästa vecka. Besök hos Parans och test av deras hårdvara blir på tisdag förmiddag.
+
+Total tid: 16h

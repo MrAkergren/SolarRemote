@@ -23,9 +23,9 @@
 %PREAMBLE%
 %%-DOCUMENT INFORMATION-%%
 
-\author{	Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
-			Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
-			Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
+\author{    Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
+            Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
+            Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
 }
 \title{\vspace{-3cm} Project Brief  \\ SolarRemote}
 
@@ -37,7 +37,9 @@
 %% See https://pingpong.chalmers.se/courseId/4905/node.do?id=2170051&ts=1421061182418&u=-668175273 page 5 for what section should include %%
 
 \begin{document}
+
 	\maketitle
+
 	\section*{Background and Aim} % (fold)
 	\label{sec:background_and_aim}
 	Parans has a unique technology where they deliver natural sunlight through optical fiber cables. As one of only two companies in the world Parans has business all over the world and right now they have two of their biggest installations in Malaysia and Los Angeles. \\
@@ -45,18 +47,40 @@
 	\noindent With the help of optical lenses, sunlight is focused in to optical fiber cables and the collecting sun panel is controlled by two stepper motors. The steering is controlled by both by input from an algorithm, which uses location from gps data and current time to calculate the sun's position i degrees, and from a sun sensor with a photocell which, in case of direct sunlight, gives accurate data to steer the sun panel in to correct position. In this way the sun light is always maximally focused in to the optical fiber cable. \\
 
     \noindent The panel is connected to a 12V power supply and system that controls the panel is written in C. When users want to install the panel they have to connect the panel to a laptop and give commands to the panels' system to set it in the right position.
+    
     The communication between the panel and the laptop is via an USB port and the commands are executed from a terminal. Not all customers are used to work in terminals and the use of a personal laptop also causes problems. \\
 
     \noindent Our aim is therefore to develop a control pad which is easy to connect to the panels USB port and has buttons executing the commands needed for the installation of the sun panel.
 
-	
-	% section background_and_aim (end)
-	\section*{Solution} % (fold)
-	\label{sec:solution}
-	
-	% section solution (end)
-	\section*{Organisation} % (fold)
-	\label{sec:organisation}
-	
-	% section organis_ation (end)
+    \section*{Background and Aim} % (fold)
+    \label{sec:background_and_aim}
+    
+    % section background_and_aim (end)
+    \section*{Solution} % (fold)
+    \label{sec:solution}
+    The main issue in this project is to develop a device that will be able to communicate with the panel. \\
+
+    \noindent One problem that most likely will arise is the communication over a serial link and what ways there are to handle this type of communication.
+
+    The solution to this will be to read up on this type of communication and see how others have solved this type of communication. We will also be able to test our method by connecting our device to a panel available to us in the company office.\\
+
+    \noindent Another problem is that depending on the type of micro controller we decide upon there will be different library's to use and different methods and languages to program the controller. So before we decide on one controller we don't know how difficult it will be to develop our device.
+
+    The solution to this problem will be to use a standardised Arduino board so that the information will be easy to find and the controller will have have numerous of compatible accessories. \\
+
+    \noindent As we have no previous experience with the panel, we do not know how to set different commands over the serial link and then receive the reply so that will be yet another problem. Because the panel and its controller is custom build by the company, is there sparse with information sources of how the panel works.
+
+    The solution to this will be to read the documentation send to us by the company and to utilize the 'trial-and-error'approach. \\
+
+    \noindent The likely result of this project will be a hand held device that will be able to communicate over a serial link to the company's panel. The device will be based on an Arduino board and will be able to send commands with a push of a button and the command will travel over a connected USB-cable. The device will also contain a screen that will be able to display information requested from the panel. Most likely will our device be based on an Arduino board because of the comprehensive documentation and compatible accessories for these.
+
+    A drawback on using an Arduino board as the base for the system is that our device can become relatively large compared to other devices for a similar purpose. The size will be dependent on the fact that the different boards from Arduino are multipurpose units and contains ports that will be left unused. A better base system could be to use a touch screen device but there are few of those devices that can act as USB-host's and then the cost would be higher then the Arduino system. Another problem with touch screen devices is that the programming could become harder for our type of product.
+
+
+    % section solution (end)
+    \section*{Organisation} % (fold)
+    \label{sec:organisation}
+    
+    % section organis_ation (end)
+>>>>>>> develop
 \end{document}

@@ -1,0 +1,101 @@
+Veckorapport läsvecka 1 Grupp SolarRemote
+
+--------------
+Måndag
+--------------
+ARBETSFAS: Uppstart
+
+Uppstart av kursen, val av projekt och upprättande av arbetsstruktur. 
+	- Rapportmall
+	- GitHub repository
+	- Google grupp för gemensam mail 
+	- Gemensam kalender för tidsplanering.
+
+Vi kontaktade även våra handledare under måndagen för att planera in möten.
+
+UPPKOMNA PROBLEM: 
+Inga direkta
+
+--------------
+Tisdag 
+--------------
+ARBETSFAS: Uppstart
+
+Möte med handledare på Parans med en genomgång av företaget och en fördjupning 
+gällande det projekt som vi har valt.
+
+Vi läste också in oss på det material som finns på PingPong för att få en insikt
+i vad vi förväntas producera under projektets gång.
+
+Under tisdagen påbörjade vi även en undersökning gällande lämplig hårdvara för 
+vårt projekt
+
+UPPKOMNA PROBLEM: 
+Produkten som efterfrågas måste kunna agera som 'USB-Host' vilket krymper vårat 
+urval, men flera Arduino kort har den möjligheten utan att kräva en tilläggssköld.
+
+--------------
+Onsdag
+--------------
+ARBETSFAS: Uppstart
+
+Uppstartsmöte med vår handledare Lennart Hansson.
+
+Vi hade också ett möte med Sakib för mer information gällande projektet, 
+fick tillgång till en Arduino att låna tills vi har fått tag på en mer permanent.
+
+Det införskaffades en lcd+knapp-sköld till Arduinon för att kunna påbörja 
+prototyp utveckling, samt kontrollerade att den fungerade. 
+
+Under onsdagen påbörjades även planeringsrapporten. 
+
+UPPKOMNA PROBLEM:
+Det saknas mall att följa för planeringsrapporten, så vi skrev ned det vi
+trodde skulle inkluderas.
+
+--------------
+Torsdag
+--------------
+ARBETSFAS: Utveckling
+
+Under torsdagen utvecklades den första fungerande koden till vår hårdvara, så
+pass att man får lämplig out-put vid knapptryckning
+
+Planeringsrapporten skrev färdigt och mailades ut till handledare för att få feedback till den.
+
+UPPKOMNA PROBLEM:
+Saknar fortfarande mall. En knapp var trasig på skölden så den behöver bytas, och
+vi behöver ganska snart jobba mot panelen för att se hur den arbetar.
+
+--------------
+Fredag
+--------------
+ARBETSFAS: Planering
+
+Obligatorisk föreläsning med Sakib och Burden.
+
+Planering av arbete på plats på Parans kontor nästa tisdag kontrollerades
+mot handledare på företaget. Planeringsrapporten godkändes av handledare på Parans.
+
+UPPKOMNA PROBLEM: 
+Inga direkta.
+
+--------------
+Lördag
+--------------
+ARBETSFAS: Dokumentskrivande 
+
+Vi fick information sent på fredagen från Sakib gällande vad som ska vara med
+i vår planneringsrapport så under dagen har vår redan producerade rapport
+uppdaterats.
+
+Vi har även lagt till 'user stories' till vår github -> issuses -> milestones
+
+Arbete har påbörjats till engelska-briefen som ska tas fram inom ramen för vårt 
+projekt.
+
+En reflektion kring fredagens föreläsning skulle produceras så den påbörjades under
+lördagen.
+
+UPPKOMNA PROBLEM:
+Inga direkta 
