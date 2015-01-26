@@ -1,0 +1,8 @@
+Torsdag
+---
+
+Har bekantat mig med den initiala Arduinokoden. Undersökt lösningar på
+batteridrift och USB-kommunikation. Påbörjat text till engelsk project brief.
+
+---
+Tidsåtgång: 4h
