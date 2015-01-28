@@ -1,0 +1,12 @@
+Onsdag
+--------------
+
+Spenderade dagen på Parans kontor för att utveckla mot deras hårdvara.
+
+Vi stötte på problem tidigt eftersom det inte gick att kommunicera mot panelen
+från vår Arduino, vi verkar sakna de instruktioner som initierar den seriella 
+kommunikationen, motsvarande drivrutiner.
+
+--------------
+Tidsåtgång i timmar:
+6
