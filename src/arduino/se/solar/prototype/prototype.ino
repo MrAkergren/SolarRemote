@@ -19,18 +19,37 @@ void setup() {
   lcd.setCursor(0,0);
   lcd.print("Press any Key:");
  
-  Serial.begin(9600);
+  SerialUSB.begin(38400);     //Serial init
+
 }
 
 int x;
 int lastCmd;
+
+//char run_r[] = "run r";
+//char run_s[] = "run stop";
+//byte row[] = {'\r'};
+
+//byte run_r[] = {'r','u','n',' ','r'};
+//byte run_s[] = {'r','u','n',' ','s','t','o','p'};
+
+String run_r ="run r";
+String run_s ="run stop";
+String row = "\r";
+
+uint8_t run_r1[run_r.length()];
+run_r.getBytes(run_r1, message.length()+1);
+
+uint8_t run_s1[run_s.length()];
+run_s.getBytes(run_s1, message.length()+1);
   
 void loop() { 
   x = analogRead (0);                  // Read the analog value for buttons
   
-  if (x == 1023) {      //no button is pressed
+  if (x == 1023 && lastCmd < 900) {      //no button is pressed
     if (abs(lastCmd-x) > 2) {
-      Serial.println("run stop");
+      SerialUSB.write(run_s1, sizeof(run_s));
+      SerialUSB.write(row, sizeof(row));
     }
     delay(300);
   }  
@@ -38,36 +57,41 @@ void loop() {
     lcd.setCursor(0,1);
     lcd.print ("Right ");
     if (abs(lastCmd-x) > 2) {
-      Serial.println("run r");
+      SerialUSB.write(run_r1, sizeof(run_r));
+      SerialUSB.write(row, sizeof(row));
     } 
   }
   else if (x < 200) {                  // Up button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Up    ");
     if (abs(lastCmd-x) > 2) {
-      Serial.println("run u");
+      SerialUSB.print("run u");
+      SerialUSB.print("\r");
     }
-    //Serial.write("run u");
-    //Serial.write("\r");
   }
   else if (x < 450){                   // Down button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Down  ");
-    Serial.println(x);
+    SerialUSB.println(x);
     if (abs(lastCmd-x) > 2) {
-      Serial.println("run d");
+      SerialUSB.print("run d");
+      SerialUSB.print("\r");
     }
   }
   else if (x < 680){                   // Left button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Left  ");
     if (abs(lastCmd-x) > 2) {
-      Serial.println("run l");
+      SerialUSB.print("run l");
+      SerialUSB.print("\r");
     }
   }
   else if (x < 1000){                   // Select button is pressed
     lcd.setCursor(0,1);
     lcd.print ("Select"); 
+    if (abs(lastCmd-x) > 2) {
+      SerialUSB.write("\n");
+    }
   }
   
   if (x != 1023) { //x == 1023 if no button is pressed
