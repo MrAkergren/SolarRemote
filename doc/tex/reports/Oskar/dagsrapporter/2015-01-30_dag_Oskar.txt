@@ -1,3 +1,4 @@
+
 Fredag
 --------------
 
@@ -11,6 +12,12 @@ koppla komponenter med.
 Vi hade även ett kortare möte där vi diskuterade vår arbetsgång och hur vi ska 
 fortsätta vårt arbete.
 
+Vi hade även en föreläsning av Håkan Burden gällande den undersökning som vi 
+fyllde i innan SCRUM-föreläsningen och om rapportskrivande. Praktiska tips som vi fick med från föreläsningen är bland annat vilken metod som kan komma att vara
+lämplig för vårt projekt, där han tipsa om metoderna: 
+
+Design science research
+Action research
 --------------
 Tidsåtgång i timmar:
-3
+5
