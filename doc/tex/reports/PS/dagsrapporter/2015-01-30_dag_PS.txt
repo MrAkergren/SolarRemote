@@ -1,0 +1,15 @@
+Fredag
+---
+
+Har idag suttit på Parans kontor där vi diskuterat huruvida vi ska fortsätta
+utvecklingen på Arduino eller om vi ska byta plattform. Gruppen tog ett
+enhälligt beslut om att byta plattform till en linuxbaserad enkortsdator.
+Parans har köpt in ett par enkortsdatorer i form av utvecklingskort från ett
+företag som heter Olimex. Dessa är tänkta att användas i utvecklingen av
+Parans kommande produkt. Tanken är då att dessa skulle kunna anpassas till att
+även användas i en fjärrkontroll. Enkortsdatorn från Olimex kan köra Linux,
+vilket ger oss tillgång den i linuxkärnan integrerade drivrutinen till CP2102.
+Det inhandlades även en kopplingsbräda och kablage för senare kopplingar.
+
+---
+Tidsåtgång: 3h
