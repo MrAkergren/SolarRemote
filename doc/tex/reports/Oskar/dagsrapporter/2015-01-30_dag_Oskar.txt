@@ -1,0 +1,16 @@
+Fredag
+--------------
+
+Idag var vi in på Parans och beslutade att byta hårdvarubas till en hårdvara
+kapabel till att driva linuxkärnan så att vi får tillgång till drivrutinen vi
+saknar.
+
+Vi var även förbi 'Kjell & Co' för att införskaffa lite arbetsmateriel till att
+koppla komponenter med.
+
+Vi hade även ett kortare möte där vi diskuterade vår arbetsgång och hur vi ska 
+fortsätta vårt arbete.
+
+--------------
+Tidsåtgång i timmar:
+3

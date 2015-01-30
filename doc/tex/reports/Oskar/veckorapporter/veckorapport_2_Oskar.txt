@@ -1,0 +1,59 @@
+--------------
+Måndag
+--------------
+
+Scrum-möte med planering och diskussion kring projektet.
+
+Pär och Johan skrev sina delar till 'briefen' och jag hjälpte till
+när dokumentet skulle 'mergas' ihop på git.
+
+Jag har börjat läsa igenom dokument från Parans mera för att få en bättre inblick.
+
+Vi planerar att sitta på Parans kontro på ondsdag och ha ett handlearmöte med Lennart
+imorgon.
+
+--------------
+Tisdag
+______________
+
+Möte med handledare Lennart, diskuterade vår planeringsrapport 
+och det verkade i stort bra, lite språkliga korrigeringar som 
+behöver vidtas innan den är helt godkännd.
+
+--------------
+Onsdag
+--------------
+
+Spenderade dagen på Parans kontor för att utveckla mot deras hårdvara.
+
+Vi stötte på problem tidigt eftersom det inte gick att kommunicera mot panelen
+från vår Arduino, vi verkar sakna de instruktioner som initierar den seriella 
+kommunikationen, motsvarande drivrutiner.
+
+--------------
+Torsdag
+--------------
+
+Spenderade eftermiddagen med att fortsätta kolla på drivrutiner mellan CP2102 
+och Arduino utan några större framgångar. Johan publicerade en fråga på Arduinos officiella forum, men inget svar har dykt upp.
+
+Vi beslutade att vänta med att ta ett slutgiltigt beslut gällande hårdvara till imorgon fredag för att se om något svar har dykt upp.
+
+--------------
+Fredag
+--------------
+
+Idag var vi in på Parans och beslutade att byta hårdvarubas till en hårdvara
+kapabel till att driva linuxkärnan så att vi får tillgång till drivrutinen vi
+saknar.
+
+Vi var även förbi 'Kjell & Co' för att införskaffa lite arbetsmateriel till att
+koppla komponenter med.
+
+Vi hade även ett kortare möte där vi diskuterade vår arbetsgång och hur vi ska 
+fortsätta vårt arbete.
+
+--------------
+ 
+Tidsåtgång i timmar: 
+15
