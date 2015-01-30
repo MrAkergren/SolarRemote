@@ -1,0 +1,99 @@
+Veckorapport läsvecka 2 Grupp SolarRemote
+
+--------------
+Måndag
+--------------
+ARBETSFAS: Planering och dokumentation
+
+Scrum-möte med planering och diskussion kring projektet. Pga laboration i annan
+kurs ombokas besöket hos Parans till onsdag istället för tisdag.
+
+Johan och Pär skrev färdigt sina delar av "Project brief", en engelsk version
+av projektbeskrivningen ämnad för kursen LSP127. Samtidigt studerar Oskar
+dokumentation från Parans mer ingående.
+
+Möte med handledare från Chalmers planeras in till tisdag.
+
+UPPKOMNA PROBLEM: 
+-
+
+--------------
+Tisdag 
+--------------
+ARBETSFAS: Uppföljning
+
+Möte med handledare Lennart. Diskuterade innehållet i rapporten med
+handledaren. Överlag var det bra, förutom några språkliga korrigeringar som 
+behöver vidtas innan den är helt godkänd.
+
+UPPKOMNA PROBLEM: 
+Smärre språkliga korrigeringar att utföra i projektbeskrivningen.
+
+--------------
+Onsdag
+--------------
+ARBETSFAS: Utveckling och felsökning
+
+Spenderade dagen på Parans kontor där vi försökte få vår Arduino att 
+kommunicera med Parans SP3-enhet. Många försök med olika lösningar har gjorts 
+men inget med lyckat resultat. Antagligen har vi i dagsläget för lite kännedom
+Silicon Labs CP210x-chip på SP3, den krets som omvandlar USB till UART.
+Har hittat teknisk dokumenation om CP210x-kretsen som behöver studeras närmre.
+Vi verkar sakna de instruktioner som initierar den seriella kommunikationen,
+motsvarande drivrutiner.
+
+UPPKOMNA PROBLEM:
+Seriell kommunikation mellan Arduino och SP3-enhetens CP2102-krets kan ej
+upprättas.
+
+--------------
+Torsdag
+--------------
+ARBETSFAS: Utveckling och informationssökning
+
+Fortsatte leta efter någon form av drivrutin eller liknande för att kunna få
+Arduino att kommunicera med en Silicon Labs CP2102. Vi har hittills inte funnit
+några spår online av att någon gjort det tidigare. Johan publicerade en fråga
+angående detta på Arduinos officiella forum, men hittills svarslöst.
+
+Linuxdrivrutinen till CP2102 har studerats för att se om det är rimligt att
+försöka portera den till Arduino, men det skulle antagligen ta mycket tid i
+anspråk. 
+
+Diskussioner har inletts om att eventuellt byta plattform från Arduino till en
+enkortsdator, t.ex. Raspberry Pi, då man skulle kunna använda sig av en färdig
+drivrutin i kommunikationen med CP2102-kretsen. Vi beslutade att skjuta på det
+slutgiltiga beslutet gällande hårdvara till imorgon fredag för att se om någon
+svarat vår frågeställning på forumet.
+
+UPPKOMNA PROBLEM:
+Ingen lösning på gårdagens problem funnet. Eventuellt plattformsbyte.
+
+--------------
+Fredag
+--------------
+ARBETSFAS: x
+
+Har under fredagen suttit på Parans kontor där vi diskuterat huruvida vi ska 
+fortsätta utvecklingen på Arduino eller om vi ska byta plattform. Gruppen tog
+ett enhälligt beslut om att byta plattform till en linuxbaserad enkortsdator.
+
+Parans har köpt in ett par enkortsdatorer i form av utvecklingskort från ett
+företag som heter Olimex, tänkta att användas i utvecklingen av Parans kommande
+produkt. Tanken är då att dessa skulle kunna anpassas till att även användas i
+en fjärrkontroll. Enkortsdatorn från Olimex kan driva Linux, vilket ger oss
+tillgång den i linuxkärnan integrerade CP2102-drivrutinen vi saknat till
+Arduino.
+
+På lunchen var vi in på Kjell & Co för att införskaffa arbetsmateriel till att
+koppla komponenter med.
+
+Vidare diskussioner fördes under eftermiddagen på Lindholmen, där vi även hade
+en föreläsning av Håkan Burden gällande rapportskrivande och den undersökning
+som vi fyllde i innan SCRUM-föreläsningen. Praktiska tips som vi fick med från
+föreläsningen är bland annat vilka metoder som kan komma att vara lämpliga för
+vårt projekt, där han tipsade om metoderna Design science research och Action 
+research.
+
+UPPKOMNA PROBLEM: 
+-

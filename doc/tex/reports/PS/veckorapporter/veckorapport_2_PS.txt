@@ -1,0 +1,51 @@
+Måndag	2015-01-26	Tidsåtgång: 2h
+
+Gruppmöte. Planering och mailande till handledare. Skrivit färdigt en del till	
+engelska project brief.
+
+-------------------------------------------------------------------------------
+Tisdag	2015-01-27	Tidsåtgång: 1h
+
+Möte med handledare Lennart. Diskuterade innehållet i rapporten med
+handledaren. Överlag var det bra, dock vissa synpunkter på språket.
+
+-------------------------------------------------------------------------------
+Onsdag	2015-01-28	Tidsåtgång: 6h
+
+Idag har vi suttit på Parans kontor och försökt få till kommunikationen mellan
+Arduino och SP3-enheten. Många försök med olika lösningar har gjorts men inget
+med lyckat resultat. Antagligen har vi i dagsläget för lite kännedom Silicon
+Labs CP210x-chip på SP3, den krets som omvandlar USB till UART. Har hittat
+teknisk dokumenation om CP210x-kretsen som behöver studeras närmre.
+
+-------------------------------------------------------------------------------	
+Torsdag	2015-01-29	Tidsåtgång: 3h
+
+Fortsatte leta efter någon form av drivrutin eller liknande för att kunna få
+Arduino att kommunicera med en Silicon Labs CP2102. Vi har hittills inte funnit
+några spår online av att någon gjort det tidigare. Vi har kollat lite på Linux-
+drivrutinen till CP2102 för att se om det är rimligt att försöka porta den till
+Arduino, men det skulle antagligen ta mycket tid i anspråk. Diskussioner har
+inletts om att eventuellt byta plattform från Arduino till en enkortsdator,
+t.ex. Raspberry Pi, då man skulle kunna använda sig av en färdig drivrutin i
+kommunikationen med CP2102 på Parans SP3.
+
+-------------------------------------------------------------------------------
+Fredag	2015-01-30	Tidsåtgång:	5h
+
+Har idag suttit på Parans kontor där vi diskuterat huruvida vi ska fortsätta
+utvecklingen på Arduino eller om vi ska byta plattform. Gruppen tog ett
+enhälligt beslut om att byta plattform till en linuxbaserad enkortsdator.
+Parans har köpt in ett par enkortsdatorer i form av utvecklingskort från ett
+företag som heter Olimex. Dessa är tänkta att användas i utvecklingen av
+Parans kommande produkt. Tanken är då att dessa skulle kunna anpassas till att
+även användas i en fjärrkontroll. Enkortsdatorn från Olimex kan köra Linux,
+vilket ger oss tillgång den i linuxkärnan integrerade drivrutinen till CP2102.
+Det inhandlades även en kopplingsbräda och kablage för senare kopplingar.
+
+Vidare diskussioner fördes under eftermiddagen på Lindholmen, där vi också hade
+en föreläsning med Håkan. Han presenterade resultat från sin SCRUM-undersökning
+och pratade om rapportskrivning.
+
+-------------------------------------------------------------------------------	
+Total tidsåtgång: 17h

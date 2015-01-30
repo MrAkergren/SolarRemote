@@ -11,5 +11,9 @@ Parans kommande produkt. Tanken är då att dessa skulle kunna anpassas till att
 vilket ger oss tillgång den i linuxkärnan integrerade drivrutinen till CP2102.
 Det inhandlades även en kopplingsbräda och kablage för senare kopplingar.
 
+Vidare diskussioner fördes under eftermiddagen på Lindholmen, där vi också hade
+en föreläsning med Håkan. Han presenterade resultat från sin SCRUM-undersökning
+och pratade om rapportskrivning.
+
 ---
-Tidsåtgång: 3h
+Tidsåtgång: 5h
