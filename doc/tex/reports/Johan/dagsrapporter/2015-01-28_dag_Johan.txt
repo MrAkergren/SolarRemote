@@ -5,4 +5,4 @@ Hela dagen spenderades sedan åt att felsöka problemet. Eventuellt behövs driv
 ska kunna kommunicera med usb-kortet som sitter på Parans mottagare.
 
 --
-Tid: 8h
+Tid: 7h
