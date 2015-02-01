@@ -4,4 +4,4 @@ Fortsatte att felsöka kommunikationsproblemet utan någon lösning. Vi har stä
 svar har vi börjat undersöka vad vi behöver köpa för att använda Raspberry Pi istället.
 
 --
-Tid: 4
+Tid: 3h
