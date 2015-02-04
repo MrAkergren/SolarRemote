@@ -1,0 +1,8 @@
+Tisdag
+---
+Skrev ett javaprogram som sätter upp en anslutning till Parans enhet och kan skicka kommandon som startar och stoppar motorn.
+Detta program är ämnat för att testa att vi verkligen får kontakt med Parans enhet. Testningen kommer ske i morgon.
+Började även kolla lite på Python som blir språket vi kommer utveckla i.
+
+--
+Tid: 4h
