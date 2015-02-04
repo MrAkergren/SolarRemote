@@ -83,7 +83,15 @@
 
 		\subsection{Frågeställning} % (fold)
 		\label{sub:fragestallning}
+		Rapporten ämnar att besvara följande frågeställningar:\\
+		\begin{itemize}
+			\item Vad styr valet av plattform för styrdosan?
+			\item Vilken plattform blir enklast för kunderna att använda?
+			\item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
+			\item Vilket programmeringsspråk lämpar sig bäst för styrdosan?
+		\end{itemize}	
 		
+
 		% subsection fr_gest_llning (end)
 
 		\subsection{Avgränsning} % (fold)
@@ -96,12 +104,20 @@
 	\section{Metod} % (fold)
 	\label{sec:huvudtext}
 
+		Vi har för detta projekt valt jobba utifrån undersökningsmetoden beskriven i \\
+		''A design science research methodology for information systems research'' \citep{method}. \\
+
+		\noindent Metoden beskriver beskriver efterforskning uppdelad i fem faser;
+		\textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
+		I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
+		Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport.
+
 	\section{Teknisk bakgrund} % (fold)
 	\label{sec:teknisk_bakgrund}
 	
 	% section teknisk_bakgrund (end)
 
-	% section huvudtext (end)
+
 	\section{Genomförande} % (fold)
 	\label{sec:genomf_rande}
 		Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH-anslutning via nätverk. För detta användes en USB-till-seriell-kabel kopplad mellan enkortsdatorns seriella pinkontakter och en persondators USB-port. Sedermera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH-anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB-kabel. Enkortsdatorns linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och monterade denna på /dev/ttyUSB0. Med hjälp av det i linuxsystemet medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
@@ -109,7 +125,7 @@
 
 	\section{Resultat} % (fold)
 	\label{sec:resultat}
-
+	Här kommer vi att presentera resultatet. \\
 	% section resultat (end)
 
 	\section{Diskussion} % (fold)
