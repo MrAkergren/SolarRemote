@@ -12,21 +12,14 @@
 
 %%--SPACING AND MARGIN--%
 \usepackage[margin=1.8in]{geometry}
-%\usepackage{setspace} (Requires preamble)
-
-%%--HEADER/FOORER--%%
-% \usepackage{fancyhdr}
 
 %%--SANS-SERIF FONTS FOR SECTIONS--%%
 \usepackage{sectsty}
 \usepackage{helvet}
 \allsectionsfont{\bfseries\sffamily}
 
-%%--MATHPACKAGES--%%
-%\usepackage{mathtools}
-%\usepackage{amsfonts}
-%\usepackage{amsmath}
-
+%%Links within the doc%%
+\usepackage[hidelinks]{hyperref}
 %%--GRAPHICS--%%  (Requires preamble)
 % \usepackage{tikz}
 % \usepackage{graphicx}
@@ -41,9 +34,6 @@
 %%-GRAPHICS-%%
 % \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
-%%-SPACING-%
-% \doublespacing
-% \setlength\parindent{0pt}
 
 %&-BIBLIOGRAPHY-%%
 %Adds references library and formats it.
@@ -60,25 +50,36 @@
 }
 \title{\underline{\small{WORKING TITLE}} \\ SolarRemote}
 
-% \pagestyle{fancy}
-% \lhead{AUTHOR}
-% \rhead{\today}
-% \chead{\thepage}
-
 \begin{document}
 
 	\maketitle
 	\thispagestyle{empty}
 
 	\newpage 
+
+	\tableofcontents
+
+	\newpage
+
 	\section{Introduktion} % (fold)
 	\label{sec:introduktion}
 	% section section_name (end)
 
 		\subsection{Bakgrund} % (fold)
 		\label{sub:bakgrund}
+			Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\\
 
+			\noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
+
+			\noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB-port och PUTTy
 		% subsection bakgrund (end)
+		
+		\subsection{Syfte} % (fold)
+		\label{sub:syfte}
+			Idag styrs panelen till rätt position via en terminal/puTTy, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB-portar så att kommunikation kan ske med panelen. \\
+
+			\noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
+		% subsection syfte (end)
 
 		\subsection{Frågeställning} % (fold)
 		\label{sub:fragestallning}
@@ -87,20 +88,26 @@
 
 		\subsection{Avgränsning} % (fold)
 		\label{sub:avgransning}
-		
+			Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
+
+			\noindent Dagens paneler kan kommunicera med externa enheter via en USB-port men saknar övriga kommunikationsmöjligheter i dagsläget. Detta gör att projektet begränsas till kommunikation via en ansluten USB-kabel och inte via någon trådlös kommunikation.
 		% subsection avgr_nsning (end)
 
-	\section{Huvudtext} % (fold)
+	\section{Metod} % (fold)
 	\label{sec:huvudtext}
 
 	% section huvudtext (end)
+	\section{Genomförande} % (fold)
+	\label{sec:genomf_rande}
+	
+	% section genomf_rande (end)
 
 	\section{Resultat} % (fold)
 	\label{sec:resultat}
 
 	% section resultat (end)
 
-	\section{Sammanfattning} % (fold)
+	\section{Diskussion} % (fold)
 	\label{sec:sammanfattning}
 
 	% section sammanfattning (end)
