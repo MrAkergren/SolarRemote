@@ -1,0 +1,8 @@
+Tisdag
+---
+
+Började undersöka hur en lösning i Python skulle se ut. Läste om hur seriella
+biblioteket PySerial fungerar. Skrev justeringar till engelska project brief.
+
+---
+Tidsåtgång: 4h
