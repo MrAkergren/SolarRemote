@@ -7,3 +7,7 @@ latex.out/
 .project
 .classpath
 *.class
+*.bcf
+*.out
+*.run.xml
+*.toc
