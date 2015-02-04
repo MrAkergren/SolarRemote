@@ -3,3 +3,7 @@ latex.out/
 *.aux
 *.log
 *.synctex.gz
+/src/JavaConnTest/bin/
+.project
+.classpath
+*.class
