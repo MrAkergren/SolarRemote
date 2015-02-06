@@ -1,0 +1,12 @@
+Fredag
+---
+
+På förmiddagen förberedde vi inför tisdagens muntliga presentation.
+
+Under eftermiddagen har vi diskuterat extern hårdvara att koppla till
+enkortsdatorn, tryckknappar och display. Har utvecklat initialt skelettkod i
+Python i syfte för att läsa av inmatning på lämpligt sätt vid användning av
+keypad/tangentbord.
+
+---
+Tidsåtgång: 6h
