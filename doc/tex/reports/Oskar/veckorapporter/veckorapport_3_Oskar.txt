@@ -1,0 +1,55 @@
+Måndag
+--------------
+
+Måndagsmorgonen behandlade vår brief vi skrivit om projektet, men även våra CVn.
+
+Vi fick en del feedback så vi uppdaterade vår pdf.
+
+På eftermiddagen hade vi ett gruppmöte där vi planerade veckan som kommer och 
+diskuterade de olika steg som behöver tas i projektet. 
+
+--------------
+Tisdag
+---------------
+Vi spenderade förmiddagen med att söka vidare på vårt nya hårdvaruspår.
+
+Jag har köpt in en enkortsdator för eget bruk som jag tänkte att vi kunde testa
+mot, men det visade sig att mina IP-inställningar inte blev korrekta.
+
+Så istället läste vi in oss på Python som nytt programmeringsspråk och skrev 
+enklare program för att sätt in oss in syntaxen.
+
+--------------
+Onsdag
+--------------
+
+Idag spenderade vi förmiddagen med att kontrollera kortet som finns att tillgå
+på Parans mot deras styrkrets för att säkerställa att de kan kommunicera mot
+varandra, vilkte de kunder så nu kan mjukvaruutvecklingen verkligen ta vid.
+
+Vi spenderade sedan eftermiddagen med att sammanställa halvtidsredovisningen
+och våra utvärderingar då vi helt missat att det var deadline för dessa igår.
+
+Efter att de var klara så började vi att skapa den presentation som vi ska
+hålla på tisdag.
+--------------
+Torsdag
+--------------
+
+Idag spenderades ingen tid till projektet
+
+--------------
+Fredag
+--------------
+
+Förmiddagen tillägnades halvtidspresentationen som vi ska hålla på tisdag,
+uppdelning, skapandes av presentationsbilder och inläsning på vad vi ska säga.
+
+Eftermiddagen ägnades åt efterforskning av batteripacket till vår produkt, 
+lämplig skärm och knappsats. Vi kan ha stött på problem med antalet tillgängliga
+I/O portar och eventuella drivrutiner till de skärmar vi har hittat.
+
+--------------
+ 
+Tidsåtgång i timmar: 
+22

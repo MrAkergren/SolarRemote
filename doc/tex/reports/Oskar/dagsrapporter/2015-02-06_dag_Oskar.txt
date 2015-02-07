@@ -1,0 +1,13 @@
+Fredag
+--------------
+
+Förmiddagen tillägnades halvtidspresentationen som vi ska hålla på tisdag,
+uppdelning, skapandes av presentationsbilder och inläsning på vad vi ska säga.
+
+Eftermiddagen ägnades åt efterforskning av batteripacket till vår produkt, 
+lämplig skärm och knappsats. Vi kan ha stött på problem med antalet tillgängliga
+I/O portar och eventuella drivrutiner till de skärmar vi har hittat.
+
+--------------
+Tidsåtgång i timmar:
+6
