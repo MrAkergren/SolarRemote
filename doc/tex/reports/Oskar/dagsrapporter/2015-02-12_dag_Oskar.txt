@@ -1,0 +1,12 @@
+Torsdag
+--------------
+
+Jag spenderade eftermiddagen till att försöka få igång våran inköpta 
+touchscreen, men lyckades inte. Testade flera olika linux-distrubitioner och
+hänvisningar från företagets hemsida utan framgång.
+
+Pär jobbade på att få till ett grafiskt gränssnitt till pyton.
+
+--------------
+Tidsåtgång i timmar:
+5
