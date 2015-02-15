@@ -2,13 +2,14 @@
 
 %%--LANGUAGE AND ENCODING--%%
 \usepackage[swedish]{babel}
+\usepackage[swedish]{isodate}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
 \usepackage[yyyymmdd]{datetime}
 \renewcommand{\dateseparator}{--}
 
 %%--BIBLOPGRAPHY--%%
-\usepackage[natbib=true, style=authoryear, citestyle=authoryear, backend=biber, dateabbrev=false, urldate=iso8601,  maxcitenames=2 ]{biblatex}
+\usepackage[natbib=true, style=authoryear, citestyle=authoryear, backend=biber, dateabbrev=false, urldate=iso8601, maxcitenames=2]{biblatex}
 
 %%--SPACING AND MARGIN--%
 \usepackage[margin=1.8in]{geometry}
@@ -139,5 +140,7 @@
 
 	% section sammanfattning (end)
 
-	\newpage\printbibliography		
+	\clearpage
+	\addcontentsline{toc}{section}{Referenser}
+	\printbibliography		
 \end{document}

@@ -1,0 +1,11 @@
+Onsdag
+---
+
+Har bestämt oss för att försöka gå vidare med att använda touchscreen på SoC,
+då handledaren på företaget gärna ser att vi gör det. Började läsa om olika
+GUI-bibliotek för Python. Finns en uppsjö att använda och flera verkar vara
+lämpliga för ändamålet. Valet blir att använda TkInter, då det är väl beprövat
+och relativt simpelt. Det kräver heller inga större ingrepp för att installera.
+
+---
+Tidsåtgång: 3h
