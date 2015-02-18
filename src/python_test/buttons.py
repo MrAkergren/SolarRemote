@@ -12,19 +12,23 @@ W = tk.W
 class SolarRemote(tk.Frame):
     # Constructor
     def __init__(self, master=None):
+        # Frames are color coded for debugging 
         tk.Frame.__init__(self, master, bg="blue")
-        self.grid(sticky=N+S+E+W)
-        self.rowconfigure(0, weight=1)
+        master.rowconfigure(0, weight=1)
+        master.columnconfigure(0, weight=1)
+        self.grid(sticky=(N, S, E, W))
+        self.rowconfigure(0, weight=100)
         self.rowconfigure(1, weight=1)
+        self.columnconfigure(0, weight=1)
         self.startFrame = tk.Frame(self, bg="green")
-        self.startFrame.grid(row=0, column=0, sticky=E+W)
+        self.startFrame.grid(row=0, column=0, sticky=(N, S, E, W))
         self.startFrame.startButton = tk.Button(self.startFrame, text="Connect to panel", command=self.connectRemote)
-        self.startFrame.startButton.grid(row=0, column=0, sticky=E+W)
+        self.startFrame.startButton.grid(row=0, column=0, sticky=(N, S, E, W))
 
         self.statusLabelText = tk.StringVar()
         self.statusLabelText.set("SolarRemote program started")
         self.statusLabel = tk.Label(self, textvariable=self.statusLabelText)
-        self.statusLabel.grid(row=1, column=0)
+        self.statusLabel.grid(row=1, column=0, sticky=S)
 
     def connectRemote(self):
         self.statusLabelText.set("Connecting...")
@@ -43,7 +47,7 @@ class ControlFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         tk.Frame.__init__(self, master, bg="red")
-        self.grid(row=0, column=0, sticky=N+S+E+W)
+        self.grid(row=0, column=0, sticky=(N, S, E, W))
         self.setupControls()
 
     def setupControls(self):
