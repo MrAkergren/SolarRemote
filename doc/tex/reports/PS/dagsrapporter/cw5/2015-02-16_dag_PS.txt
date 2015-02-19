@@ -1,0 +1,8 @@
+Måndag
+---
+
+Lånade en Raspberry Pi av Sakib för att se om vi kan få igång vår touchscreen
+denna. Påbörjade kodning av GUI i Python/TkInter till applikationen.
+
+---
+Tidsåtgång: 3h
