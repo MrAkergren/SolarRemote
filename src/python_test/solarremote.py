@@ -47,7 +47,8 @@ class StartFrame(tk.Frame):
         self.parent = master
         tk.Frame.__init__(self, master, bg="green")
         self.grid(row=0, column=0, sticky=(N, S, E, W))
-        self.startButton = tk.Button(self, text="Connect to panel", command=master.connectRemote)
+        self.startButton = tk.Button(self, text="Connect to panel", \
+            command=master.connectRemote)
         self.startButton.grid(row=0, column=0, sticky=(N, S, E, W))
 
 # The control frame containing buttons to send commands to the panel        
@@ -87,9 +88,9 @@ class ControlFrame(tk.Frame):
         self.btnDown.bind("<Button-1>", lambda x:self.runCommand("run d"))
         self.btnDown.bind("<ButtonRelease-1>", stopCommand)
 
-        self.btnDate = tk.Button(self, text="DATE", bg="grey", fg="white", command=lambda:self.runCommand("date"))
+        self.btnDate = tk.Button(self, text="DATE", bg="grey", fg="white", \
+            command=lambda:self.runCommand("date"))
         self.btnDate.grid(row=3, column=0, pady=10)
-        #self.btnDate.bind("<Button-1>", lambda x:self.runCommand("date"))
 
         self.btnLoc = tk.Button(self, text="LOC", bg="grey", fg="white")
         self.btnLoc.grid(row=3, column=1)
@@ -97,17 +98,17 @@ class ControlFrame(tk.Frame):
         self.btnSetLoc = tk.Button(self, text="SET LOC", bg="grey", fg="white")
         self.btnSetLoc.grid(row=3, column=2)
 
-        self.btnRestart = tk.Button(self, text="RESTART", bg="grey", fg="white", command=lambda:self.runCommand("restart"))
+        self.btnRestart = tk.Button(self, text="RESTART", bg="grey", \
+            fg="white", command=lambda:self.runCommand("restart"))
         self.btnRestart.grid(row=4, column=0)
-        #self.btnRestart.bind("<Button-1>", lambda x:self.runCommand("restart"))       
         
-        self.btnSetup = tk.Button(self, text="SETUP", bg="grey", fg="white", command=lambda:self.runCommand("setup"))
+        self.btnSetup = tk.Button(self, text="SETUP", bg="grey", fg="white", \
+            command=lambda:self.runCommand("setup"))
         self.btnSetup.grid(row=4, column=1)
-        #self.btnSetup.bind("<Button-1>", lambda x:self.runCommand("setup"))
 
-        self.btnAuto = tk.Button(self, text="AUTO", bg="grey", fg="white", command=lambda:self.runCommand("run auto"))
+        self.btnAuto = tk.Button(self, text="AUTO", bg="grey", fg="white", \
+            command=lambda:self.runCommand("run auto"))
         self.btnAuto.grid(row=4, column=2)
-        #self.btnAuto.bind("<Button-1>", lambda x:self.runCommand("run auto"))
 
     def runCommand(self, command):
         print(command)
