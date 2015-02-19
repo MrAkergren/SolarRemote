@@ -23,9 +23,9 @@ class SolarRemote(tk.Frame):
         self.startFrame = StartFrame(self)
         
         self.statusLabelText = tk.StringVar()
-        self.statusLabelText.set("SolarRemote program started")
+        self.statusLabelText.set("SolarRemote started")
         self.statusLabel = tk.Label(self, textvariable=self.statusLabelText)
-        self.statusLabel.grid(row=1, column=0, sticky=S)
+        self.statusLabel.grid(row=1, column=0, sticky=(E, W))
 
     # To be used to establish serial connection
     def connectRemote(self):
@@ -60,15 +60,57 @@ class ControlFrame(tk.Frame):
 
     # Setup of control buttons
     def setupControls(self):
-        tk.Button(self, text="UP", width=5, height=3).grid(row=0, column=1, pady=5, padx=5, sticky=tk.EW)
-        tk.Button(self, text="LEFT", width=5, height=3).grid(row=1, column=0, pady=5, padx=5, sticky=tk.EW)
-        tk.Button(self, text="STOP", width=5, height=3).grid(row=1, column=1, pady=5, padx=5, sticky=tk.EW)
-        tk.Button(self, text="RIGHT", width=5, height=3).grid(row=1, column=2, pady=10, padx=5, sticky=tk.EW)
-        tk.Button(self, text="DOWN", width=5, height=3).grid(row=2, column=1, pady=5, padx=5, sticky=tk.EW)
+        # Lambda function to use for 'run stop' on button release
+        stopCommand = lambda x:self.runCommand("run stop")
 
-        tk.Button(self, text="DATE", bg="grey", fg="white").grid(row=3, column=0, pady=20)
-        tk.Button(self, text="LOC", bg="grey", fg="white").grid(row=3, column=1)
-        tk.Button(self, text="SET LOC", bg="grey", fg="white").grid(row=3, column=2)
+        self.btnUp = tk.Button(self, name = "up", text="UP", width=5, height=3)
+        self.btnUp.grid(row=0, column=1, pady=5, padx=5, sticky=tk.EW)
+        self.btnUp.bind("<Button-1>", lambda x:self.runCommand("run u"))
+        self.btnUp.bind("<ButtonRelease-1>", stopCommand)
+
+        self.btnLeft = tk.Button(self, text="LEFT", width=5, height=3)
+        self.btnLeft.grid(row=1, column=0, pady=5, padx=5, sticky=tk.EW)
+        self.btnLeft.bind("<Button-1>", lambda x:self.runCommand("run l"))
+        self.btnLeft.bind("<ButtonRelease-1>", stopCommand)
+
+        self.btnStop = tk.Button(self, text="STOP", width=5, height=3)
+        self.btnStop.grid(row=1, column=1, pady=5, padx=5, sticky=tk.EW)
+        self.btnStop.bind("<Button-1>", stopCommand)
+
+        self.btnRight = tk.Button(self, text="RIGHT", width=5, height=3)
+        self.btnRight.grid(row=1, column=2, pady=10, padx=5, sticky=tk.EW)
+        self.btnRight.bind("<Button-1>", lambda x:self.runCommand("run r"))
+        self.btnRight.bind("<ButtonRelease-1>", stopCommand)
+
+        self.btnDown = tk.Button(self, text="DOWN", width=5, height=3)
+        self.btnDown.grid(row=2, column=1, pady=5, padx=5, sticky=tk.EW)
+        self.btnDown.bind("<Button-1>", lambda x:self.runCommand("run d"))
+        self.btnDown.bind("<ButtonRelease-1>", stopCommand)
+
+        self.btnDate = tk.Button(self, text="DATE", bg="grey", fg="white", command=lambda:self.runCommand("date"))
+        self.btnDate.grid(row=3, column=0, pady=10)
+        #self.btnDate.bind("<Button-1>", lambda x:self.runCommand("date"))
+
+        self.btnLoc = tk.Button(self, text="LOC", bg="grey", fg="white")
+        self.btnLoc.grid(row=3, column=1)
+
+        self.btnSetLoc = tk.Button(self, text="SET LOC", bg="grey", fg="white")
+        self.btnSetLoc.grid(row=3, column=2)
+
+        self.btnRestart = tk.Button(self, text="RESTART", bg="grey", fg="white", command=lambda:self.runCommand("restart"))
+        self.btnRestart.grid(row=4, column=0)
+        #self.btnRestart.bind("<Button-1>", lambda x:self.runCommand("restart"))       
+        
+        self.btnSetup = tk.Button(self, text="SETUP", bg="grey", fg="white", command=lambda:self.runCommand("setup"))
+        self.btnSetup.grid(row=4, column=1)
+        #self.btnSetup.bind("<Button-1>", lambda x:self.runCommand("setup"))
+
+        self.btnAuto = tk.Button(self, text="AUTO", bg="grey", fg="white", command=lambda:self.runCommand("run auto"))
+        self.btnAuto.grid(row=4, column=2)
+        #self.btnAuto.bind("<Button-1>", lambda x:self.runCommand("run auto"))
+
+    def runCommand(self, command):
+        print(command)
 
 
 root = tk.Tk()
