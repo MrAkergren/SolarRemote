@@ -42,7 +42,7 @@ class SolarRemote(tk.Frame):
             self.statusLabelText.set("Connection failed")
             print("Connection failed")
         else:
-            if connection.isOpen():            
+            if self.connection.isOpen():            
                 self.launchControlFrame()
             else:
                 self.statusLabelText.set("Serial connection is not open")
@@ -105,7 +105,7 @@ class ControlFrame(tk.Frame):
         self.btnDown.bind("<ButtonRelease-1>", stopCommand)
 
         self.btnDate = tk.Button(self, text="DATE", bg="grey", fg="white", \
-            command=lambda:self.runCommand("date"))
+            command=lambda:self.runCommand('date'))
         self.btnDate.grid(row=3, column=0, pady=10, sticky=(E, W))
 
         self.btnLoc = tk.Button(self, text="LOC", bg="grey", fg="white")
@@ -127,8 +127,10 @@ class ControlFrame(tk.Frame):
         self.btnAuto.grid(row=4, column=2, sticky=(E, W))
 
     def runCommand(self, command):
+        command += "\r"
+
         try:
-            if self.connection.write(command) > 0:
+            if self.connection.write(command.encode("utf-8")) > 0:
                 self.readAndPrintSerial()
             else:
                 master.statusLabelText.set("Serial write failed")
@@ -138,10 +140,10 @@ class ControlFrame(tk.Frame):
             print("Timeout on serial write")
 
     def readAndPrintSerial(self):
-        while self.connection.inWaiting() > 0:
-            self.inData = connection.readline()
-            self.inData.decode(encoding='UTF-8')
-            master.statusLabelText.set(self.inData)
+       # while self.connection.inWaiting() > 0:
+            self.inData = self.connection.readline()
+            self.inData.decode(encoding="utf-8")
+            self.master.statusLabelText.set(self.inData)
             print("Serial read:", self.inData)
             time.sleep(.200)
 
