@@ -38,8 +38,6 @@ class SolarRemote(tk.Frame):
         self.startFrame.destroy()
         self.controlFrame = ControlFrame(self)
         self.statusLabelText.set("Connected")
-        #self.statusLabel.grid(row=4, column=0)
-
 
 class StartFrame(tk.Frame):
     # Constructor
@@ -47,6 +45,9 @@ class StartFrame(tk.Frame):
         self.parent = master
         tk.Frame.__init__(self, master, bg="green")
         self.grid(row=0, column=0, sticky=(N, S, E, W))
+        self.rowconfigure(0, weight=1)
+        
+        self.columnconfigure(0, weight=1)
         self.startButton = tk.Button(self, text="Connect to panel", \
             command=master.connectRemote)
         self.startButton.grid(row=0, column=0, sticky=(N, S, E, W))
@@ -64,51 +65,51 @@ class ControlFrame(tk.Frame):
         # Lambda function to use for 'run stop' on button release
         stopCommand = lambda x:self.runCommand("run stop")
 
-        self.btnUp = tk.Button(self, name = "up", text="UP", width=5, height=3)
-        self.btnUp.grid(row=0, column=1, pady=5, padx=5, sticky=tk.EW)
+        self.btnUp = tk.Button(self, text="UP", width=5, height=3)
+        self.btnUp.grid(row=0, column=1, pady=5, padx=5, sticky=(E, W))
         self.btnUp.bind("<Button-1>", lambda x:self.runCommand("run u"))
         self.btnUp.bind("<ButtonRelease-1>", stopCommand)
 
         self.btnLeft = tk.Button(self, text="LEFT", width=5, height=3)
-        self.btnLeft.grid(row=1, column=0, pady=5, padx=5, sticky=tk.EW)
+        self.btnLeft.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
         self.btnLeft.bind("<Button-1>", lambda x:self.runCommand("run l"))
         self.btnLeft.bind("<ButtonRelease-1>", stopCommand)
 
         self.btnStop = tk.Button(self, text="STOP", width=5, height=3)
-        self.btnStop.grid(row=1, column=1, pady=5, padx=5, sticky=tk.EW)
+        self.btnStop.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
         self.btnStop.bind("<Button-1>", stopCommand)
 
         self.btnRight = tk.Button(self, text="RIGHT", width=5, height=3)
-        self.btnRight.grid(row=1, column=2, pady=10, padx=5, sticky=tk.EW)
+        self.btnRight.grid(row=1, column=2, pady=10, padx=5, sticky=(E, W))
         self.btnRight.bind("<Button-1>", lambda x:self.runCommand("run r"))
         self.btnRight.bind("<ButtonRelease-1>", stopCommand)
 
         self.btnDown = tk.Button(self, text="DOWN", width=5, height=3)
-        self.btnDown.grid(row=2, column=1, pady=5, padx=5, sticky=tk.EW)
+        self.btnDown.grid(row=2, column=1, pady=5, padx=5, sticky=(E, W))
         self.btnDown.bind("<Button-1>", lambda x:self.runCommand("run d"))
         self.btnDown.bind("<ButtonRelease-1>", stopCommand)
 
         self.btnDate = tk.Button(self, text="DATE", bg="grey", fg="white", \
             command=lambda:self.runCommand("date"))
-        self.btnDate.grid(row=3, column=0, pady=10)
+        self.btnDate.grid(row=3, column=0, pady=10, sticky=(E, W))
 
         self.btnLoc = tk.Button(self, text="LOC", bg="grey", fg="white")
-        self.btnLoc.grid(row=3, column=1)
+        self.btnLoc.grid(row=3, column=1, sticky=(E, W))
 
         self.btnSetLoc = tk.Button(self, text="SET LOC", bg="grey", fg="white")
-        self.btnSetLoc.grid(row=3, column=2)
+        self.btnSetLoc.grid(row=3, column=2, sticky=(E, W))
 
         self.btnRestart = tk.Button(self, text="RESTART", bg="grey", \
             fg="white", command=lambda:self.runCommand("restart"))
-        self.btnRestart.grid(row=4, column=0)
+        self.btnRestart.grid(row=4, column=0, sticky=(E, W))
         
         self.btnSetup = tk.Button(self, text="SETUP", bg="grey", fg="white", \
             command=lambda:self.runCommand("setup"))
-        self.btnSetup.grid(row=4, column=1)
+        self.btnSetup.grid(row=4, column=1, sticky=(E, W))
 
         self.btnAuto = tk.Button(self, text="AUTO", bg="grey", fg="white", \
             command=lambda:self.runCommand("run auto"))
-        self.btnAuto.grid(row=4, column=2)
+        self.btnAuto.grid(row=4, column=2, sticky=(E, W))
 
     def runCommand(self, command):
         print(command)
