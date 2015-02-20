@@ -142,7 +142,8 @@ class ControlFrame(tk.Frame):
     def readAndPrintSerial(self):
        # while self.connection.inWaiting() > 0:
             self.inData = self.connection.readline()
-            self.inData.decode(encoding="utf-8")
+            self.inData = self.inData.decode(encoding="utf-8")
+            self.inData = self.inData.rstrip("\r\n")
             self.master.statusLabelText.set(self.inData)
             print("Serial read:", self.inData)
             time.sleep(.200)
