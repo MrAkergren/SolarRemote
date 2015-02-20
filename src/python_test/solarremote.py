@@ -46,7 +46,6 @@ class StartFrame(tk.Frame):
         tk.Frame.__init__(self, master, bg="green")
         self.grid(row=0, column=0, sticky=(N, S, E, W))
         self.rowconfigure(0, weight=1)
-        
         self.columnconfigure(0, weight=1)
         self.startButton = tk.Button(self, text="Connect to panel", \
             command=master.connectRemote)
