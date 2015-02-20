@@ -2,6 +2,8 @@
 # Code written for Python 3.4, using TkInter
 
 import tkinter as tk
+import serial
+import time
 
 N = tk.N
 S = tk.S
@@ -27,10 +29,23 @@ class SolarRemote(tk.Frame):
         self.statusLabel = tk.Label(self, textvariable=self.statusLabelText)
         self.statusLabel.grid(row=1, column=0, sticky=(E, W))
 
+    def serialConnect(self):
+        self.connection = serial.Serial('/dev/ttyUSB0', 38400, timeout = 1)
+        time.sleep(1)
+
     # To be used to establish serial connection
     def connectRemote(self):
         self.statusLabelText.set("Connecting...")
-        self.launchControlFrame()
+        try:
+            self.serialConnect()
+        except serial.SerialException:
+            self.statusLabelText.set("Connection failed")
+            print("Connection failed")
+        else:
+            if self.connection.isOpen():            
+                self.launchControlFrame()
+            else:
+                self.statusLabelText.set("Serial connection is not open")
 
     # When serial connection is established, launch the ControlFrame
     def launchControlFrame(self):
@@ -46,7 +61,6 @@ class StartFrame(tk.Frame):
         tk.Frame.__init__(self, master, bg="green")
         self.grid(row=0, column=0, sticky=(N, S, E, W))
         self.rowconfigure(0, weight=1)
-        
         self.columnconfigure(0, weight=1)
         self.startButton = tk.Button(self, text="Connect to panel", \
             command=master.connectRemote)
@@ -58,6 +72,7 @@ class ControlFrame(tk.Frame):
     def __init__(self, master=None):
         tk.Frame.__init__(self, master, bg="red")
         self.grid(row=0, column=0, sticky=(N, S, E, W))
+        self.connection = master.connection
         self.setupControls()
 
     # Setup of control buttons
@@ -90,7 +105,7 @@ class ControlFrame(tk.Frame):
         self.btnDown.bind("<ButtonRelease-1>", stopCommand)
 
         self.btnDate = tk.Button(self, text="DATE", bg="grey", fg="white", \
-            command=lambda:self.runCommand("date"))
+            command=lambda:self.runCommand('date'))
         self.btnDate.grid(row=3, column=0, pady=10, sticky=(E, W))
 
         self.btnLoc = tk.Button(self, text="LOC", bg="grey", fg="white")
@@ -112,7 +127,26 @@ class ControlFrame(tk.Frame):
         self.btnAuto.grid(row=4, column=2, sticky=(E, W))
 
     def runCommand(self, command):
-        print(command)
+        command += "\r"
+
+        try:
+            if self.connection.write(command.encode("utf-8")) > 0:
+                self.readAndPrintSerial()
+            else:
+                master.statusLabelText.set("Serial write failed")
+                print("Serial write failed")
+        except serial.SerialTimeoutException:
+            master.statusLabelText.set("Timeout on serial write")
+            print("Timeout on serial write")
+
+    def readAndPrintSerial(self):
+       # while self.connection.inWaiting() > 0:
+            self.inData = self.connection.readline()
+            self.inData = self.inData.decode(encoding="utf-8")
+            self.inData = self.inData.rstrip("\r\n")
+            self.master.statusLabelText.set(self.inData)
+            print("Serial read:", self.inData)
+            time.sleep(.200)
 
 
 root = tk.Tk()
