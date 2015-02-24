@@ -59,6 +59,7 @@ class SolarRemote(tk.Frame):
         self.statusLabelText.set('Connecting...')
         if debug:
             self.controlFrame.bindButtons()
+            self.commandFrame.bindButtons()
             self.statusLabelText.set('Debug mode')
             print('Debug mode')
         else:
@@ -70,6 +71,7 @@ class SolarRemote(tk.Frame):
             else:
                 if self.connection.isOpen():            
                     self.controlFrame.bindButtons()
+                    self.commandFrame.bindButtons()
                     self.statusLabelText.set('Connection established')
                 else:
                     self.statusLabelText.set('Serial connection is not open')
@@ -107,7 +109,6 @@ class ControlFrame(tk.Frame):
     def __init__(self, master=None):
         self.master = master
         tk.Frame.__init__(self, self.master, bg='red')
-        
         self.setupControlButtons()
 
     # Adds the frame to its master
@@ -173,7 +174,6 @@ class ButtonFrame(tk.Frame):
         self.master = master
         tk.Frame.__init__(self, self.master, bg='yellow')
         self.setupButtons()
-        self.bindButtons()
 
     # Adds the frame to its master
     def showFrame(self):
