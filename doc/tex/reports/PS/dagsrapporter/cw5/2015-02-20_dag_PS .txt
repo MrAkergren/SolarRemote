@@ -1,0 +1,10 @@
+Torsdag
+---
+
+Fortsatte tillsammans med Johan att göra justeringar och tillägg till det
+grafiska gränssnittet. Vi kopplade ihop med grundläggande kommandon för seriell
+kommunikation och lyckades få till grundläggande kommunikation med Parans
+enhet.
+
+---
+Tidsåtgång: 7h
