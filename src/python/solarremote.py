@@ -2,14 +2,21 @@
 # Basic skeleton, playing with buttons
 # Code written for Python 3, using TkInter
 
+import sys
 import tkinter as tk
 import serial
 import time
+
 
 N = tk.N
 S = tk.S
 E = tk.E
 W = tk.W
+
+debug = False
+for arg in sys.argv:
+    if arg == 'd':
+        debug = True
 
 # Main application frame
 class SolarRemote(tk.Frame):
@@ -38,17 +45,19 @@ class SolarRemote(tk.Frame):
     # To be used to establish serial connection
     def connectRemote(self):
         self.statusLabelText.set('Connecting...')
-        self.launchControlFrame() # REMOVE - for debugging
-        try:
-            self.serialConnect()
-        except serial.SerialException:
-            self.statusLabelText.set('Connection failed')
-            print('Connection failed')
+        if debug:
+            self.launchControlFrame()
         else:
-            if self.connection.isOpen():            
-                self.launchControlFrame()
+            try:
+                self.serialConnect()
+            except serial.SerialException:
+                self.statusLabelText.set('Connection failed')
+                print('Connection failed')
             else:
-                self.statusLabelText.set('Serial connection is not open')
+                if self.connection.isOpen():            
+                    self.launchControlFrame()
+                else:
+                    self.statusLabelText.set('Serial connection is not open')
 
     # When serial connection is established, launch the ControlFrame
     def launchControlFrame(self):
@@ -76,31 +85,25 @@ class ControlFrame(tk.Frame):
         self.parent = master
         tk.Frame.__init__(self, self.parent, bg='red')
         self.grid(row=0, column=0, sticky=(N, S, E, W))
-        self.setupControls()
+        self.setupControlButtons()
 
     # Setup of control buttons
-    def setupControls(self):
-        
-
+    def setupControlButtons(self):
         self.btnUp = tk.Button(self, text='UP', width=5, height=3)
         self.btnUp.grid(row=0, column=1, pady=5, padx=5, sticky=(E, W))
 
         self.btnLeft = tk.Button(self, text='LEFT', width=5, height=3)
         self.btnLeft.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
         
-
         self.btnStop = tk.Button(self, text='STOP', width=5, height=3)
         self.btnStop.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
         
-
         self.btnRight = tk.Button(self, text='RIGHT', width=5, height=3)
         self.btnRight.grid(row=1, column=2, pady=10, padx=5, sticky=(E, W))
         
-
         self.btnDown = tk.Button(self, text='DOWN', width=5, height=3)
         self.btnDown.grid(row=2, column=1, pady=5, padx=5, sticky=(E, W))
         
-
         self.btnDate = tk.Button(self, text='DATE', bg='grey', fg='white')
         self.btnDate.grid(row=3, column=0, pady=10, sticky=(E, W))
 
@@ -158,17 +161,20 @@ class ControlFrame(tk.Frame):
 
 
     def runCommand(self, command):
-        command += '\r'
+        if debug:
+            print(command)
+        else:
+            command += '\r'
 
-        try:
-            if self.parent.connection.write(command.encode('utf-8')) > 0:
-                self.readAndPrintSerial()
-            else:
-                self.parent.statusLabelText.set('Serial write failed')
-                print('Serial write failed')
-        except serial.SerialTimeoutException:
-            self.parent.statusLabelText.set('Timeout on serial write')
-            print('Timeout on serial write')
+            try:
+                if self.parent.connection.write(command.encode('utf-8')) > 0:
+                    self.readAndPrintSerial()
+                else:
+                    self.parent.statusLabelText.set('Serial write failed')
+                    print('Serial write failed')
+            except serial.SerialTimeoutException:
+                self.parent.statusLabelText.set('Timeout on serial write')
+                print('Timeout on serial write')
 
     def readAndPrintSerial(self):
        # while self.parent.connection.inWaiting() > 0:
