@@ -1,5 +1,6 @@
+#! /usr/bin/python3
 # Basic skeleton, playing with buttons
-# Code written for Python 3.4, using TkInter
+# Code written for Python 3, using TkInter
 
 import tkinter as tk
 import serial
@@ -35,12 +36,13 @@ class SolarRemote(tk.Frame):
 
     # To be used to establish serial connection
     def connectRemote(self):
-        self.statusLabelText.set("Connecting...")
+        self.statusLabelText.set("Connecting...")        
         try:
             self.serialConnect()
         except serial.SerialException:
             self.statusLabelText.set("Connection failed")
             print("Connection failed")
+            self.launchControlFrame() #Remove this, for testing
         else:
             if self.connection.isOpen():            
                 self.launchControlFrame()
