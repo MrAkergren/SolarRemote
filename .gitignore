@@ -11,3 +11,7 @@ latex.out/
 *.out
 *.run.xml
 *.toc
+*.db
+*.blg  
+*.bbl
+*.fls
