@@ -205,7 +205,7 @@ class ButtonFrame(tk.Frame):
 
     # Enable button bindings
     def bindButtons(self):
-        if debug or master.connection.isOpen():
+        if debug or self.master.connection.isOpen():
             self.btnDate.configure(command=lambda:self.master.runCommand('date'))
             self.btnRestart.configure(command=lambda:self.master.runCommand('restart'))
             self.btnSetup.configure(command=lambda:self.master.runCommand('setup'))
