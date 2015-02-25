@@ -42,6 +42,8 @@ class SolarRemote(tk.Frame):
         self.statusLabel = tk.Label(self, textvariable=self.statusLabelText, height=2)
         self.statusLabel.grid(row=1, column=0, sticky=(E, W))
 
+        self.ignoreStrings = ['run', 'restart', 'date', 'setup', '#', 'Usage']
+
     def switchFrame(self, command):
         if command == 'launchControl':
             self.commandFrame.grid_forget()
@@ -73,11 +75,13 @@ class SolarRemote(tk.Frame):
                     self.controlFrame.bindButtons()
                     self.commandFrame.bindButtons()
                     self.statusLabelText.set('Connection established')
+                    #self.connection.write('\r\n'.encode('utf-8'))
                 else:
                     self.statusLabelText.set('Serial connection is not open')
 
     # Sends a given command over serial connection
     def runCommand(self, command):
+        self.lastcmd = command
         if debug:
             print(command)
         else:
@@ -95,13 +99,34 @@ class SolarRemote(tk.Frame):
 
     # Reads information from the serial connection
     def readAndPrintSerial(self):
-       # while self.connection.inWaiting() > 0:
-            self.inData = self.connection.readline()
-            self.inData = self.inData.decode(encoding='utf-8')
-            self.inData = self.inData.rstrip('\r\n')
-            self.statusLabelText.set(self.inData)
-            print('Serial read:', self.inData)
-            time.sleep(.200)
+        if self.lastcmd.startswith('run'):
+            time.sleep(.001)
+        else:
+            time.sleep(.01)
+        while self.connection.inWaiting() > 0:        
+            self.indata = self.connection.readline()
+            self.indata = self.indata.decode(encoding='utf-8')
+            self.indata = self.indata.rstrip('\r\n')
+            if self.isJunkString(self.indata):
+                continue
+            if self.lastcmd == 'date' and 'Current date' in self.indata:
+                self.indata = self.indata.replace(': ', ':\n')
+            self.statusLabelText.set(self.indata)
+            print('Serial read:', self.indata)
+
+    def getDate(self):
+        time.sleep(.01)
+
+
+    def isJunkString(self, inputString):
+        ignoreString = False
+        for cmdString in self.ignoreStrings:
+            if inputString.startswith(cmdString):
+                ignoreString = True
+        if ignoreString or len(inputString) == 0 or inputString.isspace():
+            return True
+        else:
+            return False
 
 # The control frame containing buttons to send commands to the panel        
 class ControlFrame(tk.Frame):

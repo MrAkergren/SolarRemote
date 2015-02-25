@@ -1,0 +1,10 @@
+Tisdag
+---
+
+Var på Parans kontor där vi arbetade vidare med GUI-utveckling och att få igång
+applikationen på en Raspberry Pi. Då den RPi vi lånat från skolan inte
+fungerade så använda vi Johans. Vi gjorde en ny frame för knappar och ändrade
+bildskärmsorientering på den pekskärm som är kopplad till RPi.
+
+---
+Tidsåtgång: 4h
