@@ -107,14 +107,26 @@ class SolarRemote(tk.Frame):
             self.indata = self.connection.readline()
             self.indata = self.indata.decode(encoding='utf-8')
             self.indata = self.indata.rstrip('\r\n')
-            ignoreString = False
-            for cmdString in self.ignoreStrings:
-                if self.indata.startswith(cmdString):
-                    ignoreString = True
-            if ignoreString or len(self.indata) == 0 or self.indata.isspace():
+            if self.isJunkString(self.indata):
                 continue
+            if self.lastcmd == 'date' and 'Current date' in self.indata:
+                self.indata = self.indata.replace(': ', ':\n')
             self.statusLabelText.set(self.indata)
             print('Serial read:', self.indata)
+
+    def getDate(self):
+        time.sleep(.01)
+
+
+    def isJunkString(self, inputString):
+        ignoreString = False
+        for cmdString in self.ignoreStrings:
+            if inputString.startswith(cmdString):
+                ignoreString = True
+        if ignoreString or len(inputString) == 0 or inputString.isspace():
+            return True
+        else:
+            return False
 
 # The control frame containing buttons to send commands to the panel        
 class ControlFrame(tk.Frame):
