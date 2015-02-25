@@ -14,7 +14,7 @@
 
 
 %%--SPACING AND MARGIN--%
-\usepackage[margin=1.8in]{geometry}
+\usepackage[margin=4cm, top=2.5cm]{geometry}
 
 %%--SANS-SERIF FONTS FOR SECTIONS--%%
 \usepackage{sectsty}
@@ -118,15 +118,10 @@
         Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport.
     % section metod (end)
 
-    \section{Teknisk bakgrund} % (fold)
-    \label{sec:teknisk_bakgrund}
-    
-    % section teknisk_bakgrund (end)
-
 
     \section{Genomförande} % (fold)
     \label{sec:genomforande}
-        Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--\-anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan enkortsdatorns seriella pinkontakter och en persondators USB--port. Sedermera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Enkortsdatorns linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och monterade denna på /dev/ttyUSB0. Med hjälp av det i linuxsystemet medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
+        Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--\-anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan enkortsdatorns seriella pinkontakter och en persondators USB--port. Sedermera anslöts enkortsdatorn via en nätverks\-brygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Enkortsdatorns linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och monterade denna på /dev/ttyUSB0. Med hjälp av det i linuxsystemet medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
 
         \subsection{Val av plattform} % (fold)
         \label{sub:val_av_plattform}
@@ -135,7 +130,7 @@
         \noindent\textsf{\textbf{Androidenhet}}\\
         \begin{tabularx}{\textwidth}{@{}cXcX}
             & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-            $+$ & Pekskärm ger stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
+            $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
                                               stöder USB-host \\
             $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
             $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt
@@ -176,17 +171,33 @@
         Här kommer vi att presentera resultatet. \\
     % section resultat (end)
 
+    \newpage
+
     \section{Diskussion} % (fold)
     \label{sec:diskussion}
+        \subsection{Hårdvara} % (fold)
+        \label{sub:d_hardvara}
+        
+            Som nämnt i \textbf{\textit{VAD-NU-DEN-HETER}} utgår vi ifrån begreppet enkortsdator för ett kretskort som är kapabel till att driva en Linuxkärna, till skillnad från en mikrokontroller där en svagare krets avses. \\
 
+            \noindent Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
 
-        Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
+            \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att dessa generellt har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är oftast färre på en enkortsdator och den fysiska storleken är större jämfört med de mikrokontrollerkort som hade varit lämpliga för projektet.\\
 
+        % subsection h_rdvara (end)
 
-        \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att den har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är färre och den fysiska storleken är större på en enkortsdator än en mikrokontroller.\\
+        \subsection{Mjukvara} % (fold)
+        \label{sub:d_mjukvara}
 
-        \noindent Att vi genomförde projektet beror på den låga tekniska kompetens hos de montörer som arbetar ute på fältet med SP3 och SP3s bristande stöd för kommunikationsstandarder. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan tänkas styras på distans.
+            Den mjukvara som har utvecklats, har skrivits i programmeringsspråket \texttt{Python}. Språk\-valet beror delvis på att personal inom företaget har erfarenhet inom språket vilket underlättar för framtida utveckling och underhåll av projektets produkt och dels valdes språket för dess enkla utveckling av grafiska gränssnitt och bra stöd i den seriella kommunikationen som krävdes i projektet. \\
 
+            \noindent Andra språk som hade varit möjliga är till exempel \texttt{C} eller \texttt{Java} då projektgruppen har erfarenhet av de båda språken. \texttt{C} valdes bort då utveckling av grafiska gränssnitt i detta språk kräver externa bibliotek och minskar därför portabiliteten och ökar komplexiteten. \texttt{Java} är en lämplig kandidat för projektet, men valdes bort då den grafiska utvecklingen i \texttt{Python} är enklare och applikationen som vi utvecklade är såpass simpel att \texttt{Java} skulle medföra stor andel så kallad 'overhead' i programmeringskoden. Nackdelen med \texttt{Python} jämfört med \texttt{Java} är att språket inte är lika effektivt i sina beräkningar, men då applikationen vi skrivit inte utför några tyngre beräkningar så berörs inte användar\-upplevelsen  av detta. Kommer applikationen att vidareutvecklas till något mer än vad projektet skapat, är det fullt rimligt att översätta logiken till \texttt{Java}, något som det finns gott om stöd för.\cite{jython}
+        % subsection mjukvara (end)
+        
+        \subsection{Framtida bruk} % (fold)
+        \label{sub:framtida_bruk}
+            Att projektet genomfördes grundar sig i SP3s bristande stöd för kommunikationsstandarder och att dagens kommunikationsgränssnitt inte är användarvänligt, vilket leder till stora underhållskostnader för företaget då det krävs tid och resurser att stötta underhållspersonal. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan komma att styras på distans.
+        % subsection framtida_bruk (end)
     % section diskussion (end)
 
     \clearpage
