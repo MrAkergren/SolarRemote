@@ -12,6 +12,7 @@
 %%--BIBLOPGRAPHY--%%
 \usepackage[natbib=true, style=ieee,  backend=biber, dateabbrev=false, urldate=iso8601, maxbibnames=4]{biblatex} %style=authoryear, citestyle=authoryear, maxcitenames=2,
 
+
 %%--SPACING AND MARGIN--%
 \usepackage[margin=1.8in]{geometry}
 
@@ -27,8 +28,8 @@
 % \usepackage{graphicx}
 
 %%--ADVANCE TABULARS--%%
-% \usepackage{tabularx}
-
+ \usepackage{tabularx}
+\def\arraystretch{1.3}
 %PREAMBLE%
 %%-SECTION NUMMBERING DEPTH-%%
 %\setcounter{secnumdepth}{3} %3=Default
@@ -39,114 +40,184 @@
 
 %%-BIBLIOGRAPHY-%%
 %Adds references library and formats it.
-% To  refere to a reference in the library use 	\cite{}	for ieee
-%												\citep{} for authoryear
+% To  refere to a reference in the library use  \cite{} for ieee
+%                                               \citep{} for authoryear
 \addbibresource{ref.bib} \setlength{\bibitemsep}{\baselineskip} 
 %Always shows the authors in bibliography as Lastname, Firstname
 %\DeclareNameAlias{sortname}{last-first} 
 
 %%-DOCUMENT INFORMATION-%%
 %Header/Footer%
-\author{	Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
-			Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
-			Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
+\author{    Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
+            Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
+            Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
 }
 \title{\underline{\small{WORKING TITLE}} \\ SolarRemote}
 
 
 \begin{document}
+    \maketitle
+    \thispagestyle{empty}
 
-	\maketitle
-	\thispagestyle{empty}
+    \newpage 
+    \subsection*{Beteckningar} % (fold)
+    \label{beteckningar}
+        \begin{tabularx}{\textwidth}{@{}lX}
+            C & Imperativt programmeringsspråk \\
+            CP2102 & Enhet från Silicon Labs som omvandlar kommunikation från
+            USB till seriell enligt RS232\\
+            GUI & Graphical User Interface, grafiskt användargränssnitt \\
+            I/O & Input/Output \\
+            PIC32 & 32-bitars mikrokontroller \\
+            Python & Högnivåspråk för programmering \\
+            SP3 & Parans tredje generationens solpanel \\
+            SSH & Secure Shell. Protokoll för säker anslutning mellan datorer\\
+            USB & Universal Serial Bus, standard för seriell kommunikation \\
+            \\
+            Enkortsdator & I denna rapport menas enkortsdatorer av typen System
+            on a chip, exempelvis enheter från Raspberry Pi och Beagle\-bone. 
+            En enkortsdator ska enligt rapportens definition klara av att driva 
+            operativsystem innehållande Linuxkärnan eller mot\-svarande. \\
+            Mikrokontroller & Här menas enchipdatorer avsedda att programmeras 
+            direkt till enhetens programminne, exempelvis enheter från 
+            \hbox{Arduino}. Dessa klarar ej av att driva operativsystem 
+            innehållande Linux\-kärnan eller motsvarande.\\
+            
 
-	\newpage 
+        \end{tabularx}
+    % subsection beteckningar(end)
+    \newpage
 
-	\tableofcontents
+    \tableofcontents
 
-	\newpage
+    \newpage
 
-	\section{Introduktion} % (fold)
-	\label{sec:introduktion}
-	% section section_name (end)
+    \section{Introduktion} % (fold)
+    \label{sec:introduktion}
+    % section section_name (end)
 
-		\subsection{Bakgrund} % (fold)
-		\label{sub:bakgrund}
-			Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\\
+        \subsection{Bakgrund} % (fold)
+        \label{sub:bakgrund}
+            Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\\
 
-			\noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
+            \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-			\noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och PUTTy
-		% subsection bakgrund (end)
-		
-		\subsection{Syfte} % (fold)
-		\label{sub:syfte}
-			Idag styrs panelen till rätt position via en terminal/puTTy, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
+            \noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och PUTTy
+        % subsection bakgrund (end)
+        
+        \subsection{Syfte} % (fold)
+        \label{sub:syfte}
+            Idag styrs panelen till rätt position via en terminal/puTTy, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
 
-			\noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
-		% subsection syfte (end)
+            \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
+        % subsection syfte (end)
 
-		\subsection{Frågeställning} % (fold)
-		\label{sub:fragestallning}
-		Rapporten ämnar att besvara följande frågeställningar:\\
-		\begin{itemize}
-			\item Vad styr valet av plattform för styrdosan?
-			\item Vilken plattform blir enklast för kunderna att använda?
-			\item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
-			\item Vilket programmeringsspråk lämpar sig bäst för styrdosan?
-		\end{itemize}	
-		
+        \subsection{Frågeställning} % (fold)
+        \label{sub:fragestallning}
+        Rapporten ämnar att besvara följande frågeställningar:\\
+        \begin{itemize}
+            \item Vad styr valet av plattform för styrdosan?
+            \item Vilken plattform blir enklast för kunderna att använda?
+            \item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
+            \item Vilket programmeringsspråk lämpar sig bäst för styrdosan?
+        \end{itemize}   
+        
 
-		% subsection fr_gest_llning (end)
+        % subsection fr_gest_llning (end)
 
-		\subsection{Avgränsning} % (fold)
-		\label{sub:avgransning}
-			Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
+        \subsection{Avgränsning} % (fold)
+        \label{sub:avgransning}
+            Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
 
-			\noindent Dagens paneler kan kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter i dagsläget. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och inte via någon trådlös kommunikation.
-		% subsection avgr_nsning (end)
+            \noindent Dagens paneler kan kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter i dagsläget. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och inte via någon trådlös kommunikation.
+        % subsection avgr_nsning (end)
 
-	\section{Metod} % (fold)
-	\label{sec:huvudtext}
+    \section{Metod} % (fold)
+    \label{sec:metod}
 
-		Vi har för detta projekt valt jobba utifrån undersökningsmetoden beskriven i \\
-		''A design science research methodology for information systems research'' \cite{method}. \\
+        Vi har för detta projekt valt jobba utifrån undersökningsmetoden beskriven i \\
+        ''A design science research methodology for information systems research'' \cite{method}. \\
 
-		\noindent Metoden Design Science Research (DSR) beskriver efterforskning uppdelad i fem faser;
-		\textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
-		I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
-		Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
+        \noindent Metoden Design Science Research (DSR) beskriver efterforskning uppdelad i fem faser;
+        \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
+        I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
+        Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
 
-		\noindent Vi kunde istället för DSR ha valt exempelvis 'Action Research' (AR) vilket också är en iterativ metod och väldigt lik DSR i sitt utförande. Båda metoderna skapar kunskap om specifika situationer och problem men anledningen till att vi valde DSR framför AR var att DSR strävar mot att designa och skapa artefakter vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. \cite {designscience} \\
+        \noindent Vi kunde istället för DSR ha valt exempelvis 'Action Research' (AR) vilket också är en iterativ metod och väldigt lik DSR i sitt utförande. Båda metoderna skapar kunskap om specifika situationer och problem men anledningen till att vi valde DSR framför AR var att DSR strävar mot att designa och skapa artefakter vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. \cite {designscience} \\
 
-
-	\section{Teknisk bakgrund} % (fold)
-	\label{sec:teknisk_bakgrund}
-	
-	% section teknisk_bakgrund (end)
-
-
-	\section{Genomförande} % (fold)
-	\label{sec:genomf_rande}
-		Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--\-anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan enkortsdatorns seriella pinkontakter och en persondators USB--port. Sedermera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Enkortsdatorns linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och monterade denna på /dev/ttyUSB0. Med hjälp av det i linuxsystemet medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
-	% section genomf_rande (end)
-
-	\section{Resultat} % (fold)
-	\label{sec:resultat}
-	Här kommer vi att presentera resultatet. \\
-	% section resultat (end)
-
-	\section{Diskussion} % (fold)
-	\label{sec:sammanfattning}
-		Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
+    \section{Teknisk bakgrund} % (fold)
+    \label{sec:teknisk_bakgrund}
+    
+    % section teknisk_bakgrund (end)
 
 
-		\noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att den har ett större energibehov än en mikrokontroller \cite{gadgetBlog} \cite{rasp}. Antalet I/O portar är färre och den fysiska storleken är större på en enkortsdator än en mikrokontroller.\\
+    \section{Genomförande} % (fold)
+    \label{sec:genomforande}
+        Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--\-anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklingskortets seriella pinkontakter och en persondators USB--port. Sedermera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklingskortets linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i linux som \texttt{/dev/ttyUSB0}. Med hjälp av det i linux medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
 
-		\noindent Att vi genomförde projektet beror på den låga tekniska kompetens hos de montörer som arbetar ute på fältet med SP3 och SP3s bristande stöd för kommunikationsstandarder. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan tänkas styras på distans.
+        \subsection{Val av plattform} % (fold)
+        \label{sub:val_av_plattform}
+        För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
 
-	% section sammanfattning (end)
+        \noindent\textsf{\textbf{Androidenhet}}\\
+        \begin{tabularx}{\textwidth}{@{}cXcX}
+            & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+            $+$ & Pekskärm ger stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
+                                              stöder USB-host \\
+            $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
+            $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt
+        \end{tabularx}\\
 
-	\clearpage
-	\addcontentsline{toc}{section}{Referenser}
-	\printbibliography		
+            
+        \noindent\textsf{\textbf{Raspberry Pi}}\\
+        \begin{tabularx}{\textwidth}{@{}cXcX}
+            & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+            $+$ & Stor tillgång till information & 
+                                    $-$ & Mer prestanda än nödvändigt \\
+            $+$ & God tillgänglighet till utbyggnads\-moduler & 
+                                    $-$ & Saknar skärm och knappar i 
+                                          grundutförande \\
+            $+$ & Lågt pris &       $-$ & Kan bli otymplig vid användande av   
+                                        många tilläggsmoduler \\   
+        \end{tabularx}\\
+
+        \noindent\textsf{\textbf{Arduinosystem}}\\
+        \begin{tabularx}{\textwidth}{@{}cXcX}
+            & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+            $+$ & Ofta använt systemet till mindre elektronikprojekt & 
+                                    $-$ & Saknar skärm och knappar i 
+                                        grundutförande \\
+            $+$ & God tillgänglighet till utbyggnads\-moduler & 
+                                    $-$ & Kan bli otymplig vid användande av   
+                                        många tilläggsmoduler \\
+            $+$ & Modulär uppbyggnad \\
+            $+$ & Tillgång till mycket information \\
+            $+$ & Låg energiförbrukning \\
+        \end{tabularx} \\
+
+        % subsection val_av_plattform (end)
+    % section genomforande (end)
+
+    \section{Resultat} % (fold)
+    \label{sec:resultat}
+        Här kommer vi att presentera resultatet. \\
+    % section resultat (end)
+
+    \section{Diskussion} % (fold)
+    \label{sec:diskussion}
+
+
+        Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
+
+
+        \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att den har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är färre och den fysiska storleken är större på en enkortsdator än en mikrokontroller.\\
+
+        \noindent Att vi genomförde projektet beror på den låga tekniska kompetens hos de montörer som arbetar ute på fältet med SP3 och SP3s bristande stöd för kommunikationsstandarder. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan tänkas styras på distans.
+
+    % section diskussion (end)
+
+    \clearpage
+    \addcontentsline{toc}{section}{Referenser}
+    \printbibliography      
+>>>>>>> develop
 \end{document}
