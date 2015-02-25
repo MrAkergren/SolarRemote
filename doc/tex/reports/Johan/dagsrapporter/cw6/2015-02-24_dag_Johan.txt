@@ -1,0 +1,7 @@
+Tisdag
+---
+Var på Parans kontor och testade min Raspberry Pi mot solpanelen vilket fungerade.
+Vi kommer därför köra på den tills vidare.
+Var tvungen att avvika tidigare än den andra pga. exjobbsmöte.
+--
+Tid: 3h
