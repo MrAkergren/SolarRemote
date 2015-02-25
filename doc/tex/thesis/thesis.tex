@@ -102,12 +102,12 @@
 
             \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-            \noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och PUTTy
+            \noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
         % subsection bakgrund (end)
         
         \subsection{Syfte} % (fold)
         \label{sub:syfte}
-            Idag styrs panelen till rätt position via en terminal/puTTy, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
+            Idag styrs panelen till rätt position via en terminalemulator, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
 
             \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
         % subsection syfte (end)
@@ -143,13 +143,14 @@
         I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
         Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
 
-        \noindent Vi kunde istället för DSR ha valt exempelvis 'Action Research' (AR) vilket också är en iterativ metod och väldigt lik DSR i sitt utförande. Båda metoderna skapar kunskap om specifika situationer och problem men anledningen till att vi valde DSR framför AR var att DSR strävar mot att designa och skapa artefakter vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. \cite {designscience} \\
+        \noindent Vi kunde istället för DSR ha valt exempelvis 'Action Research' (AR) vilket också är en iterativ metod och väldigt lik DSR i sitt utförande \cite{designscience}. Båda metoderna skapar kunskap om specifika situationer och problem men anledningen till att vi valde DSR framför AR var att DSR strävar mot att designa och skapa artefakter vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. \\
 
 
     \section{Genomförande} % (fold)
     \label{sec:genomforande}
         Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--\-anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklingskortets seriella pinkontakter och en persondators USB--port. Sedermera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklingskortets linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i linux som \texttt{/dev/ttyUSB0}. Med hjälp av det i linux medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
 
+        \newpage
         \subsection{Val av plattform} % (fold)
         \label{sub:val_av_plattform}
         För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
