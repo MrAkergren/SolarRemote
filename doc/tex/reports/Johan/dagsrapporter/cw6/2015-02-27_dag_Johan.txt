@@ -1,0 +1,8 @@
+Fredag
+---
+Vi började dagen med att gå igenom vår backlog för att skapa en "Definition of Done".
+Varje issue analyserades och diskuterades huruvida det skulle implementeras till inlämning.
+
+På eftermiddagen skrev vi vidare på slutrapporten.
+--
+Tid: 8h
