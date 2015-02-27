@@ -25,7 +25,8 @@
 \usepackage[hidelinks]{hyperref}
 %%--GRAPHICS--%%  (Requires preamble)
 % \usepackage{tikz}
-% \usepackage{graphicx}
+\usepackage{graphicx}
+
 
 %%--ADVANCE TABULARS--%%
  \usepackage{tabularx}
@@ -35,7 +36,7 @@
 %\setcounter{secnumdepth}{3} %3=Default
 
 %%-GRAPHICS-%%
-% \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 
 %%-BIBLIOGRAPHY-%%
@@ -243,8 +244,13 @@
 
         \noindent Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförs inom en snäv tidsram.\\
 
-        \noindent Den mjukvara som utvecklats till enheten består av ett grafisk gränssnitt, med olika knapparna klara av att generera de kommandon som solpanelens\-styrkrets lyssnar efter. Gränssnittet har en egen knapp som öppnar en seriell kommunikation till panelen och detta måste utföras först, för att de övriga instruktionerna ska kunna skickas över. 
-            
+        \noindent Den mjukvara som utvecklats till enheten består av ett grafisk gränssnitt, med olika knapparna klara av att generera de kommandon som solpanelens\-styrkrets lyssnar efter, se figur \ref{fig:cross} Gränssnittet har en egen knapp som öppnar en seriell kommunikation till panelen och detta måste utföras först, för att de övriga instruktionerna ska kunna skickas över. 
+        \begin{figure}[b!]
+            \centering
+            \includegraphics[scale=0.33]{img/styrkors}
+            \caption{Skiss av det grafiska gränssnittet}
+            \label{fig:cross}
+        \end{figure}
 
             %\item Vad styr valet av plattform för styrdosan?
             %\item Vilken plattform blir enklast för kunderna att använda?
