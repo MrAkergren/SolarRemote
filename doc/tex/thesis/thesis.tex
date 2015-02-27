@@ -55,7 +55,7 @@
             19821112--7652 \and
             Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}  \\ 19880505--7114
 }
-\title{\vspace{2cm}\underline{\small{WORKING TITLE}} \\ SolarRemote\vspace{1cm}}
+\title{\vspace{2cm} Styrdosa till \\ Parans solpanel  \vspace{1cm}}
 
 \date{\vspace{8cm}\today}
 
@@ -188,7 +188,7 @@
             
             \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \\
             
-            \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder 'USB-host' är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution. \\
+            \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution. \\
             
             \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Det negativa är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. Fördelen Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
 
@@ -220,7 +220,7 @@
             \end{tabularx}\\
             
             \noindent\textsf{\textbf{Arduinosystem}} \\ 
-            \begin{tabularx}{\textwidth}{@{}cXcX}
+            \begin{tabularx}{\textwidth}{@{}cXcX} 
                 & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
                 $+$ & God tillgång till information & 
                                         $-$ & Saknar skärm och knappar i 
@@ -230,12 +230,19 @@
                                             många tilläggsmoduler \\
                 $+$ & Låg energiförbrukning &
                                         $-$ & Saknar drivrutiner till CP2102 \\
+
             \end{tabularx} \\
 
             % subsubsection val_av_plattform (end)
-        
+
+            
             Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklings\-kortets seriella pinkontakter och en persondators USB--port. Seder\-mera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklings\-kortets Linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i \hbox{Linux} som \texttt{/dev/ttyUSB0}. Med hjälp av ett terminal\-program kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
         % subsection design_och_utveckling (end)
+
+        \subsection{Demonstrering och Utvärdering} % (fold)
+        \label{sub:demonstrering_och_utv_rdering}
+    
+        % subsection demonstrering_och_utv_rdering (end)
     % section genomforande (end)
 
     \newpage
@@ -246,7 +253,16 @@
 
         \noindent Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd, där grunden i enheten är en 'Raspberry Pi', användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada}. Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt. \\
 
-        \noindent Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförs inom en snäv tidsram.\\
+        \paragraph{Vad styr valet av plattform för styrdosan?} % (fold)
+        \label{par:vad_styr_valet}
+            Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram.\\
+        % paragraph vad_styr_valet(end)
+
+        \paragraph{Enkel för kunderna att använda?} % (fold)
+        \label{par:enk}
+            Resultatet levererar en produkt som är att anses som användarvänlig när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet. \\
+        % paragraph enk (end)
+
 
         \noindent Den mjukvara som utvecklats till enheten består av ett grafisk gränssnitt, med olika knapparna klara av att generera de kommandon som solpanelens\-styrkrets lyssnar efter, se figur \ref{fig:cross} Gränssnittet har en egen knapp som öppnar en seriell kommunikation till panelen och detta måste utföras först, för att de övriga instruktionerna ska kunna skickas över. 
         \begin{figure}[b!]
@@ -277,6 +293,8 @@
             \noindent Vår lösning är baserat på en enkortsdator och är fullt fungerande enligt de krav som uppdragsgivaren har fastställt och är relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
 
             \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att dessa generellt har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är oftast färre på en enkortsdator och den fysiska storleken är större jämfört med de mikrokontrollerkort som hade varit lämpliga för projektet.\\
+
+            \noindent Gällande frågeställningen om vår produkt är den enklaste att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkelt. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet kan ha resulterat utan någon produkt överhuvudtaget.
 
         % subsection h_rdvara (end)
 
