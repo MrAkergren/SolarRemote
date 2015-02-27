@@ -198,8 +198,8 @@
                 $+$ & Lågt pris &       $-$ & Kan bli otymplig vid användande av   
                                             många tilläggsmoduler \\   
             \end{tabularx}\\
-
-            \noindent\textsf{\textbf{Arduinosystem}}\\
+            \newpage 
+            \noindent\textsf{\textbf{Arduinosystem}} \\ 
             \begin{tabularx}{\textwidth}{@{}cXcX}
                 & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
                 $+$ & Ofta använt systemet till mindre elektronikprojekt & 
@@ -219,11 +219,15 @@
         % subsection design_och_utveckling (end)
     % section genomforande (end)
 
+    \newpage
+
     \section{Resultat} % (fold)
     \label{sec:resultat}
         Det här avsnittet avser att knyta an till frågeställningen och besvara de frågor som ligger till grund för arbetet. Resultatet presenteras genom en redovisning av den produkt som genomförandet har lett fram till. \\
 
-        \noindent Resultatet av genomförandet är en handhållen produkt som kopplar in sig till solpanelen via en USB--sladd, där grunden i enheten är en 'Raspberry Pi', användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada}. Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt. \\
+        \noindent Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd, där grunden i enheten är en 'Raspberry Pi', användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada}. Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt. \\
+
+        \noindent Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförs inom en snäv tidsram.\\
 
         \noindent Den mjukvara som utvecklats till enheten består av ett grafisk gränssnitt, med olika knapparna klara av att generera de kommandon som solpanelens\-styrkrets lyssnar efter. Gränssnittet har en egen knapp som öppnar en seriell kommunikation till panelen och detta måste utföras först, för att de övriga instruktionerna ska kunna skickas över. 
             
