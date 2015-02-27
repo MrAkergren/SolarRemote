@@ -153,49 +153,60 @@
 
     \section{Genomförande} % (fold)
     \label{sec:genomforande}
-        Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklings\-kortets seriella pinkontakter och en persondators USB--port. Seder\-mera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklings\-kortets Linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i \hbox{Linux} som \texttt{/dev/ttyUSB0}. Med hjälp av ett terminal\-program kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
+        Detta avsnitt avser behandla projektets utförande enligt den i föregående avsnitt beskrivna metoden DSR.
+        
+        \subsection{Problemanalys} % (fold)
+        \label{sub:problemanalys}
+            Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande skede diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att vertikalt och horisontellt justera panelen, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
+        % subsection problemanalys (end)
 
-        \subsection{Val av plattform} % (fold)
-        \label{sub:val_av_plattform}
-        För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
+        \subsection{Design och utveckling} % (fold)
+        \label{sub:design_och_utveckling}
+        
+            \subsubsection{Val av plattform} % (fold)
+            \label{subsub:val_av_plattform}
+            För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
 
-        \noindent\textsf{\textbf{Androidenhet}}\\
-        \begin{tabularx}{\textwidth}{@{}cXcX}
-            & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-            $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
-                                              stöder USB-host \\
-            $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
-            $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt
-        \end{tabularx}\\
+            \noindent\textsf{\textbf{Androidenhet}}\\
+            \begin{tabularx}{\textwidth}{@{}cXcX}
+                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
+                                                  stöder USB-host \\
+                $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
+                $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt
+            \end{tabularx}\\
 
-            
-        \noindent\textsf{\textbf{Raspberry Pi}}\\
-        \begin{tabularx}{\textwidth}{@{}cXcX}
-            & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-            $+$ & Stor tillgång till information & 
-                                    $-$ & Mer prestanda än nödvändigt \\
-            $+$ & God tillgänglighet till utbyggnads\-moduler & 
-                                    $-$ & Saknar skärm och knappar i 
-                                          grundutförande \\
-            $+$ & Lågt pris &       $-$ & Kan bli otymplig vid användande av   
-                                        många tilläggsmoduler \\   
-        \end{tabularx}\\
+                
+            \noindent\textsf{\textbf{Raspberry Pi}}\\
+            \begin{tabularx}{\textwidth}{@{}cXcX}
+                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                $+$ & Stor tillgång till information & 
+                                        $-$ & Mer prestanda än nödvändigt \\
+                $+$ & God tillgänglighet till utbyggnads\-moduler & 
+                                        $-$ & Saknar skärm och knappar i 
+                                              grundutförande \\
+                $+$ & Lågt pris &       $-$ & Kan bli otymplig vid användande av   
+                                            många tilläggsmoduler \\   
+            \end{tabularx}\\
 
-        \noindent\textsf{\textbf{Arduinosystem}}\\
-        \begin{tabularx}{\textwidth}{@{}cXcX}
-            & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-            $+$ & Ofta använt systemet till mindre elektronikprojekt & 
-                                    $-$ & Saknar skärm och knappar i 
-                                        grundutförande \\
-            $+$ & God tillgänglighet till utbyggnads\-moduler & 
-                                    $-$ & Kan bli otymplig vid användande av   
-                                        många tilläggsmoduler \\
-            $+$ & Modulär uppbyggnad \\
-            $+$ & Tillgång till mycket information \\
-            $+$ & Låg energiförbrukning \\
-        \end{tabularx} \\
+            \noindent\textsf{\textbf{Arduinosystem}}\\
+            \begin{tabularx}{\textwidth}{@{}cXcX}
+                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                $+$ & Ofta använt systemet till mindre elektronikprojekt & 
+                                        $-$ & Saknar skärm och knappar i 
+                                            grundutförande \\
+                $+$ & God tillgänglighet till utbyggnads\-moduler & 
+                                        $-$ & Kan bli otymplig vid användande av   
+                                            många tilläggsmoduler \\
+                $+$ & Modulär uppbyggnad \\
+                $+$ & Tillgång till mycket information \\
+                $+$ & Låg energiförbrukning \\
+            \end{tabularx} \\
 
-        % subsection val_av_plattform (end)
+            % subsubsection val_av_plattform (end)
+        
+            Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklings\-kortets seriella pinkontakter och en persondators USB--port. Seder\-mera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklings\-kortets Linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i \hbox{Linux} som \texttt{/dev/ttyUSB0}. Med hjälp av ett terminal\-program kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
+        % subsection design_och_utveckling (end)
     % section genomforande (end)
 
     \section{Resultat} % (fold)
