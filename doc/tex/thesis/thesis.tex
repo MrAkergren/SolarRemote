@@ -232,6 +232,12 @@
                                         $-$ & Saknar drivrutiner till CP2102 \\
             \end{tabularx} \\
 
+            \subsubsection{Mjukvaruutveckling} % (fold)
+            \label{subsub:mjukvaruutveckling}
+            För att erbjuda användaren ett användargränssnitt som är lättanvänt och fungerar väl ihop med en pekskärm så lades fokus på att implementera ett gränssnitt med stora tydliga tryckknappar. Då skärmens yta är begränsad beslutades att inte ha lägga all funktionalitet i en vy utan att separera den del som manövrerar solpanelen från den del som skickar kommandon för avläsning, automatisering och omstart. Detta minskar risken för att trycka på fel knapp och därmed sätta panelen i ett oönskat läge.\\
+
+            \noindent När panelen kontrolleras via en terminal får användaren feedback från panelen genom att statusmeddelanden skrivs ut i terminalen. Dessa meddelanden valde vi att presentera i ett statusfält placerat i botten på pekskärmen.
+
             % subsubsection val_av_plattform (end)
         
             Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklings\-kortets seriella pinkontakter och en persondators USB--port. Seder\-mera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklings\-kortets Linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i \hbox{Linux} som \texttt{/dev/ttyUSB0}. Med hjälp av ett terminal\-program kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
