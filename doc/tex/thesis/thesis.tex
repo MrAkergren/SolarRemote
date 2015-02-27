@@ -67,10 +67,14 @@
     \subsection*{Abstract (draft)} % (fold)
     \label{sub:abstract}
             The purpose of this research was to find an alternative and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lightning. \\
+
             \noindent Today is the panel installed and controlled by connecting a computer to the panel which have to be correctly configured and able to run a terminal where commands are sent to the panel.\\
+
             \noindent This research where done in co-operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and controll the panel.\\
-            The resulting device is a GUI devoloped in python, with tkinter as GUI-library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing simple (maybe informal..) buttons on the touchscreen.\\
-            The result provide a solution for Parans which they can take in to further development and sell to their customers as an easy way of installing and controlling the sun panel.
+
+            \noindent The resulting device is a GUI devoloped in python, with tkinter as GUI-library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing simple (maybe informal..) buttons on the touchscreen.\\
+
+            \noindent The result provide a solution for Parans which they can take in to further development and sell to their customers as an easy way of installing and controlling the sun panel.
     % subsection beteckningar(end)
 
     \newpage 
@@ -182,9 +186,9 @@
             \label{subsub:val_av_plattform}
             För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
             
-            \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar host och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för USB-host, då CP2102 saknar stöd för detta. \\
+            \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \\
             
-            \noindent I androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd androiddistribution. \\
+            \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder 'USB-host' är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution. \\
             
             \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Det negativa är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. Fördelen Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
 
@@ -214,7 +218,7 @@
                                               många tilläggsmoduler \\   
                 $+$ & Lågt pris \\   
             \end{tabularx}\\
-            \newpage 
+            
             \noindent\textsf{\textbf{Arduinosystem}} \\ 
             \begin{tabularx}{\textwidth}{@{}cXcX}
                 & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
