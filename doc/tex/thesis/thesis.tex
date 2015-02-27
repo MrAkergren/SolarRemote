@@ -14,7 +14,7 @@
 
 
 %%--SPACING AND MARGIN--%
-\usepackage[margin=1.8in]{geometry}
+\usepackage[margin=4cm, top=2.5cm]{geometry}
 
 %%--SANS-SERIF FONTS FOR SECTIONS--%%
 \usepackage{sectsty}
@@ -56,13 +56,12 @@
 
 
 \begin{document}
-
     \maketitle
     \thispagestyle{empty}
 
     \newpage 
     \subsection*{Beteckningar} % (fold)
-    \label{beteckningar}
+    \label{sub:beteckningar}
         \begin{tabularx}{\textwidth}{@{}lX}
             C & Imperativt programmeringsspråk \\
             CP2102 & Enhet från Silicon Labs som omvandlar kommunikation från
@@ -103,12 +102,12 @@
 
             \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-            \noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och PUTTy
+            \noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
         % subsection bakgrund (end)
         
         \subsection{Syfte} % (fold)
         \label{sub:syfte}
-            Idag styrs panelen till rätt position via en terminal/puTTy, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
+            Idag styrs panelen till rätt position via en terminalemulator, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
 
             \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
         % subsection syfte (end)
@@ -139,22 +138,19 @@
         Vi har för detta projekt valt jobba utifrån undersökningsmetoden beskriven i \\
         ''A design science research methodology for information systems research'' \cite{method}. \\
 
-        \noindent Metoden beskriver beskriver efterforskning uppdelad i fem faser;
+        \noindent Metoden Design Science Research (DSR) beskriver efterforskning uppdelad i fem faser;
         \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
         I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
-        Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport.
-    % section metod (end)
+        Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
 
-    \section{Teknisk bakgrund} % (fold)
-    \label{sec:teknisk_bakgrund}
-    
-    % section teknisk_bakgrund (end)
+        \noindent Vi kunde istället för DSR ha valt exempelvis 'Action Research' (AR) vilket också är en iterativ metod och väldigt lik DSR i sitt utförande \cite{designscience}. Båda metoderna skapar kunskap om specifika situationer och problem men anledningen till att vi valde DSR framför AR var att DSR strävar mot att designa och skapa artefakter vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. \\
 
 
     \section{Genomförande} % (fold)
     \label{sec:genomforande}
         Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklings\-kortets seriella pinkontakter och en persondators USB--port. Seder\-mera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklings\-kortets Linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i \hbox{Linux} som \texttt{/dev/ttyUSB0}. Med hjälp av ett terminal\-program kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
 
+        \newpage
         \subsection{Val av plattform} % (fold)
         \label{sub:val_av_plattform}
         För att konstruera den typ av fjärrkontroll som möter projektets krav måste först ett beslut tas om vilken teknisk plattform som ska användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
@@ -162,7 +158,7 @@
         \noindent\textsf{\textbf{Androidenhet}}\\
         \begin{tabularx}{\textwidth}{@{}cXcX}
             & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-            $+$ & Pekskärm ger stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
+            $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
                                               stöder USB-host \\
             $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
             $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt
@@ -203,20 +199,37 @@
         Här kommer vi att presentera resultatet. \\
     % section resultat (end)
 
+    \newpage
+
     \section{Diskussion} % (fold)
     \label{sec:diskussion}
+        \subsection{Hårdvara} % (fold)
+        \label{sub:d_hardvara}
+        
+            Som nämnt på sidan \pageref{sub:beteckningar} så utgår vi ifrån begreppet enkortsdator för ett kretskort som är kapabel till att driva en Linuxkärna, till skillnad från en mikrokontroller där en svagare krets avses. \\
 
+            \noindent Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
 
-        Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
+            \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att dessa generellt har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är oftast färre på en enkortsdator och den fysiska storleken är större jämfört med de mikrokontrollerkort som hade varit lämpliga för projektet.\\
 
+        % subsection h_rdvara (end)
 
-        \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att den har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är färre och den fysiska storleken är större på en enkortsdator än en mikrokontroller.\\
+        \subsection{Mjukvara} % (fold)
+        \label{sub:d_mjukvara}
 
-        \noindent Att vi genomförde projektet beror på den låga tekniska kompetens hos de montörer som arbetar ute på fältet med SP3 och SP3s bristande stöd för kommunikationsstandarder. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan tänkas styras på distans.
+            Den mjukvara som har utvecklats, har skrivits i programmeringsspråket \texttt{Python}. Språk\-valet beror delvis på att personal inom företaget har erfarenhet inom språket vilket underlättar för framtida utveckling och underhåll av projektets produkt och dels valdes språket för dess enkla utveckling av grafiska gränssnitt och bra stöd i den seriella kommunikationen som krävdes i projektet. \\
 
+            \noindent Andra språk som hade varit möjliga är till exempel \texttt{C} eller \texttt{Java} då projektgruppen har erfarenhet av de båda språken. \texttt{C} valdes bort då utveckling av grafiska gränssnitt i detta språk kräver externa bibliotek och minskar därför portabiliteten och ökar komplexiteten. \texttt{Java} är en lämplig kandidat för projektet, men valdes bort då den grafiska utvecklingen i \texttt{Python} är enklare och applikationen som vi utvecklade är såpass simpel att \texttt{Java} skulle medföra stor andel så kallad 'overhead' i programmeringskoden. Nackdelen med \texttt{Python} jämfört med \texttt{Java} är att språket inte är lika effektivt i sina beräkningar, men då applikationen vi skrivit inte utför några tyngre beräkningar så berörs inte användar\-upplevelsen  av detta. Kommer applikationen att vidareutvecklas till något mer än vad projektet skapat, är det fullt rimligt att översätta logiken till \texttt{Java}, något som det finns gott om stöd för.\cite{jython}
+        % subsection mjukvara (end)
+        
+        \subsection{Framtida bruk} % (fold)
+        \label{sub:framtida_bruk}
+            Att projektet genomfördes grundar sig i SP3s bristande stöd för kommunikationsstandarder och att dagens kommunikationsgränssnitt inte är användarvänligt, vilket leder till stora underhållskostnader för företaget då det krävs tid och resurser att stötta underhållspersonal. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan komma att styras på distans.
+        % subsection framtida_bruk (end)
     % section diskussion (end)
 
     \clearpage
     \addcontentsline{toc}{section}{Referenser}
     \printbibliography      
+    
 \end{document}
