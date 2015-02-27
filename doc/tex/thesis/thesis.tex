@@ -236,7 +236,11 @@
             \label{subsub:mjukvaruutveckling}
             För att erbjuda användaren ett användargränssnitt som är lättanvänt och fungerar väl ihop med en pekskärm så lades fokus på att implementera ett gränssnitt med stora tydliga tryckknappar. Då skärmens yta är begränsad beslutades att inte ha lägga all funktionalitet i en vy utan att separera den del som manövrerar solpanelen från den del som skickar kommandon för avläsning, automatisering och omstart. Detta minskar risken för att trycka på fel knapp och därmed sätta panelen i ett oönskat läge.\\
 
-            \noindent När panelen kontrolleras via en terminal får användaren feedback från panelen genom att statusmeddelanden skrivs ut i terminalen. Dessa meddelanden valde vi att presentera i ett statusfält placerat i botten på pekskärmen.
+            \noindent När panelen kontrolleras via en terminal får användaren feedback från panelen genom att statusmeddelanden skrivs ut i terminalen. 
+            Dessa meddelanden valde vi att presentera i ett statusfält placerat i botten på pekskärmen och som är tillgängligt oavsett vy.\\
+
+            \noindent För att ansluta till solpanelen krävs, förutom en fysisk anslutning USB-kabel, även att en seriell anslutning upprättas. Denna anslutning kan antingen upprättas automatiskt genom att programmet ligger och läser av om något är anslutet till fjärrkontrollens USB-port eller att användaren gör ett aktivt val genom att trycka på en knapp.\\
+            %Osäker på huruvida jag bör skriva vad vi implementerade under mjukvaruutveckling. Tillhör egentligen resultdelen?
 
             % subsubsection val_av_plattform (end)
         
