@@ -1,0 +1,30 @@
+Tisdag	2015-02-24	Tidsåtgång: 4h
+
+Var på Parans kontor där vi arbetade vidare med GUI-utveckling och att få igång
+applikationen på en Raspberry Pi. Då den RPi vi lånat från skolan inte
+fungerade så använda vi Johans. Vi gjorde en ny frame för knappar och ändrade
+bildskärmsorientering på den pekskärm som är kopplad till RPi.
+
+Hade ett möte med handledare från Chalmers där vi diskuterade projektet och
+rapporten.
+
+-------------------------------------------------------------------------------
+Onsdag	2015-02-25	Tidsåtgång: 9h
+
+Var på Parans kontor och jobbade vidare med GUI och styrning av panelen.
+Lyckades förbättra inläsningen av strängar från panelen så att det fungerar
+dugligt.
+
+Skrev även text till slutrapport.
+
+-------------------------------------------------------------------------------
+Fredag	2015-02-27	Tidsåtgång: 6h
+
+Såg över "Definition of done" på de enskilda "issues" vi har kvar och såg över
+vad som var kvar att göra för att projektets prototyp ska möta de grundläggande
+förväntningarna.
+
+Det arbetades även mer på slutrapporten.
+
+-------------------------------------------------------------------------------
+Total tidsåtgång: 19h

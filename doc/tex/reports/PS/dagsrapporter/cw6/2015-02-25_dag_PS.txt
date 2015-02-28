@@ -1,0 +1,11 @@
+Onsdag
+---
+
+Var på Parans kontor och jobbade vidare med GUI och styrning av panelen.
+Lyckades förbättra inläsningen av strängar från panelen så att det fungerar
+dugligt.
+
+Skrev även text till slutrapport.
+
+---
+Tidsåtgång: 9h

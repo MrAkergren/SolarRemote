@@ -6,5 +6,8 @@ applikationen på en Raspberry Pi. Då den RPi vi lånat från skolan inte
 fungerade så använda vi Johans. Vi gjorde en ny frame för knappar och ändrade
 bildskärmsorientering på den pekskärm som är kopplad till RPi.
 
+Hade ett möte med handledare från Chalmers där vi diskuterade projektet och
+rapporten.
+
 ---
 Tidsåtgång: 4h
