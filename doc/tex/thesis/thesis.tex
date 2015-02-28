@@ -26,6 +26,9 @@
 %%--GRAPHICS--%%  (Requires preamble)
 % \usepackage{tikz}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
 
 
 %%--ADVANCE TABULARS--%%
@@ -231,7 +234,8 @@
                 $+$ & Låg energiförbrukning &
                                         $-$ & Saknar drivrutiner till CP2102 \\
 
-            \end{tabularx} \\
+            \end{tabularx}
+            % subsubsection val_av_plattform (end)
 
             \subsubsection{Mjukvaruutveckling} % (fold)
             \label{subsub:mjukvaruutveckling}
@@ -239,16 +243,12 @@
 
             \noindent När panelen kontrolleras via en terminal får användaren feedback från panelen genom att statusmeddelanden skrivs ut i terminalen. Dessa meddelanden valde vi att presentera i ett statusfält placerat i botten på pekskärmen.
 
-            % subsubsection val_av_plattform (end)
+            % subsubsection mjukvaruutveckling (end)
 
             
             Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan utvecklings\-kortets seriella pinkontakter och en persondators USB--port. Seder\-mera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Utvecklings\-kortets Linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och denna monterades automatiskt i \hbox{Linux} som \texttt{/dev/ttyUSB0}. Med hjälp av ett terminal\-program kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
         % subsection design_och_utveckling (end)
 
-        \subsection{Demonstrering och Utvärdering} % (fold)
-        \label{sub:demonstrering_och_utv_rdering}
-    
-        % subsection demonstrering_och_utv_rdering (end)
     % section genomforande (end)
 
     \newpage
@@ -257,35 +257,48 @@
     \label{sec:resultat}
         Det här avsnittet avser att knyta an till frågeställningen och besvara de frågor som ligger till grund för arbetet. Resultatet presenteras genom en redovisning av den produkt som genomförandet har lett fram till. \\
 
-        \noindent Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd, där grunden i enheten är en 'Raspberry Pi', användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada}. Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt. \\
+        \noindent Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd, där grunden i enheten är en 'Raspberry Pi' och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada}. Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
 
-        \paragraph{Vad styr valet av plattform för styrdosan?} % (fold)
+        \paragraph{\textrm{Vad styr valet av plattform för styrdosan?}} % (fold)
         \label{par:vad_styr_valet}
-            Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram.\\
-        % paragraph vad_styr_valet(end)
+            Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram.
+        % paragraph vad_styr_valet (end)
 
-        \paragraph{Enkel för kunderna att använda?} % (fold)
+        \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
         \label{par:enk}
-            Resultatet levererar en produkt som är att anses som användarvänlig när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet. \\
+            Projektet resulterade i en produkt som är att anses som användarvänlig, i synnerhet när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet.
         % paragraph enk (end)
 
-
-        \noindent Den mjukvara som utvecklats till enheten består av ett grafisk gränssnitt, med olika knapparna klara av att generera de kommandon som solpanelens\-styrkrets lyssnar efter, se figur \ref{fig:cross} Gränssnittet har en egen knapp som öppnar en seriell kommunikation till panelen och detta måste utföras först, för att de övriga instruktionerna ska kunna skickas över. 
+        \paragraph{\textrm{Framtidskomaptibel?}} % (fold)
+        \label{par:framtidskomaptibel}
+            Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov.
+        % paragraph framtidskomaptibel (end)
+      
         \begin{figure}[b!]
             \centering
-            \includegraphics[scale=0.33]{img/styrkors}
+            \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[scale=0.3]{img/styrkors}
+                \caption{Styrning, uppkoppling \\ \& genväg till \ref{fig:command}}
+                \label{fig:cross}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[scale=0.3]{img/command}
+                \caption{Instruktion--gränssnittet \\ 'command'}
+                \label{fig:command}
+            \end{subfigure}
             \caption{Skiss av det grafiska gränssnittet}
-            \label{fig:cross}
         \end{figure}
 
-            %\item Vad styr valet av plattform för styrdosan?
-            %\item Vilken plattform blir enklast för kunderna att använda?
-            %\item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
-            %\item Vilket programmeringsspråk lämpar sig bäst för styrdosan?
+        \paragraph{\textrm{Programmeringsspråk}} % (fold)
+        \label{par:programmeringsspr_k}
+            Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av ett grafisk gränssnitt. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
+            \noindent Den första vyn som öppnas när applikationen start är den i \ref{fig:cross} och innehåller de grundläggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}.
+        % paragraph programmeringsspr_k (end)
 
-
-        % section resultat (end)
+   % section resultat (end)
 
     \newpage
 
