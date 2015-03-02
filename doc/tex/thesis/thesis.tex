@@ -138,9 +138,9 @@
         Rapporten ämnar att besvara följande frågeställningar:
         \begin{itemize}
             \item Vad styr valet av plattform för styrdosan?
-            \item Vilken plattform blir enklast för kunderna att använda?
+            \item Blir styrdosan enkel att använda?
             \item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
-            \item Vilket programmeringsspråk lämpar sig bäst för styrdosan?
+            \item Vilket programmeringsspråk lämpar sig för styrdosans mjukvara?
         \end{itemize}   
         
 
@@ -259,24 +259,20 @@
 
     \section{Resultat} % (fold)
     \label{sec:resultat}
-        Det här avsnittet avser att knyta an till frågeställningen och besvara de frågor som ligger till grund för arbetet. Resultatet presenteras genom en redovisning av den produkt som genomförandet har lett fram till. \\
+        I det här avsnittet kommer resultatet att presenteras genom en redovisning av den produkt som genomförandet har lett fram till och 
+        vidare avser avsnittet att knyta an till frågeställningen och besvara de frågor som ligger till grund för arbetet. \\
 
-        \noindent Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd, där grunden i enheten är en 'Raspberry Pi' och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada}. Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
+        \subsection{Hårdvara} % (fold)
+        \label{sub:h_rdvara}
+        Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform. \cite{Ada} Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
+        % subsection h_rdvara (end)
 
-        \paragraph{\textrm{Vad styr valet av plattform för styrdosan?}} % (fold)
-        \label{par:vad_styr_valet}
-            Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram.
-        % paragraph vad_styr_valet (end)
+        \subsection{Mjukvara} % (fold)
+        \label{sub:mjukvara}
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python}. Mjukvaran består av ett grafisk gränssnitt, samt stränghantering anpassad för det sätt som SP3 hanterar textsträngar på den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
-        \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
-        \label{par:enk}
-            Projektet resulterade i en produkt som är att anses som användarvänlig, i synnerhet när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet.
-        % paragraph enk (end)
-
-        \paragraph{\textrm{Framtidskomaptibel?}} % (fold)
-        \label{par:framtidskomaptibel}
-            Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov.
-        % paragraph framtidskomaptibel (end)
+        \noindent Den första vyn som öppnas när applikationen start är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}.
+        % subsection mjukvara (end)
       
         \begin{figure}[b!]
             \centering
@@ -295,12 +291,29 @@
             \caption{Skiss av det grafiska gränssnittet}
         \end{figure}
 
-        \paragraph{\textrm{Programmeringsspråk}} % (fold)
-        \label{par:programmeringsspr_k}
-            Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av ett grafisk gränssnitt. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+        \subsection{Frågeställningen} % (fold)
+        \label{sub:fragestallningen}
+            \paragraph{\textrm{Vad styr valet av plattform för styrdosan?}} % (fold)
+            \label{par:vad_styr_valet}
+                Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram.
+            % paragraph vad_styr_valet (end)
 
-            \noindent Den första vyn som öppnas när applikationen start är den i \ref{fig:cross} och innehåller de grundläggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}.
-        % paragraph programmeringsspr_k (end)
+            \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
+            \label{par:enk}
+                Projektet resulterade i en produkt som är att anses som användarvänlig, i synnerhet när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet.
+            % paragraph enk (end)
+
+            \paragraph{\textrm{Framtidskomaptibel?}} % (fold)
+            \label{par:framtidskomaptibel}
+                Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov.
+            % paragraph framtidskomaptibel (end)
+
+            \paragraph{\textrm{Programmeringsspråk}} % (fold)
+            \label{par:programmeringssprak}
+               
+            % paragraph programmeringsspr_k (end)
+        % subsection fr_gest_llningen (end)
+        
 
    % section resultat (end)
 
