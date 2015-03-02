@@ -239,13 +239,22 @@
 
             \subsubsection{Mjukvaruutveckling} % (fold)
             \label{subsub:mjukvaruutveckling}
-            För att erbjuda användaren ett användargränssnitt som är lättanvänt och fungerar väl ihop med en pekskärm så lades fokus på att implementera ett gränssnitt med stora tydliga tryckknappar. Då skärmens yta är begränsad beslutades att inte ha lägga all funktionalitet i en vy utan att separera den del som manövrerar solpanelen från den del som skickar kommandon för avläsning, automatisering och omstart. Detta minskar risken för att trycka på fel knapp och därmed sätta panelen i ett oönskat läge.\\
+            Fjärrkontrollens mjukvara har i enlighet med vår metod utvecklats i iterationer där den första prototypen hade som mål att upprätta en seriell anslutning mot solpanelen.
+            När väl anslutning skapats var nästa steg att kunna sända instruktioner för att få solpanelen att vrida sig i önskad riktning. I detta stadie fungerade mjukvaran på samma sätt (men med reducerad funktionalitet) som när användaren är uppkopplad mot solpanelen via en terminalemulator. Instruktioner skrevs via tangentbord och sändes som strängar enligt den formatering som den mottagande mjukvaran på solpanelen kräver. \\
 
-            \noindent När panelen kontrolleras via en terminal får användaren feedback från panelen genom att statusmeddelanden skrivs ut i terminalen. 
-            Dessa meddelanden valde vi att presentera i ett statusfält placerat i botten på pekskärmen och som är tillgängligt oavsett vy.\\
+            \noindent Nästa steg i processen var att utveckla ett grafiskt användargränssnitt. För att ebjuda användaren ett lättanvänt gränssnitt som fungerar väl ihop med en resistiv pekskärm
+            så lades fokus på att implementera stora tydliga tryckknappar. 
+            Mjukvaran i solpanelen fungerar som så att panelen börjar vrida sig i en riktning när den får ett motsvarande kommando och fortsätter i den riktningen tills användaren ger ett kommando om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
+            När detta fungerade tillfredsställande så ändrades funktionaliteten till att panelen rör sig så länge användaren håller knappen nertryckt men stannar när knappen släpps upp.
+            Kommandot för att stoppa panelen skickas således automatiskt när en knapp släpps upp och gör den dedikerade stoppknappen överflödig men vi valde ändå att behålla den i händelse att ett extra stopp-kommando behöver skickas. \\
 
-            \noindent För att ansluta till solpanelen krävs, förutom en fysisk anslutning USB-kabel, även att en seriell anslutning upprättas. Denna anslutning kan antingen upprättas automatiskt genom att programmet ligger och läser av om något är anslutet till fjärrkontrollens USB-port eller att användaren gör ett aktivt val genom att trycka på en knapp.\\
-            %Osäker på huruvida jag bör skriva vad vi implementerade under mjukvaruutveckling. Tillhör egentligen resultdelen?
+
+            \noindent Utöver funktionalitet för att manuellt styra panelen i en önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran och skriva ut information som tid, datum och gps-information. Då pekskärmens yta är begränsad valde vi att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
+
+            \noindent Efter att solpanelen kunde styras med hjälp av det grafiska gränssnittet var nästa steg att läsa in den information som panelen skickar ut som feedback till användaren. Denna information skickas som  en samling strängar och innehållet består av vilken instruktion som användaren har skickat och åt vilket håll panelen rör sig åt. 
+            Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom vi med pekskärmen hade en begränsad yta att presentera informationen på så valde vi att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
+            En utmaning här var att filtrera ut relevant information om panelens status så att användaren inte behöver ta del av de instruktioner som skickas fram och tillbaka mellan fjärrkontrollens mjukvara och mjukvaran i solpanelen. \\
+
 
             % subsubsection mjukvaruutveckling (end)
 
