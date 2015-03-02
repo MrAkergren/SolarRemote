@@ -91,7 +91,7 @@
             I/O & Input/Output \\
             PIC32 & 32-bitars mikrokontroller \\
             Python & Högnivåspråk för programmering \\
-            SP3 & Parans tredje generationens solpanel \\
+            SP3 & Parans solpanel, tredje generationen \\
             SSH & Secure Shell. Protokoll för säker anslutning mellan datorer\\
             USB & Universal Serial Bus, standard för seriell kommunikation \\
             \\
@@ -177,9 +177,9 @@
         \label{sub:problemanalys}
             Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande skede diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \\
             
-            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att vertikalt och horisontellt justera panelen, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
+            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att justera panelen vertikalt och horisontellt, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
             
-            \noindent Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
+            \noindent Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids-- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
         % subsection problemanalys (end)
 
         \subsection{Design och utveckling} % (fold)
@@ -187,13 +187,13 @@
         
             \subsubsection{Val av plattform} % (fold)
             \label{subsub:val_av_plattform}
-            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
+            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
             
             \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \\
             
             \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution \cite{SL_AN809}. \\
             
-            \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Det negativa är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. Fördelen Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
+            \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
 
 
             \noindent\textsf{\textbf{Androidenhet}}\\
@@ -204,7 +204,7 @@
                 $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
                 $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt \\
                 $+$ &  Drivrutiner till CP2102 existerar &
-                                            $-$ & Kräver egenbyggd androiddistribution \\
+                                            $-$ & Kräver egenbyggd Androiddistribution \\
             \end{tabularx}\\
 
                 
