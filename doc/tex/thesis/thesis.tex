@@ -273,14 +273,14 @@
 
         \subsection{Hårdvara} % (fold)
         \label{sub:h_rdvara}
-        Resultatet av genomförandet är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform. \cite{Ada} Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
+        Den fysiska produkt som genomförandet resulterade i, är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform. \cite{Ada} Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
         % subsection h_rdvara (end)
 
         \subsection{Mjukvara} % (fold)
         \label{sub:mjukvara}
-         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python}. Mjukvaran består av ett grafisk gränssnitt, samt stränghantering anpassad för det sätt som SP3 hanterar textsträngar på den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av ett grafisk gränssnitt samt stränghantering. Stränghanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
-        \noindent Den första vyn som öppnas när applikationen start är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}.
+        \noindent Den första vyn som öppnas när applikationen start är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
         % subsection mjukvara (end)
       
         \begin{figure}[b!]
@@ -304,22 +304,22 @@
         \label{sub:fragestallningen}
             \paragraph{\textrm{Vad styr valet av plattform för styrdosan?}} % (fold)
             \label{par:vad_styr_valet}
-                Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram.
+                Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram och en vilja att kunna leverera en fungerande produkt till uppdragsgivaren. 
             % paragraph vad_styr_valet (end)
 
             \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
             \label{par:enk}
-                Projektet resulterade i en produkt som är att anses som användarvänlig, i synnerhet när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet.
+                Projektet resulterade i en produkt som är att anses som användarvänlig, i synnerhet när produkten sätts i förhållande till den nu\-varande tillväga\-gångs\-sättet. Produktens användar\-gräns\-snitt påminner om andra gränssnitt avsedd för styrning av andra produkter. Vår produkt vänder sig till montörer av solpanelen, så viss kunskap om panelen krävs för att kunna nyttja enheten till fullo.
             % paragraph enk (end)
 
             \paragraph{\textrm{Framtidskomaptibel?}} % (fold)
             \label{par:framtidskomaptibel}
-                Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov.
+                Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov. Kompatibiliteten bryts då en framtida generation av solpaneler använder sig av en kommunikationsstandard som inte finns integrerad på Raspberry Pi, men i dagsläget finns inga sådana planer.
             % paragraph framtidskomaptibel (end)
 
             \paragraph{\textrm{Programmeringsspråk}} % (fold)
             \label{par:programmeringssprak}
-               
+               Valet av programmeringsspråk grundar sig i den redogörelse som presenterar i \ref{subsub:mjukvaruutveckling}. \texttt{Python} är, sett ur programmeringsperspektiv, ett effektivt programmerings språk där en fungerande mjukvara snabbt kan tas fram.
             % paragraph programmeringsspr_k (end)
         % subsection fr_gest_llningen (end)
         
