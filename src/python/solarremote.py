@@ -1,5 +1,9 @@
 #! /usr/bin/python3
-# Basic skeleton, playing with buttons
+# Solar Remote prototype code
+# Group members:    Johan Strand
+#                   Pär Svedberg
+#                   Oskar Åkergren
+# Written for the project course DAT065 in Chalmers University of Technology
 # Code written for Python 3, using TkInter
 
 import sys
