@@ -73,9 +73,9 @@
 
             \noindent Today is the panel installed and controlled by connecting a computer to the panel which have to be correctly configured and able to run a terminal where commands are sent to the panel.\\
 
-            \noindent This research where done in co-operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and controll the panel.\\
+            \noindent This research where done in co--operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and controll the panel.\\
 
-            \noindent The resulting device is a GUI devoloped in python, with tkinter as GUI-library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing simple (maybe informal..) buttons on the touchscreen.\\
+            \noindent The resulting device is a GUI devoloped in python, with tkinter as GUI--library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing simple (maybe informal..) buttons on the touchscreen.\\
 
             \noindent The result provide a solution for Parans which they can take in to further development and sell to their customers as an easy way of installing and controlling the sun panel.
     % subsection beteckningar(end)
@@ -123,14 +123,14 @@
 
             \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-            \noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
+            \noindent Själva panelen driv av en spänning om tolv (12) volt och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
         % subsection bakgrund (end)
         
         \subsection{Syfte} % (fold)
         \label{sub:syfte}
             Idag styrs panelen till rätt position via en terminalemulator, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
 
-            \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
+            \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
         % subsection syfte (end)
 
         \subsection{Frågeställning} % (fold)
@@ -156,7 +156,7 @@
     \section{Metod} % (fold)
     \label{sec:metod}
 
-        Vi har för detta projekt valt jobba utifrån undersökningsmetoden beskriven i \\
+        Detta projekt har valt att arbeta utifrån undersökningsmetoden beskriven i \\
         ''A design science research methodology for information systems research'' \cite{method}. \\
 
         \noindent Metoden Design Science Research (DSR) beskriver efterforskning uppdelad i fem faser;
@@ -317,7 +317,7 @@
 
             \paragraph{\textrm{Programmeringsspråk}} % (fold)
             \label{par:programmeringssprak}
-               Valet av programmeringsspråk grundar sig i den redogörelse som presenterar i \ref{subsub:mjukvaruutveckling}. \texttt{Python} är, sett ur programmeringsperspektiv, ett effektivt programmerings språk där en fungerande mjukvara snabbt kan tas fram.
+               Valet av programmeringsspråk grundar sig i det metodval projektet har arbetat efter, där ett fokus ligger på att producera prototyper och där \texttt{Python} är, sett ur programmeringsperspektiv, ett effektivt programmerings språk där en fungerande mjukvara snabbt kan tas fram. \texttt{Python} bidrar även med en lättöverskådlig prog\-ram\-merings\-syntax som underlättar projektet framtida utveckling och dess portabilitet gör att mjukvaran enkelt kan flyttas till en annan plattform om ett sådan behov uppstår. 
             % paragraph programmeringsspr_k (end)
         % subsection fr_gest_llningen (end)
         
@@ -337,7 +337,7 @@
 
             \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att dessa generellt har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är oftast färre på en enkortsdator och den fysiska storleken är större jämfört med de mikrokontrollerkort som hade varit lämpliga för projektet.\\
 
-            \noindent Gällande frågeställningen om vår produkt är den enklaste att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkelt. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet kan ha resulterat utan någon produkt överhuvudtaget.
+            \noindent Gällande frågeställningen om vår produkt är enkel att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkelt. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet kan ha resulterat utan någon produkt överhuvudtaget.
 
         % subsection h_rdvara (end)
 
