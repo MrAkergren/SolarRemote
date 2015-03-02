@@ -110,6 +110,7 @@
     \newpage
 
     \tableofcontents
+    \listoffigures
 
     \newpage
 
@@ -271,7 +272,7 @@
 
         \subsection{Hårdvara} % (fold)
         \label{sub:h_rdvara}
-        Den fysiska produkt som genomförandet resulterade i, är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform. \cite{Ada} Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
+        Den fysiska produkt som genomförandet resulterade i, är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' (se figur \ref{fig:raspberry}) och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada} (se figur \ref{fig:ada}). Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
         % subsection h_rdvara (end)
 
         \subsection{Mjukvara} % (fold)
@@ -355,8 +356,39 @@
         % subsection framtida_bruk (end)
     % section diskussion (end)
 
+    \newpage
+
     \clearpage
     \addcontentsline{toc}{section}{Referenser}
     \printbibliography      
-    
+    \newpage
+    \section{Bilagor} % (fold)
+    \label{sec:appendix}
+    \appendix
+        \section{Komponenter} % (fold)
+        \label{sec:rasp}
+            \pagenumbering{Roman}
+                \begin{figure}[h!]
+                  \centering
+                    \includegraphics[scale=0.4]{img/rpi}
+                  \caption{Raspberry Pi}
+                  \label{fig:raspberry}
+                \end{figure}
+
+                \begin{figure}[h!]
+                    \centering
+                    \begin{subfigure}[b]{0.45\textwidth}
+                    \centering
+                        \includegraphics[]{img/pitft1}
+                        \label{fig:tft1}
+                    \end{subfigure}
+                    \begin{subfigure}[b]{0.45\textwidth}
+                    \centering
+                        \includegraphics[]{img/pitft2}
+                        \label{fig:tft2}
+                    \end{subfigure}
+                \caption{Pekskärm}
+                \label{fig:ada}
+                \end{figure}
+
 \end{document}
