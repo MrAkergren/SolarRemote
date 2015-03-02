@@ -26,6 +26,7 @@ Vi började dagen med att gå igenom vår backlog för att skapa en "Definition 
 Varje issue analyserades och diskuterades huruvida det skulle implementeras till inlämning.
 
 På eftermiddagen skrev vi vidare på slutrapporten.
+Jag la två timmar under helgen till att göra en helt ny installationav operativsystemet Raspbian på ett nytt minneskort så att vi inte behöver sitta mer på min personliga installation.
 
 Kommentar:
 -------
@@ -33,4 +34,4 @@ GUI:t fungerar på touchscreenen och vi har klarat av de grundlägganden kraven 
 Med mindre än en vecka till deadline för slutrapport har vi en del kvar att skriva men kommer att hinna
 så länge vi fortsätter att jobba disciplinerat och strukturerat.
 
-Total tid: 23h
+Total tid: 25h
