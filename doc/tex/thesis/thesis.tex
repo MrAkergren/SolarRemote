@@ -69,7 +69,7 @@
     \newpage 
     \subsection*{Abstract (draft)} % (fold)
     \label{sub:abstract}
-            The purpose of this research was to find an alternative and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lightning. \\
+            The purpose of this research was to find an alternative and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lighting. \\
 
             \noindent Today is the panel installed and controlled by connecting a computer to the panel which have to be correctly configured and able to run a terminal where commands are sent to the panel.\\
 
@@ -91,7 +91,7 @@
             I/O & Input/Output \\
             PIC32 & 32-bitars mikrokontroller \\
             Python & Högnivåspråk för programmering \\
-            SP3 & Parans tredje generationens solpanel \\
+            SP3 & Parans solpanel, tredje generationen \\
             SSH & Secure Shell. Protokoll för säker anslutning mellan datorer\\
             USB & Universal Serial Bus, standard för seriell kommunikation \\
             \\
@@ -157,15 +157,17 @@
     \section{Metod} % (fold)
     \label{sec:metod}
 
-        Detta projekt har valt att arbeta utifrån undersökningsmetoden beskriven i \\
+        Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Research (DRS) beskriven i 
         ''A design science research methodology for information systems research'' \cite{method}. \\
 
-        \noindent Metoden Design Science Research (DSR) beskriver efterforskning uppdelad i fem faser;
+        \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
         \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
-        I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
+        I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp.\\
+
+        \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} and \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}.\\
         Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
 
-        \noindent En alternativ metod till DSR är 'Action Research' (AR) vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är väldigt lik DSR i sitt utförande \cite{designscience} och båda metoderna skapar om kunskap om specifika situationer och problem. Anledningen att valet föll på DSR var att metoden strävar mot att att designa och skapa artefakter vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
+        \noindent En alternativ metod till DSR är 'Action Research' (AR) vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är väldigt lik DSR i sitt utförande \cite{designscience} och båda metoderna skapar om kunskap om specifika situationer och problem. Anledningen att valet föll på DSR var att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
         Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
 
     \newpage
@@ -178,9 +180,9 @@
         \label{sub:problemanalys}
             Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande skede diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \\
             
-            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att vertikalt och horisontellt justera panelen, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
+            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att justera panelen vertikalt och horisontellt, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
             
-            \noindent Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
+            \noindent Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids-- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
         % subsection problemanalys (end)
 
         \subsection{Design och utveckling} % (fold)
@@ -188,13 +190,13 @@
         
             \subsubsection{Val av plattform} % (fold)
             \label{subsub:val_av_plattform}
-            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var androidbaserade enheter, arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
+            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
             
             \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \\
             
             \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution \cite{SL_AN809}. \\
             
-            \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Det negativa är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. Fördelen Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
+            \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda å andra sidan har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
 
 
             \noindent\textsf{\textbf{Androidenhet}}\\
@@ -205,7 +207,7 @@
                 $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
                 $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt \\
                 $+$ &  Drivrutiner till CP2102 existerar &
-                                            $-$ & Kräver egenbyggd androiddistribution \\
+                                            $-$ & Kräver egenbyggd Androiddistribution \\
             \end{tabularx}\\
 
                 
@@ -245,15 +247,15 @@
 
             \noindent Nästa steg i processen var att utveckla ett grafiskt användargränssnitt. För att ebjuda användaren ett lättanvänt gränssnitt som fungerar väl ihop med en resistiv pekskärm
             så lades fokus på att implementera stora tydliga tryckknappar. 
-            Mjukvaran i solpanelen fungerar som så att panelen börjar vrida sig i en riktning när den får ett motsvarande kommando och fortsätter i den riktningen tills användaren ger ett kommando om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
+            Mjukvaran i solpanelen fungerar som så att panelen börjar vrida sig i en riktning när den får en motsvarande instruktion och fortsätter i den riktningen tills användaren ger en instruktion om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
             När detta fungerade tillfredsställande så ändrades funktionaliteten till att panelen rör sig så länge användaren håller knappen nertryckt men stannar när knappen släpps upp.
-            Kommandot för att stoppa panelen skickas således automatiskt när en knapp släpps upp och gör den dedikerade stoppknappen överflödig men vi valde ändå att behålla den i händelse att ett extra stopp-kommando behöver skickas. \\
+            Instruktionen för att stoppa panelen skickas således automatiskt när en knapp släpps upp och gör den dedikerade stoppknappen överflödig men det beslutades ändå att behålla den i händelse av att en extra stoppinstruktion behöver skickas. \\
 
 
-            \noindent Utöver funktionalitet för att manuellt styra panelen i en önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran och skriva ut information som tid, datum och gps-information. Då pekskärmens yta är begränsad valde vi att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
+            \noindent Utöver funktionalitet för att manuellt styra panelen i en önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran, försätta panelen i installationsläge och skriva ut information som tid, datum och gps-information. Då pekskärmens yta är begränsad beslutades att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
 
             \noindent Efter att solpanelen kunde styras med hjälp av det grafiska gränssnittet var nästa steg att läsa in den information som panelen skickar ut som feedback till användaren. Denna information skickas som  en samling strängar och innehållet består av vilken instruktion som användaren har skickat och åt vilket håll panelen rör sig åt. 
-            Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom vi med pekskärmen hade en begränsad yta att presentera informationen på så valde vi att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
+            Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom vi med pekskärmen hade en begränsad yta att presentera informationen på så beslutades att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
             En utmaning här var att filtrera ut relevant information om panelens status så att användaren inte behöver ta del av de instruktioner som skickas fram och tillbaka mellan fjärrkontrollens mjukvara och mjukvaran i solpanelen. \\
 
 
