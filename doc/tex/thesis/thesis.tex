@@ -247,16 +247,15 @@
 
             \noindent Nästa steg i processen var att utveckla ett grafiskt användargränssnitt. För att ebjuda användaren ett lättanvänt gränssnitt som fungerar väl ihop med en resistiv pekskärm
             så lades fokus på att implementera stora tydliga tryckknappar. 
-            Mjukvaran i solpanelen fungerar som så att panelen börjar vrida sig i en riktning när den får en motsvarande instruktion och fortsätter i den riktningen tills användaren ger en instruktion om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
-            När detta fungerade tillfredsställande så ändrades funktionaliteten till att panelen rör sig så länge användaren håller knappen nertryckt men stannar när knappen släpps upp.
+            Mjukvaran i solpanelen gör så att panelen börjar vrida sig i en riktning när den får en motsvarande instruktion och fortsätter i den riktningen tills användaren ger en instruktion om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
+            När detta fungerade tillfredsställande så ändrades funktionaliteten till att panelen rör sig så länge användaren håller knappen nedtryckt men stannar när knappen släpps upp.
             Instruktionen för att stoppa panelen skickas således automatiskt när en knapp släpps upp och gör den dedikerade stoppknappen överflödig men det beslutades ändå att behålla den i händelse av att en extra stoppinstruktion behöver skickas. \\
 
+            \noindent Utöver funktionalitet för att manuellt styra panelen i önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran, försätta panelen i installationsläge och skriva ut information som tid, datum och geoposition. Då pekskärmens yta är begränsad beslutades att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
 
-            \noindent Utöver funktionalitet för att manuellt styra panelen i en önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran, försätta panelen i installationsläge och skriva ut information som tid, datum och gps-information. Då pekskärmens yta är begränsad beslutades att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
-
-            \noindent Efter att solpanelen kunde styras med hjälp av det grafiska gränssnittet var nästa steg att läsa in den information som panelen skickar ut som feedback till användaren. Denna information skickas som  en samling strängar och innehållet består av vilken instruktion som användaren har skickat och åt vilket håll panelen rör sig åt. 
+            \noindent Efter att solpanelen kunde styras med hjälp av det grafiska gränssnittet var nästa steg att läsa in den information som panelen skickar som feedback till användaren. Denna information skickas som  en samling strängar och innehållet består av den instruktion som användaren har skickat och åt vilket håll panelen rör sig åt. 
             Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom vi med pekskärmen hade en begränsad yta att presentera informationen på så beslutades att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
-            En utmaning här var att filtrera ut relevant information om panelens status så att användaren inte behöver ta del av de instruktioner som skickas fram och tillbaka mellan fjärrkontrollens mjukvara och mjukvaran i solpanelen. \\
+            Här behövdes relevant information om panelens status filtreras ut så att användaren inte behöver ta del av de instruktioner som skickas fram och tillbaka mellan fjärrkontrollens mjukvara och mjukvaran i solpanelen. \\
 
 
             % subsubsection mjukvaruutveckling (end)
