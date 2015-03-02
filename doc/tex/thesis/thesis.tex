@@ -124,12 +124,12 @@
 
             \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-            \noindent Själva panelen driv av en spänning om tolv (12) volt och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
+            \noindent Själva panelen drivs av en spänning om tolv (12) volt och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
         % subsection bakgrund (end)
         
         \subsection{Syfte} % (fold)
         \label{sub:syfte}
-            Idag styrs panelen till rätt position via en terminalemulator, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
+            Vid installation och felsökning styrs panelen till rätt position via en terminalemulator i dagsläget, vilket är en tröskel för Parans kunder.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
 
             \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
         % subsection syfte (end)
@@ -151,7 +151,7 @@
         \label{sub:avgransning}
             Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
 
-            \noindent Dagens paneler kan kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter i dagsläget. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och inte via någon trådlös kommunikation.
+            \noindent Dagens paneler kan i dagsläget kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och att trådlös kommunikation ej är möjlig.
         % subsection avgr_nsning (end)
 
     \section{Metod} % (fold)
@@ -272,14 +272,14 @@
 
         \subsection{Hårdvara} % (fold)
         \label{sub:h_rdvara}
-        Den fysiska produkt som genomförandet resulterade i, är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' (se figur \ref{fig:raspberry}, avsnitt \ref{sec:komp}) och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada} (se figur \ref{fig:ada}). Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket även det inhandlat från återförsäljare, ett batteripaket som är framtaget för att agera laddare för laddnings enhet för enheter som laddas via USB, men det visade sig vara lämplig även för vår produkt.
+        Den fysiska produkt som genomförandet resulterade i, är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' (se figur \ref{fig:raspberry}, avsnitt \ref{sec:komp}) och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada} (se figur \ref{fig:ada}). Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket, även det inhandlat från återförsäljare, som är framtaget för att agera laddare för enheter som laddas via USB. Denna typ av laddningsenhet visade sig vara lämplig även för vår produkt.
         % subsection h_rdvara (end)
 
         \subsection{Mjukvara} % (fold)
         \label{sub:mjukvara}
          Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av ett grafisk gränssnitt samt stränghantering. Stränghanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
-        \noindent Den första vyn som öppnas när applikationen start är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
+        \noindent Den första vyn som öppnas när applikationen startar är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
         % subsection mjukvara (end)
       
         \begin{figure}[b!]
@@ -303,15 +303,15 @@
         \label{sub:fragestallningen}
             \paragraph{\textrm{Vad styr valet av plattform för styrdosan?}} % (fold)
             \label{par:vad_styr_valet}
-                Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades efter främst motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet} då projektet utförts inom en snäv tidsram och en vilja att kunna leverera en fungerande produkt till uppdragsgivaren. 
+                Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades främst efter motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet}, då projektet utförts inom en snäv tidsram och en vilja att kunna leverera en fungerande produkt till uppdragsgivaren. 
             % paragraph vad_styr_valet (end)
 
             \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
             \label{par:enk}
-                Projektet resulterade i en produkt som är att anses som användarvänlig, i synnerhet när produkten sätts i förhållande till den nu\-varande tillväga\-gångs\-sättet. Produktens användar\-gräns\-snitt påminner om andra gränssnitt avsedd för styrning av andra produkter. Vår produkt vänder sig till montörer av solpanelen, så viss kunskap om panelen krävs för att kunna nyttja enheten till fullo.
+                Projektet resulterade i en produkt som är att anse som användarvänlig, i synnerhet när produkten sätts i förhållande till den nu\-varande tillväga\-gångs\-sättet. Produktens användar\-gräns\-snitt påminner om andra gränssnitt avsedda för styrning av andra produkter. Vår produkt vänder sig till montörer av solpanelen, så viss kunskap om panelen krävs för att kunna nyttja enheten till fullo.
             % paragraph enk (end)
 
-            \paragraph{\textrm{Framtidskomaptibel?}} % (fold)
+            \paragraph{\textrm{Framtidskompatibel?}} % (fold)
             \label{par:framtidskomaptibel}
                 Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov. Kompatibiliteten bryts då en framtida generation av solpaneler använder sig av en kommunikationsstandard som inte finns integrerad på Raspberry Pi, men i dagsläget finns inga sådana planer.
             % paragraph framtidskomaptibel (end)
@@ -334,11 +334,11 @@
         
             Som nämnt på sidan \pageref{sub:beteckningar} så utgår vi ifrån begreppet enkortsdator för ett kretskort som är kapabel till att driva en Linuxkärna, till skillnad från en mikrokontroller där en svagare krets avses.\\
 
-            \noindent Vår lösning är baserat på en enkortsdator och är fullt fungerande enligt de krav som uppdragsgivaren har fastställt och är relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
+            \noindent Vår lösning är baserat på en enkortsdator och är fullt fungerande enligt de krav som uppdragsgivaren har fastställt och är relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är framförallt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
 
             \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att dessa generellt har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är oftast färre på en enkortsdator och den fysiska storleken är större jämfört med de mikrokontrollerkort som hade varit lämpliga för projektet.\\
 
-            \noindent Gällande frågeställningen om vår produkt är enkel att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkelt. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet kan ha resulterat utan någon produkt överhuvudtaget.
+            \noindent Gällande frågeställningen om vår produkt är enkel att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkel. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet skulle kunna ha resulterat utan någon produkt överhuvudtaget.
 
         % subsection h_rdvara (end)
 
