@@ -1,8 +1,8 @@
-#! /usr/bin/python3
+ï»¿#! /usr/bin/python3
 # Solar Remote prototype code
 # Group members:    Johan Strand
-#                   Pär Svedberg
-#                   Oskar Åkergren
+#                   PÃ¤r Svedberg
+#                   Oskar Ã…kergren
 # Written for the project course DAT065 in Chalmers University of Technology
 # Code written for Python 3, using TkInter
 
