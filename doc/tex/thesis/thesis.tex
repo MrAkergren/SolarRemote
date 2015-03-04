@@ -278,7 +278,7 @@
 
         \subsection{Mjukvara} % (fold)
         \label{sub:mjukvara}
-         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafisk gränssnitt uppbyggt av det medföljande paketetet 'TkInter'. Stränghanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafisk gränssnitt uppbyggt av det medföljande paketetet 'TkInter'. För en översikt av mjukvarans klasser, se figur \ref{fig:uml}. Sträng\-hanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
         \noindent Den första vyn som öppnas när applikationen startar är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
         % subsection mjukvara (end)
@@ -391,5 +391,12 @@
                 \caption[Pekskärm]{Pekskärm \\ \url{http://www.linuxuser.co.uk/features/10-raspberry-pi-upgrades-part-2} \\ \url{http://www.adafruit.com/product/1601}}
                 \label{fig:ada}
                 \end{figure}
-        
+        \newpage
+        \section{UML}
+            \begin{figure}[h!]
+                \centering
+                \includegraphics[scale=0.4]{img/uml}
+                \caption{UML--diagram av mjukvaran}
+                \label{fig:uml}
+            \end{figure}
 \end{document}
