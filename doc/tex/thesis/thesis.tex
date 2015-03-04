@@ -277,7 +277,7 @@
 
         \subsection{Mjukvara} % (fold)
         \label{sub:mjukvara}
-         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafisk gränssnitt uppbyggt av det medföljande paketetet 'TkInter'. För en översikt av mjukvarans klasser, se figur \ref{fig:uml}. Sträng\-hanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafiskt gränssnitt uppbyggt av det medföljande paketet 'TkInter'. För en översikt av mjukvarans klasser, se figur \ref{fig:uml}. Sträng\-hanteringen är anpassad till det sätt som SP3 hanterar textsträngar, så att texten visas upp på ett korrekt sätt när den mottagits över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
         \noindent Den första vyn som öppnas när applikationen startar är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
         % subsection mjukvara (end)
@@ -293,7 +293,7 @@
             \begin{subfigure}[b]{0.4\textwidth}
                 \centering
                 \includegraphics[scale=0.3]{img/command}
-                \caption{Instruktion--gränssnittet \\ 'command'}
+                \caption{Instruktionsgränssnittet \\ 'command'}
                 \label{fig:command}
             \end{subfigure}
             \caption{Skiss av det grafiska gränssnittet}
