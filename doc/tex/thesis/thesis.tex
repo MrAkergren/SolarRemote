@@ -66,17 +66,17 @@
     \thispagestyle{empty}
 
     \newpage 
-    \subsection*{Abstract (draft)} % (fold)
+    \subsection*{Abstract} % (fold)
     \label{sub:abstract}
-            The purpose of this research was to find an alternative and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lighting. \\
+            The purpose of this research was to find an alternative, and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lighting. \\
 
             \noindent Today is the panel installed and controlled by connecting a computer to the panel which have to be correctly configured and able to run a terminal where commands are sent to the panel.\\
 
-            \noindent This research where done in co--operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and controll the panel.\\
+            \noindent This research were done in co--operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and control the panel.\\
 
-            \noindent The resulting device is a GUI devoloped in python, with tkinter as GUI--library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing simple (maybe informal..) buttons on the touchscreen.\\
+            \noindent The resulting device is a GUI developed in \texttt{Python}, with 'TkInter' as GUI--library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and he user controls the panel by pressing the digital buttons on the touchscreen.\\
 
-            \noindent The result provide a solution for Parans which they can take in to further development and sell to their customers as an easy way of installing and controlling the sun panel.
+            \noindent The result provide a solution for Parans which they can take in to further development and provide to their customers as an easy way of installing and troubleshoot the sun panel.
     % subsection beteckningar(end)
 
     \newpage 
@@ -278,7 +278,7 @@
 
         \subsection{Mjukvara} % (fold)
         \label{sub:mjukvara}
-         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av ett grafisk gränssnitt samt stränghantering. Stränghanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafisk gränssnitt uppbyggt av det medföljande paketetet 'TkInter'. Stränghanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
         \noindent Den första vyn som öppnas när applikationen startar är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
         % subsection mjukvara (end)
