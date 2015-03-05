@@ -1,7 +1,0 @@
-Fredag
----
-Förmiddagen spenderades med att förbereda halvtidspresentationen som sker på tisdag.
-Eftermiddagen så diskuterade vi vilken display och typ av inmatning vi ska köpa till det nya kortet.
-Jag satt även och gjorde python-tutorials eftersom jag inte jobbat i det språket innan.
---
-Tid: 6h
