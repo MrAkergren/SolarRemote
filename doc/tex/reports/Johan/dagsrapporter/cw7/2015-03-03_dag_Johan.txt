@@ -1,0 +1,7 @@
+Tisdag
+---
+Möte med vår handledare Lennart för att diskutera vår slutrapport.
+Han var i princip nöjd och ville bara att vi skulle lägga till UML-diagram för vårt grafiska gränssnitt.
+
+--
+Tid: 1h
