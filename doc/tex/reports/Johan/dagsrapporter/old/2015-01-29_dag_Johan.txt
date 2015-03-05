@@ -1,0 +1,7 @@
+﻿Torsdag
+---
+Fortsatte att felsöka kommunikationsproblemet utan någon lösning. Vi har ställt frågan på Arduinos forum och i väntan på
+svar har vi börjat undersöka vad vi behöver köpa för att använda Raspberry Pi istället.
+
+--
+Tid: 3h

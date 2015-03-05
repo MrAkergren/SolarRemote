@@ -1,0 +1,8 @@
+﻿Onsdag
+---
+Besök hos Parans. Vi testade vår Arduino mot deras hårdvara men fick inte kommunikationen att fungera.
+Hela dagen spenderades sedan åt att felsöka problemet. Eventuellt behövs drivrutiner för att Arduinon
+ska kunna kommunicera med usb-kortet som sitter på Parans mottagare.
+
+--
+Tid: 7h
