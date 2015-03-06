@@ -1,0 +1,56 @@
+Veckorapport läsvecka 7 Grupp Styrdosa Parans
+
+--------------
+Måndag
+--------------
+ARBETSFAS: Rapportskrivande
+
+Slutförande av första utkastet, alla rubriker ifyllda och inlämnade till
+handledare Lennart.
+
+UPPKOMNA PROBLEM: 
+Inga direkta
+
+--------------
+Tisdag 
+--------------
+ARBETSFAS: Rapportskrivande
+
+Möte med handledare Lennart för feedback på rapportens utkast, inga direkta kommentarer annat än en översikt av mjukvaran är att önska.
+
+UPPKOMNA PROBLEM: 
+Framställa UML-diagram från Python-kod
+
+--------------
+Onsdag
+--------------
+ARBETSFAS: Rapportskrivande
+
+Hittade programmet pyNsourceGui32 som läser in Python-kod och modellerar upp den.
+
+Genererade UML-diagram för Python-koden och inkluderade den i rapporten.
+
+UPPKOMNA PROBLEM:
+Inga direkta
+
+--------------
+Torsdag
+--------------
+ARBETSFAS: Rapportskrivande
+
+Slutgiltigt finputs på rapporten, skrivande av utvärderingarna som 
+efterfrågades i kursen.
+
+UPPKOMNA PROBLEM:
+Inga direkta
+
+--------------
+Fredag
+--------------
+ARBETSFAS: Produktutveckling
+
+Försöka få igång produkten automatiskt med det nya minneskortet.
+Förbättra mjukvaran till styrdosan.
+
+UPPKOMNA PROBLEM: 
+Framförallt uppstart av applikationen, men det löses.

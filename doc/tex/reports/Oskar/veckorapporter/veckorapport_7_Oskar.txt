@@ -1,0 +1,45 @@
+Måndag
+--------------
+
+Måndagsförmiddagen spenderades till att skriva på rapporten, jag slutförde 
+diskussions- och resultatdelen och infogade lite figurer som Pär hade 
+framställt.
+
+--------------
+Tisdag
+--------------
+
+Idag hade vi handledningsmöte med Lennart där vi fick feedback på vår inlämning
+som vi gjorde igår. Den feedback vi fick var inte särskilt djuplodande utan 
+innebar mest att vi bör ta fram någon form av visuell representation av vår
+mjukvara.
+
+--------------
+Onsdag
+--------------
+Vi spenderade några timmar till att förfina vår rapport och att framställa det
+UML-diagaram som Lennart efterfrågade.
+
+Jag skrev även de utvärderingar till de andra gruppmedlemmarna som 
+efterfrågades i kursen.
+
+--------------
+Torsdag
+--------------
+
+Spenderade några timmar till den sista finputsningen av rapporten innan 
+inlämning.
+
+--------------
+Fredag
+--------------
+Dagens spenderades på Parans. Pär kollade på koden och jag skrev veckorapporten
+och undersökte hur man kan starta en X applikation utan en skrivbordsmiljö.
+
+Vi väntade in Johan som dök upp efter lunch och installerade det nya 
+minneskortet
+
+--------------
+ 
+Tidsåtgång i timmar: 
+15
