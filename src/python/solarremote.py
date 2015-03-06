@@ -39,7 +39,7 @@ class SolarRemote(tk.Frame):
         self.columnconfigure(0, weight=1)
         
         # Initiate frames and start the first frame, the steering controls
-        self.commandFrame = ButtonFrame(self)
+        self.commandFrame = CommandFrame(self)
         self.controlFrame = ControlFrame(self)
         self.controlFrame.showFrame()
         
@@ -243,7 +243,7 @@ class ControlFrame(tk.Frame):
         self.btnDown.unbind('<ButtonRelease-1>')
 
 # Frame containing the command buttons (non-steering)
-class ButtonFrame(tk.Frame):
+class CommandFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         self.master = master
