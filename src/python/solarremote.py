@@ -12,7 +12,6 @@ import sys
 import tkinter as tk
 import serial
 import time
-from builtins import any as any_word
 
 # For ease of use and readability
 N = tk.N
@@ -31,7 +30,7 @@ class SolarRemote(tk.Frame):
     def __init__(self, master=None):
         # Frames are color coded for debugging 
         self.tkRoot = master
-        tk.Frame.__init__(self, self.tkRoot, bg='blue')
+        tk.Frame.__init__(self, self.tkRoot)
         self.tkRoot.rowconfigure(0, weight=1)
         self.tkRoot.columnconfigure(0, weight=1)
         self.grid(sticky=(N, S, E, W))
@@ -151,15 +150,18 @@ class SolarRemote(tk.Frame):
     # Gets information about the panels location in longitude and latitude,
     # which is then shown in the GUI's status bar
     def getLocation(self):
-        self.runCommand('lon')
-        self.runCommand('lat')
-        self.serialDelay()
-        positions = []
-        while self.connection.inWaiting() > 0:
-            newText = self.readSerial()
-            if newText and self.indata.startswith('Current l'):
-                positions.append(self.indata)
-        self.updateStatusbar('\n'.join(positions))
+        if debug:
+            print('lon\nlat')
+        else:
+            self.runCommand('lon')
+            self.runCommand('lat')
+            self.serialDelay()
+            positions = []
+            while self.connection.inWaiting() > 0:
+                newText = self.readSerial()
+                if newText and self.indata.startswith('Current l'):
+                    positions.append(self.indata)
+            self.updateStatusbar('\n'.join(positions))
 
     # Checks if a string is considered 'junk'. This is used to for checking
     # strings returned from the panel, and this function filters out strings
@@ -181,7 +183,7 @@ class ControlFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         self.master = master
-        tk.Frame.__init__(self, self.master, bg='red')
+        tk.Frame.__init__(self, self.master, bg='black')
         self.setupControlButtons()
 
     # Adds the frame to its master
@@ -245,7 +247,7 @@ class ButtonFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         self.master = master
-        tk.Frame.__init__(self, self.master, bg='yellow')
+        tk.Frame.__init__(self, self.master, bg='black')
         self.setupButtons()
 
     # Adds the frame to its master
@@ -293,6 +295,7 @@ class ButtonFrame(tk.Frame):
 
 root = tk.Tk()
 root.geometry('240x320')
+root.wm_title('Solar Panel Remote')
 remoteApp = SolarRemote(root)
 
 root.mainloop()
