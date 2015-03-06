@@ -1,4 +1,6 @@
-﻿#! /usr/bin/python3
+#! /usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 # Solar Remote prototype code
 # Group members:    Johan Strand
 #                   Pär Svedberg
@@ -28,7 +30,7 @@ class SolarRemote(tk.Frame):
     def __init__(self, master=None):
         # Frames are color coded for debugging 
         self.tkRoot = master
-        tk.Frame.__init__(self, self.tkRoot, bg='blue')
+        tk.Frame.__init__(self, self.tkRoot)
         self.tkRoot.rowconfigure(0, weight=1)
         self.tkRoot.columnconfigure(0, weight=1)
         self.grid(sticky=(N, S, E, W))
@@ -37,7 +39,7 @@ class SolarRemote(tk.Frame):
         self.columnconfigure(0, weight=1)
         
         # Initiate frames and start the first frame, the steering controls
-        self.commandFrame = ButtonFrame(self)
+        self.commandFrame = CommandFrame(self)
         self.controlFrame = ControlFrame(self)
         self.controlFrame.showFrame()
         
@@ -46,8 +48,13 @@ class SolarRemote(tk.Frame):
         self.statusLabel = tk.Label(self, textvariable=self.statusLabelText, height=2)
         self.statusLabel.grid(row=1, column=0, sticky=(E, W))
 
-        self.ignoreStrings = ['run', 'restart', 'date', 'setup', '#', 'Usage']
+        # Used finding 'junk strings' returned from the panel: isJunkString()
+        self.ignoreStrings = ['run', 'restart', 'date', 'setup', '#', 'Usage', 'lon', 'lat']
 
+        # Used when checking delay in serial read: readSerial()
+        self.steeringStrings = ['up', 'down', 'left', 'right']
+
+    # Switch the visible frame in the GUI
     def switchFrame(self, command):
         if command == 'launchControl':
             self.commandFrame.grid_forget()
@@ -56,6 +63,7 @@ class SolarRemote(tk.Frame):
             self.controlFrame.grid_forget()
             self.commandFrame.showFrame()
 
+    # Create serial connection
     def serialConnect(self):
         self.connection = serial.Serial('/dev/ttyUSB0', 38400, timeout = 1)
         time.sleep(1)
@@ -79,7 +87,6 @@ class SolarRemote(tk.Frame):
                     self.controlFrame.bindButtons()
                     self.commandFrame.bindButtons()
                     self.statusLabelText.set('Connection established')
-                    #self.connection.write('\r\n'.encode('utf-8'))
                 else:
                     self.statusLabelText.set('Serial connection is not open')
 
@@ -93,7 +100,8 @@ class SolarRemote(tk.Frame):
 
             try:
                 if self.connection.write(command.encode('utf-8')) > 0:
-                    self.readAndPrintSerial()
+                    if 'lon' not in self.lastcmd and 'lat' not in self.lastcmd:
+                        self.readAndPrintSerial()
                 else:
                     self.statusLabelText.set('Serial write failed')
                     print('Serial write failed')
@@ -103,25 +111,63 @@ class SolarRemote(tk.Frame):
 
     # Reads information from the serial connection
     def readAndPrintSerial(self):
-        if self.lastcmd.startswith('run'):
+        self.serialDelay()
+        while self.connection.inWaiting() > 0:
+            newText = self.readSerial()
+            if newText:
+                self.updateStatusbar(self.indata)
+
+    # Performs a delay appropriate to the last command sent to the panel,
+    # in order to synchronize the serial read
+    def serialDelay(self):
+        if self.lastcmd.startswith('run') and 'stop' not in self.lastcmd:
             time.sleep(.001)
+            print('Steering string!')
+        elif self.lastcmd.startswith('lon') or self.lastcmd.startswith('lat'):
+            time.sleep(.03)
         else:
-            time.sleep(.01)
-        while self.connection.inWaiting() > 0:        
-            self.indata = self.connection.readline()
-            self.indata = self.indata.decode(encoding='utf-8')
-            self.indata = self.indata.rstrip('\r\n')
-            if self.isJunkString(self.indata):
-                continue
-            if self.lastcmd == 'date' and 'Current date' in self.indata:
-                self.indata = self.indata.replace(': ', ':\n')
-            self.statusLabelText.set(self.indata)
-            print('Serial read:', self.indata)
+            time.sleep(.015)
 
-    def getDate(self):
-        time.sleep(.01)
+    # Reads a line/string from serial input. If the string contains date info,
+    # insert newline character to the string
+    # Returns true if a new (useful) line is read
+    # Returns false if the string is considered 'junk' info the panel
+    def readSerial(self):
+        self.indata = self.connection.readline()
+        self.indata = self.indata.decode(encoding='utf-8')
+        self.indata = self.indata.rstrip('\r\n')
+        if self.isJunkString(self.indata):
+            return False
+        if self.lastcmd == 'date' and 'Current date' in self.indata:
+            self.indata = self.indata.replace(': ', ':\n')
+        return True
 
+    # Updates the status bar in the GUI
+    def updateStatusbar(self, text):
+        self.statusLabelText.set(text)
+        print('Serial read:', text)
 
+    # Gets information about the panels location in longitude and latitude,
+    # which is then shown in the GUI's status bar
+    def getLocation(self):
+        if debug:
+            print('lon\nlat')
+        else:
+            self.runCommand('lon')
+            self.runCommand('lat')
+            self.serialDelay()
+            positions = []
+            while self.connection.inWaiting() > 0:
+                newText = self.readSerial()
+                if newText and self.indata.startswith('Current l'):
+                    positions.append(self.indata)
+            self.updateStatusbar('\n'.join(positions))
+
+    # Checks if a string is considered 'junk'. This is used to for checking
+    # strings returned from the panel, and this function filters out strings
+    # that are not supposed to be viewed in the GUI's status bar.
+    # Here 'junk' is defines as empty strings, echoes of commands etc,
+    # as defined in the ignoreStrings list.
     def isJunkString(self, inputString):
         ignoreString = False
         for cmdString in self.ignoreStrings:
@@ -137,7 +183,7 @@ class ControlFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         self.master = master
-        tk.Frame.__init__(self, self.master, bg='red')
+        tk.Frame.__init__(self, self.master, bg='black')
         self.setupControlButtons()
 
     # Adds the frame to its master
@@ -197,11 +243,11 @@ class ControlFrame(tk.Frame):
         self.btnDown.unbind('<ButtonRelease-1>')
 
 # Frame containing the command buttons (non-steering)
-class ButtonFrame(tk.Frame):
+class CommandFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         self.master = master
-        tk.Frame.__init__(self, self.master, bg='yellow')
+        tk.Frame.__init__(self, self.master, bg='black')
         self.setupButtons()
 
     # Adds the frame to its master
@@ -210,22 +256,22 @@ class ButtonFrame(tk.Frame):
 
     # Create command buttons
     def setupButtons(self):
-        self.btnDate = tk.Button(self, text='DATE', height=3, width=5)
+        self.btnDate = tk.Button(self, text='DATE', width=5, height=3)
         self.btnDate.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
 
-        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5)
+        self.btnLoc = tk.Button(self, text='LOC', width=5, height=3)
         self.btnLoc.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
 
-        self.btnSetLoc = tk.Button(self, text='SET LOC', height=3, width=5)
-        self.btnSetLoc.grid(row=1, column=2, pady=5, padx=5, sticky=(E, W))
+        self.btnStopcmd = tk.Button(self, text='STOP', width=5, height=3)
+        self.btnStopcmd.grid(row=1, column=2, pady=5, padx=5, sticky=(E, W))
 
-        self.btnRestart = tk.Button(self, text='RESTART', height=3, width=5)
+        self.btnRestart = tk.Button(self, text='RESTART', width=5, height=3)
         self.btnRestart.grid(row=2, column=0, pady=5, padx=5, sticky=(E, W))
         
-        self.btnSetup = tk.Button(self, text='SETUP', height=3, width=5)
+        self.btnSetup = tk.Button(self, text='SETUP', width=5, height=3)
         self.btnSetup.grid(row=2, column=1, pady=5, padx=5, sticky=(E, W))
 
-        self.btnAuto = tk.Button(self, text='AUTO', height=3, width=5)
+        self.btnAuto = tk.Button(self, text='AUTO', width=5, height=3)
         self.btnAuto.grid(row=2, column=2, pady=5, padx=5, sticky=(E, W))
 
         self.btnBack = tk.Button(self, text='BACK TO\nCONTROL', height=3, \
@@ -238,16 +284,21 @@ class ButtonFrame(tk.Frame):
         self.btnRestart.configure(command=lambda:self.master.runCommand('restart'))
         self.btnSetup.configure(command=lambda:self.master.runCommand('setup'))
         self.btnAuto.configure(command=lambda:self.master.runCommand('run auto'))
+        self.btnLoc.configure(command=self.master.getLocation)
+        self.btnStopcmd.bind('<Button-1>', lambda x:self.master.runCommand('run stop'))
 
     # Disable button bindings
     def unbindButtons(self):
-        self.btnDate.configure(command=lambda:self.master.runCommand(''))
-        self.btnRestart.configure(command=lambda:self.master.runCommand(''))
-        self.btnSetup.configure(command=lambda:self.master.runCommand(''))
-        self.btnAuto.configure(command=lambda:self.master.runCommand(''))
+        self.btnDate.configure(command='')
+        self.btnRestart.configure(command='')
+        self.btnSetup.configure(command='')
+        self.btnAuto.configure(command='')
+        self.btnLoc.configure(command='')
+        self.btnStopcmd.unbind('<Button-1>')
 
 root = tk.Tk()
 root.geometry('240x320')
+root.wm_title('Solar Panel Remote')
 remoteApp = SolarRemote(root)
 
 root.mainloop()
