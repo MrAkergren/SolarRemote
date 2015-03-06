@@ -259,8 +259,7 @@ class ButtonFrame(tk.Frame):
         self.btnDate = tk.Button(self, text='DATE', height=3, width=5)
         self.btnDate.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
 
-        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5, \
-            command=self.master.getLocation)
+        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5)
         self.btnLoc.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
 
         self.btnSetLoc = tk.Button(self, text='SET LOC', height=3, width=5)
@@ -285,13 +284,15 @@ class ButtonFrame(tk.Frame):
         self.btnRestart.configure(command=lambda:self.master.runCommand('restart'))
         self.btnSetup.configure(command=lambda:self.master.runCommand('setup'))
         self.btnAuto.configure(command=lambda:self.master.runCommand('run auto'))
+        self.btnLoc.configure(command=self.master.getLocation)
 
     # Disable button bindings
     def unbindButtons(self):
-        self.btnDate.configure(command=lambda:self.master.runCommand(''))
-        self.btnRestart.configure(command=lambda:self.master.runCommand(''))
-        self.btnSetup.configure(command=lambda:self.master.runCommand(''))
-        self.btnAuto.configure(command=lambda:self.master.runCommand(''))
+        self.btnDate.configure(command='')
+        self.btnRestart.configure(command='')
+        self.btnSetup.configure(command='')
+        self.btnAuto.configure(command='')
+        self.btnLoc.configure(command='')
 
 root = tk.Tk()
 root.geometry('240x320')
