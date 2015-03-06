@@ -1,0 +1,46 @@
+Måndag
+--------------
+Ägnade eftermiddagen med att planera de kommande två veckorna, insåg att det 
+börjar dra ihop sig med att lämna in rapporten.
+
+--------------
+Tisdag
+--------------
+Spenderade förmiddagen med att sitta på Parans kontor och starta upp Johans
+Raspberry pi. Vi fick igång skärmen och kunde starta den mjukvara som Pär 
+utvecklat, jag kollade vidare på att auto-starta applikationen så att 
+användaren inte ska behöva göra något.
+
+På eftermiddagen hade vi ett handledningsmöte med Lennart där vi fick feedback
+på vår halvtidsrapport.
+
+--------------
+Onsdag
+--------------
+Förmiddagen tillbringades på Parans kontor där jag lyckades lösa bekymret med 
+att starta vår applikation automatiskt. 
+
+Eftermiddagen spenderades på Johanneberg där vi började skriva mer på rapporten
+där jag tog på mig att skriva diskussionen.
+
+--------------
+Torsdag
+--------------
+Dagen spenderades till andra kurser
+
+--------------
+Fredag
+--------------
+Dagen spenderades till att 
+1)  Sätta 'Definition of Done' på våra 'issues' så att vi är överens när var 
+    sak anses vara klar
+
+2)  Fortsatt skrivande av rapport, jag började med att skriva klart 
+    diskussionen från i onsdags men började även på resultat delen, upptäckte 
+    att det är svårt att skriva den när genomförande delen inte är helt klar,
+    men gick bättre eftersom.
+
+--------------
+ 
+Tidsåtgång i timmar: 
+23

@@ -1,0 +1,37 @@
+﻿Måndag
+---
+Planerade arbetet fram till inlämning av slutrapport den 5/3.
+Slutredovisning är inte förrän veckan därpå så kommer nog ha lite ytterliggare tid till att finjustera själva produkten
+om så behövs.
+--
+
+Tisdag
+---
+Var på Parans kontor och testade min Raspberry Pi mot solpanelen vilket fungerade.
+Vi kommer därför köra på den tills vidare.
+Var tvungen att avvika tidigare än den andra pga. exjobbsmöte.
+--
+
+Onsdag
+---
+Var återigen på Parans kontor och testade att styra solpanelen genom touchscreen + GUI.
+Jag jobbade sedan på att undersöka och utveckla en vy för att kunna skriva ut den information från solpanelen
+som annars printas ut i terminalen.
+
+På eftermiddagen skrev vi på slutrapporten.
+
+Fredag
+---
+Vi började dagen med att gå igenom vår backlog för att skapa en "Definition of Done".
+Varje issue analyserades och diskuterades huruvida det skulle implementeras till inlämning.
+
+På eftermiddagen skrev vi vidare på slutrapporten.
+Jag la två timmar under helgen till att göra en helt ny installationav operativsystemet Raspbian på ett nytt minneskort så att vi inte behöver sitta mer på min personliga installation.
+
+Kommentar:
+-------
+GUI:t fungerar på touchscreenen och vi har klarat av de grundlägganden kraven Parans satte upp.
+Med mindre än en vecka till deadline för slutrapport har vi en del kvar att skriva men kommer att hinna
+så länge vi fortsätter att jobba disciplinerat och strukturerat.
+
+Total tid: 25h

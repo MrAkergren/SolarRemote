@@ -2,17 +2,19 @@
 
 %%--LANGUAGE AND ENCODING--%%
 \usepackage[swedish]{babel}
-\usepackage[swedish]{isodate}
+\usepackage[english,cleanlook]{isodate}%
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
+
 \usepackage[yyyymmdd]{datetime}
 \renewcommand{\dateseparator}{--}
 
 %%--BIBLOPGRAPHY--%%
-\usepackage[natbib=true, style=authoryear, citestyle=authoryear, backend=biber, dateabbrev=false, urldate=iso8601, maxcitenames=2]{biblatex}
+\usepackage[backend=biber, natbib=true, urldate=iso8601, maxnames=2, minnames=1, maxbibnames=10, minbibnames=6, citestyle=numeric-comp, sorting=none, firstinits=true]{biblatex}
+
 
 %%--SPACING AND MARGIN--%
-\usepackage[margin=1.8in]{geometry}
+\usepackage[margin=4cm, top=2.5cm]{geometry}
 
 %%--SANS-SERIF FONTS FOR SECTIONS--%%
 \usepackage{sectsty}
@@ -23,124 +25,377 @@
 \usepackage[hidelinks]{hyperref}
 %%--GRAPHICS--%%  (Requires preamble)
 % \usepackage{tikz}
-% \usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+
 
 %%--ADVANCE TABULARS--%%
-% \usepackage{tabularx}
-
+ \usepackage{tabularx}
+\def\arraystretch{1.3}
 %PREAMBLE%
 %%-SECTION NUMMBERING DEPTH-%%
 %\setcounter{secnumdepth}{3} %3=Default
 
 %%-GRAPHICS-%%
-% \DeclareGraphicsExtensions{.pdf,.png,.jpg}
-
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 %%-BIBLIOGRAPHY-%%
 %Adds references library and formats it.
-% To  refere to a reference in the library use \citep{}
+% To  refere to a reference in the library use  \cite{} for ieee
+%                                               \citep{} for authoryear
 \addbibresource{ref.bib} \setlength{\bibitemsep}{\baselineskip} 
 %Always shows the authors in bibliography as Lastname, Firstname
-\DeclareNameAlias{sortname}{last-first} 
+%\DeclareNameAlias{sortname}{last-first} 
 
 %%-DOCUMENT INFORMATION-%%
 %Header/Footer%
-\author{	Strand, Johan \\ \texttt{johstr@student.chalmers.se} \and
-			Svedberg, Pär\\ \texttt{svpar@student.chalmers.se} \and
-			Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}
+\author{    Strand, Johan \\ \texttt{johstr@student.chalmers.se} \\ 
+            19870101--4899 \and
+            Svedberg, Pär\\ \texttt{svpar@student.chalmers.se}  \\ 
+            19821112--7652 \and
+            Åkergren, Oskar\\ \texttt{akergren@student.chalmers.se}  \\ 19880508--7114
 }
-\title{\underline{\small{WORKING TITLE}} \\ SolarRemote}
+\title{\vspace{2cm} Styrdosa till \\ Parans solpanel  \vspace{1cm}}
+
+\date{\vspace{8cm}\today}
 
 \begin{document}
+    \maketitle
+    \thispagestyle{empty}
 
-	\maketitle
-	\thispagestyle{empty}
+    \newpage 
+    \subsection*{Abstract} % (fold)
+    \label{sub:abstract}
+            The purpose of this research was to find an alternative, and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lighting. \\
 
-	\newpage 
+            \noindent Today is the panel installed and controlled by connecting a computer to the panel which have to be correctly configured and able to run a terminal where commands are sent to the panel.\\
 
-	\tableofcontents
+            \noindent This research were done in co--operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and control the panel.\\
 
-	\newpage
+            \noindent The resulting device is a GUI developed in \texttt{Python}, with 'TkInter' as GUI--library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing the digital buttons on the touchscreen.\\
 
-	\section{Introduktion} % (fold)
-	\label{sec:introduktion}
-	% section section_name (end)
+            \noindent The result provide a solution for Parans which they can take in to further development and provide to their customers as an easy way of installing and troubleshoot the sun panel.
+    % subsection beteckningar(end)
 
-		\subsection{Bakgrund} % (fold)
-		\label{sub:bakgrund}
-			Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\\
+    \newpage 
+    \subsection*{Beteckningar} % (fold)
+    \label{sub:beteckningar}
+        \begin{tabularx}{\textwidth}{@{}lX}
+            C & Imperativt programmeringsspråk \\
+            CP2102 & Enhet från Silicon Labs som omvandlar kommunikation från
+            USB till seriell enligt RS232\\
+            GUI & Graphical User Interface, grafiskt användargränssnitt \\
+            I/O & Input/Output \\
+            PIC32 & 32-bitars mikrokontroller \\
+            Python & Högnivåspråk för programmering \\
+            SP3 & Parans solpanel, tredje generationen \\
+            USB & Universal Serial Bus, standard för seriell kommunikation \\
+            \\
+            Enkortsdator & I denna rapport menas enkortsdatorer av typen System
+            on a chip, exempelvis enheter från Raspberry Pi och Beagle\-bone. 
+            En enkortsdator ska enligt rapportens definition klara av att driva 
+            operativsystem innehållande Linuxkärnan eller mot\-svarande. \\
+            Mikrokontroller & Här menas enchipdatorer avsedda att programmeras 
+            direkt till enhetens programminne, exempelvis enheter från 
+            \hbox{Arduino}. Dessa klarar ej av att driva operativsystem 
+            innehållande Linux\-kärnan eller motsvarande.\\
+            
 
-			\noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
+        \end{tabularx}
+    % subsection beteckningar(end)
+    \newpage
 
-			\noindent Själva panelen körs på 12V och dess systemdesign bygger på en PIC32; koden är skriven i C. Parans kommunicerar med enheten via USB--port och PUTTy
-		% subsection bakgrund (end)
-		
-		\subsection{Syfte} % (fold)
-		\label{sub:syfte}
-			Idag styrs panelen till rätt position via en terminal/puTTy, vilket är en tröskel för Parans kunder vid installation och felsökning.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
+    \tableofcontents
+    \listoffigures
 
-			\noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en app för Android/iOS som kan köras på en kundens mobila enhet.
-		% subsection syfte (end)
+    \newpage
 
-		\subsection{Frågeställning} % (fold)
-		\label{sub:fragestallning}
-		Rapporten ämnar att besvara följande frågeställningar:\\
-		\begin{itemize}
-			\item Vad styr valet av plattform för styrdosan?
-			\item Vilken plattform blir enklast för kunderna att använda?
-			\item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
-			\item Vilket programmeringsspråk lämpar sig bäst för styrdosan?
-		\end{itemize}	
-		
+    \section{Introduktion} % (fold)
+    \label{sec:introduktion}
+    % section section_name (end)
 
-		% subsection fr_gest_llning (end)
+        \subsection{Bakgrund} % (fold)
+        \label{sub:bakgrund}
+            Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\\
 
-		\subsection{Avgränsning} % (fold)
-		\label{sub:avgransning}
-			Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
+            \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
 
-			\noindent Dagens paneler kan kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter i dagsläget. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och inte via någon trådlös kommunikation.
-		% subsection avgr_nsning (end)
+            \noindent Själva panelen drivs av en spänning om tolv (12) volt och dess systemdesign bygger på en PIC32; koden är skriven i \texttt{C}. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
+        % subsection bakgrund (end)
+        
+        \subsection{Syfte} % (fold)
+        \label{sub:syfte}
+            Vid installation och felsökning styrs panelen till rätt position via en terminalemulator i dagsläget, vilket är en tröskel för Parans kunder.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
 
-	\section{Metod} % (fold)
-	\label{sec:huvudtext}
+            \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
+        % subsection syfte (end)
 
-		Vi har för detta projekt valt jobba utifrån undersökningsmetoden beskriven i \\
-		''A design science research methodology for information systems research'' \citep{method}. \\
+        \subsection{Frågeställning} % (fold)
+        \label{sub:fragestallning}
+        Rapporten ämnar att besvara följande frågeställningar:
+        \begin{itemize}
+            \item Vad styr valet av plattform för styrdosan?
+            \item Blir styrdosan enkel att använda?
+            \item Påverkar valet av plattform huruvida styrdosan blir kompatibel med framtida versioner av solpanelen?
+            \item Vilket programmeringsspråk lämpar sig för styrdosans mjukvara?
+        \end{itemize}   
+        
 
-		\noindent Metoden beskriver beskriver efterforskning uppdelad i fem faser;
-		\textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
-		I den första fasen identifieras problemområdet tillsammans med Parans och vilken lösning som efterfrågas. I faserna \textit{Design \& Development, Demonstration and Evaluation} tar vi fram en prototyp som i varje iteration utvärderas för att se hur den väl den uppfyller de krav som sattes upp.
-		Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport.
+        % subsection fr_gest_llning (end)
 
-	\section{Teknisk bakgrund} % (fold)
-	\label{sec:teknisk_bakgrund}
-	
-	% section teknisk_bakgrund (end)
+        \subsection{Avgränsning} % (fold)
+        \label{sub:avgransning}
+            Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
+
+            \noindent Dagens paneler kan i dagsläget kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och att trådlös kommunikation ej är möjlig.
+        % subsection avgr_nsning (end)
+
+    \section{Metod} % (fold)
+    \label{sec:metod}
+
+        Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Research (DSR) beskriven i 
+        ''A design science research methodology for information systems research'' \cite{method}. \\
+
+        \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
+        \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
+        I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp.\\
+
+        \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} and \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}.\\
+        Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
+
+        \noindent En alternativ metod till DSR är 'Action Research' (AR) vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är väldigt lik DSR i sitt utförande \cite{designscience} och båda metoderna skapar om kunskap om specifika situationer och problem. Anledningen att valet föll på DSR var att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
+        Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
+
+    \newpage
+
+    \section{Genomförande} % (fold)
+    \label{sec:genomforande}
+        Detta avsnitt avser behandla projektets utförande enligt den i föregående avsnitt beskrivna metoden DSR.
+        
+        \subsection{Problemanalys} % (fold)
+        \label{sub:problemanalys}
+            Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande skede diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \\
+            
+            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att justera panelen vertikalt och horisontellt, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
+            
+            \noindent Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids-- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
+        % subsection problemanalys (end)
+
+        \subsection{Design och utveckling} % (fold)
+        \label{sub:design_och_utveckling}
+        
+            \subsubsection{Val av plattform} % (fold)
+            \label{subsub:val_av_plattform}
+            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
+            
+            \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \\
+            
+            \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution \cite{SL_AN809}. \\
+            
+            \enlargethispage{2\baselineskip}
+            \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda å andra sidan har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
 
 
-	\section{Genomförande} % (fold)
-	\label{sec:genomf_rande}
-		Linuxsystemet på den enkortsdator som tillhandahölls av bolaget, ett utvecklingskort från Olimex, behövdes initialt konfigueras för att möjliggöra SSH--\-anslutning via nätverk. För detta användes en USB-till--seriell--kabel kopplad mellan enkortsdatorns seriella pinkontakter och en persondators USB--port. Sedermera anslöts enkortsdatorn via en nätverksbrygga till bolagets trådlösa nätverk och SSH--anslutningen verifierades. Ett första test för att säkerställa att kommunikation mellan enkortsdatorn och SP3 kunde upprättas utfördes genom att koppla samman enheterna med en USB--kabel. Enkortsdatorns linuxsystem identifierade automatiskt anslutning av SP3s CP2102 och monterade denna på /dev/ttyUSB0. Med hjälp av det i linuxsystemet medföljande terminalprogrammet Miniterm kunde kommandon skickas till SP3, som i sin tur utförde dessa och svarade korrekt.
-	% section genomf_rande (end)
+            \noindent\textsf{\textbf{Androidenhet}}\\
+            \begin{tabularx}{\textwidth}{@{}cXcX}
+                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
+                                                  stöder USB-host \\
+                $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
+                $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt \\
+                $+$ &  Drivrutiner till CP2102 existerar &
+                                            $-$ & Kräver egenbyggd Androiddistribution \\
+            \end{tabularx}\\
 
-	\section{Resultat} % (fold)
-	\label{sec:resultat}
-	Här kommer vi att presentera resultatet. \\
-	% section resultat (end)
+                
+            \noindent\textsf{\textbf{Raspberry Pi}}\\
+            \begin{tabularx}{\textwidth}{@{}cXcX}
+                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                $+$ & God tillgång till information & 
+                                        $-$ & Mer prestanda än nödvändigt \\
+                $+$ & God tillgång till utbyggnads\-moduler & 
+                                        $-$ & Saknar skärm och knappar i 
+                                              grundutförande \\
+                $+$ & Drivrutiner till CP2102 i Linuxkärnan &
+                                        $-$ & Kan bli otymplig vid användande av   
+                                              många tilläggsmoduler \\   
+                $+$ & Lågt pris \\   
+            \end{tabularx}\\
+            
+            \noindent\textsf{\textbf{Arduinosystem}} \\ 
+            \begin{tabularx}{\textwidth}{@{}cXcX} 
+                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                $+$ & God tillgång till information & 
+                                        $-$ & Saknar skärm och knappar i 
+                                            grundutförande \\
+                $+$ & God tillgång till utbyggnads\-moduler & 
+                                        $-$ & Otymplig vid användande av   
+                                            många tilläggsmoduler \\
+                $+$ & Låg energiförbrukning &
+                                        $-$ & Saknar drivrutiner till CP2102 \\
 
-	\section{Diskussion} % (fold)
-	\label{sec:sammanfattning}
-		Den lösning som vi har tagit fram är fullt fungerande och relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är fram för allt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3 \citep{silicon}. \\
+            \end{tabularx}
+            % subsubsection val_av_plattform (end)
+
+            \subsubsection{Mjukvaruutveckling} % (fold)
+            \label{subsub:mjukvaruutveckling}
+            Fjärrkontrollens mjukvara har i enlighet med vår metod utvecklats i iterationer där den första prototypen hade som mål att upprätta en seriell anslutning mot solpanelen.
+            När väl anslutning skapats var nästa steg att kunna sända instruktioner för att få solpanelen att vrida sig i önskad riktning. I detta stadie fungerade mjukvaran på samma sätt (men med reducerad funktionalitet) som när användaren är uppkopplad mot solpanelen via en terminalemulator. Instruktioner skrevs via tangentbord och sändes som strängar enligt den formatering som den mottagande mjukvaran på solpanelen kräver. \\
+
+            \noindent Nästa steg i processen var att utveckla ett grafiskt användargränssnitt. För att ebjuda användaren ett lättanvänt gränssnitt som fungerar väl ihop med en resistiv pekskärm
+            så lades fokus på att implementera stora tydliga tryckknappar. 
+            Mjukvaran i solpanelen gör så att panelen börjar vrida sig i en riktning när den får en motsvarande instruktion och fortsätter i den riktningen tills användaren ger en instruktion om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
+            När detta fungerade tillfredsställande så ändrades funktionaliteten till att panelen rör sig så länge användaren håller knappen nedtryckt men stannar när knappen släpps upp.
+            Instruktionen för att stoppa panelen skickas således automatiskt när en knapp släpps upp och gör den dedikerade stoppknappen överflödig men det beslutades ändå att behålla den i händelse av att en extra stoppinstruktion behöver skickas. \\
+
+            \noindent Utöver funktionalitet för att manuellt styra panelen i önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran, försätta panelen i installationsläge och skriva ut information som tid, datum och geoposition. Då pekskärmens yta är begränsad beslutades att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
+
+            \noindent Efter att solpanelen kunde styras med hjälp av det grafiska gränssnittet var nästa steg att läsa in den information som panelen skickar som feedback till användaren. Denna information skickas som  en samling strängar och innehållet består av den instruktion som användaren har skickat och åt vilket håll panelen rör sig åt. 
+            Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom vi med pekskärmen hade en begränsad yta att presentera informationen på så beslutades att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
+            Här behövdes relevant information om panelens status filtreras ut så att användaren inte behöver ta del av de instruktioner som skickas fram och tillbaka mellan fjärrkontrollens mjukvara och mjukvaran i solpanelen. \\
 
 
-		\noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att den har ett större energibehov än en mikrokontroller \citep{gadgetBlog} \citep{rasp}. Antalet I/O portar är färre och den fysiska storleken är större på en enkortsdator än en mikrokontroller.\\
+            % subsubsection mjukvaruutveckling (end)
 
-		\noindent Att vi genomförde projektet beror på den låga tekniska kompetens hos de montörer som arbetar ute på fältet med SP3 och SP3s bristande stöd för kommunikationsstandarder. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt är överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan tänkas styras på distans.
+        % subsection design_och_utveckling (end)
 
-	% section sammanfattning (end)
+    % section genomforande (end)
 
-	\clearpage
-	\addcontentsline{toc}{section}{Referenser}
-	\printbibliography		
+    \newpage
+
+    \section{Resultat} % (fold)
+    \label{sec:resultat}
+        I det här avsnittet kommer resultatet att presenteras genom en redovisning av den produkt som genomförandet har lett fram till och 
+        vidare avser avsnittet att knyta an till frågeställningen och besvara de frågor som ligger till grund för arbetet. \\
+
+        \subsection{Hårdvara} % (fold)
+        \label{sub:h_rdvara}
+        Den fysiska produkt som genomförandet resulterade i, är en handhållen produkt som kopplar in sig till sol\-panel\-en via en USB--sladd. Grunden i enheten är en enkorts\-dator av märket 'Raspberry Pi' (se figur \ref{fig:raspberry}, bilaga \ref{sec:komp}) och användargränssnittet består av en resistiv pekskärm framtagen till just denna plattform \cite{Ada} (se figur \ref{fig:ada}). Produkten placeras i ett inköpt chassi framtaget för att husera just denna konfiguration. Enheten strömförsörjs genom ett batteripaket, även det inhandlat från återförsäljare, som är framtaget för att agera laddare för enheter som laddas via USB. Denna typ av laddningsenhet visade sig vara lämplig även för vår produkt.
+        % subsection h_rdvara (end)
+
+        \subsection{Mjukvara} % (fold)
+        \label{sub:mjukvara}
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafisk gränssnitt uppbyggt av det medföljande paketetet 'TkInter'. För en översikt av mjukvarans klasser, se figur \ref{fig:uml}. Sträng\-hanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+
+        \noindent Den första vyn som öppnas när applikationen startar är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
+        % subsection mjukvara (end)
+      
+        \begin{figure}[b!]
+            \centering
+            \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[scale=0.3]{img/styrkors}
+                \caption{Styrning, uppkoppling \\ \& genväg till \ref{fig:command}}
+                \label{fig:cross}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[scale=0.3]{img/command}
+                \caption{Instruktion--gränssnittet \\ 'command'}
+                \label{fig:command}
+            \end{subfigure}
+            \caption{Skiss av det grafiska gränssnittet}
+        \end{figure}
+
+        \subsection{Frågeställningen} % (fold)
+        \label{sub:fragestallningen}
+            \paragraph{\textrm{Vad styr valet av plattform för styrdosan?}} % (fold)
+            \label{par:vad_styr_valet}
+                Valet av plattform grundar sig i den jämförelse mellan de olika plattformarna som redovisas i avsnitt \ref{subsub:val_av_plattform} där beslutet fattades främst efter motiveringarna \emph{Tillgänglighet} och \emph{Utvecklingskomplexitet}, då projektet utförts inom en snäv tidsram och en vilja att kunna leverera en fungerande produkt till uppdragsgivaren. 
+            % paragraph vad_styr_valet (end)
+
+            \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
+            \label{par:enk}
+                Projektet resulterade i en produkt som är att anse som användarvänlig, i synnerhet när produkten sätts i förhållande till den nu\-varande tillväga\-gångs\-sättet. Produktens användar\-gräns\-snitt påminner om andra gränssnitt avsedda för styrning av andra produkter. Vår produkt vänder sig till montörer av solpanelen, så viss kunskap om panelen krävs för att kunna nyttja enheten till fullo.
+            % paragraph enk (end)
+
+            \paragraph{\textrm{Framtidskompatibel?}} % (fold)
+            \label{par:framtidskomaptibel}
+                Den produkt som producerats är framtidskompatibel, då den baseras på ett huvudkort som har flertalet kommunikationsportar och med en Linux\-distribution i grunden är mjukvaran lätt att justera efter behov. Kompatibiliteten bryts då en framtida generation av solpaneler använder sig av en kommunikationsstandard som inte finns integrerad på Raspberry Pi, men i dagsläget finns inga sådana planer.
+            % paragraph framtidskomaptibel (end)
+
+            \paragraph{\textrm{Programmeringsspråk}} % (fold)
+            \label{par:programmeringssprak}
+               Valet av programmeringsspråk grundar sig i det metodval projektet har arbetat efter, där ett fokus ligger på att producera prototyper och där \texttt{Python} är, sett ur programmeringsperspektiv, ett effektivt programmerings språk där en fungerande mjukvara snabbt kan tas fram. \texttt{Python} bidrar även med en lättöverskådlig prog\-ram\-merings\-syntax som underlättar projektet framtida utveckling och dess portabilitet gör att mjukvaran enkelt kan flyttas till en annan plattform om ett sådan behov uppstår. 
+            % paragraph programmeringsspr_k (end)
+        % subsection fr_gest_llningen (end)
+        
+
+   % section resultat (end)
+
+    \newpage
+
+    \section{Diskussion} % (fold)
+    \label{sec:diskussion}
+        \subsection{Hårdvara} % (fold)
+        \label{sub:d_hardvara}
+        
+            Som nämnt på sidan \pageref{sub:beteckningar} så utgår vi ifrån begreppet enkortsdator för ett kretskort som är kapabel till att driva en Linuxkärna, till skillnad från en mikrokontroller där en svagare krets avses.\\
+
+            \noindent Vår lösning är baserat på en enkortsdator och är fullt fungerande enligt de krav som uppdragsgivaren har fastställt och är relativt enkel att reproducera, i förhållande till att utveckla en likartad konstruktion med en mikrokontroller. Det som gör vår lösning enklare är framförallt att en enkortsdator har de drivrutiner som krävs för att upprätta den seriella kommunikationen, så till vida att den har en Linuxkärna senare än version 3.0 \cite{silicon}. \\
+
+            \noindent Nackdelar som vi ser med att använda en enkortsdator är bland andra att dessa generellt har ett större energibehov än en mikrokontroller \cite{gadgetBlog, rasp}. Antalet I/O portar är oftast färre på en enkortsdator och den fysiska storleken är större jämfört med de mikrokontrollerkort som hade varit lämpliga för projektet.\\
+
+            \noindent Gällande frågeställningen om vår produkt är enkel att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkel. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet skulle kunna ha resulterat utan någon produkt överhuvudtaget.
+
+        % subsection h_rdvara (end)
+
+        \subsection{Mjukvara} % (fold)
+        \label{sub:d_mjukvara}
+
+            Den mjukvara som har utvecklats, har skrivits i programmeringsspråket \texttt{Python}. Språk\-valet beror delvis på att personal inom företaget har erfarenhet inom språket vilket underlättar för framtida utveckling och underhåll av projektets produkt och dels valdes språket för dess enkla utveckling av grafiska gränssnitt och bra stöd i den seriella kommunikationen som krävdes i projektet. \\
+
+            \noindent Andra språk som hade varit möjliga är till exempel \texttt{C} eller \texttt{Java} då projektgruppen har erfarenhet av de båda språken. \texttt{C} valdes bort då utveckling av grafiska gränssnitt i detta språk kräver externa bibliotek och minskar därför portabiliteten och ökar komplexiteten. \texttt{Java} är en lämplig kandidat för projektet, men valdes bort då den grafiska utvecklingen i \texttt{Python} är enklare och applikationen som vi utvecklade är såpass simpel att \texttt{Java} skulle medföra stor andel så kallad 'overhead' i programmeringskoden, något som visas när en jämförelse görs mellan de olika språken.\cite{Ferg}  Nackdelen med \texttt{Python} jämfört med \texttt{Java} är att språket inte är lika effektivt i sina beräkningar, men då applikationen vi skrivit inte utför några tyngre beräkningar så berörs inte användar\-upplevelsen  av detta. Kommer applikationen att vidareutvecklas till något mer än vad projektet skapat, är det fullt rimligt att översätta logiken till \texttt{Java}, något som det finns gott om stöd för.\cite{jython}
+        % subsection mjukvara (end)
+        
+        \subsection{Framtida bruk} % (fold)
+        \label{sub:framtida_bruk}
+            Att projektet genomfördes grundar sig i SP3s bristande stöd för kommunikationsstandarder och att dagens kommunikationsgränssnitt inte är användarvänligt, vilket leder till stora underhållskostnader för företaget då det krävs tid och resurser att stötta underhålls\-personal. Detta projekt svarar upp på de förväntningar som bolaget hade på oss, men vi ser att projektets produkt kan komma att bli överflödig i nyare revisioner av panelen, där styrkortet kan ha tillgång till fler kommunikationsstandarder och kan komma att styras på distans.
+        % subsection framtida_bruk (end)
+    % section diskussion (end)
+
+    \newpage
+
+    \clearpage
+    \addcontentsline{toc}{section}{Referenser}
+    \printbibliography      
+    \newpage
+    \section{Bilagor} % (fold)
+    \label{sec:appendix}
+    \appendix
+        \section{Komponenter} % (fold)
+        \label{sec:komp}
+            \pagenumbering{Roman}
+                \begin{figure}[h!]
+                  \centering
+                    \includegraphics[scale=0.4]{img/rpi}
+                  \caption[Raspberry Pi]{Raspberry Pi \\ \url{http://pi.cs.man.ac.uk/download/Raspberry_Pi_Education_Manual.pdf}}
+                  \label{fig:raspberry}
+                \end{figure}
+
+                \begin{figure}[h!]
+                    \centering
+                    \begin{subfigure}[b]{0.45\textwidth}
+                    \centering
+                        \includegraphics[]{img/pitft1}
+                        \label{fig:tft1}
+                    \end{subfigure}
+                    \begin{subfigure}[b]{0.45\textwidth}
+                    \centering
+                        \includegraphics[]{img/pitft2}
+                        \label{fig:tft2}
+                    \end{subfigure}
+                \caption[Pekskärm]{Pekskärm \\ \url{http://www.linuxuser.co.uk/features/10-raspberry-pi-upgrades-part-2} \\ \url{http://www.adafruit.com/product/1601}}
+                \label{fig:ada}
+                \end{figure}
+        \newpage
+        \section{UML}
+            \begin{figure}[h!]
+                \centering
+                \includegraphics[scale=0.4]{img/uml}
+                \caption{UML--diagram av mjukvaran}
+                \label{fig:uml}
+            \end{figure}
 \end{document}

@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 # -*- coding: UTF-8 -*-
+
 # Solar Remote prototype code
 # Group members:    Johan Strand
 #                   Pär Svedberg

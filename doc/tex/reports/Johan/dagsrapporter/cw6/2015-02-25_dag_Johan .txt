@@ -1,0 +1,9 @@
+Onsdag
+---
+Var återigen på Parans kontor och testade att styra solpanelen genom touchscreen + GUI.
+Jag jobbade sedan på att undersöka och utveckla en vy för att kunna skriva ut den information från solpanelen
+som annars printas ut i terminalen.
+
+På eftermiddagen skrev vi på slutrapporten.
+--
+Tid: 9h
