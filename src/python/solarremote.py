@@ -54,6 +54,8 @@ class SolarRemote(tk.Frame):
         # Used when checking delay in serial read: readSerial()
         self.steeringStrings = ['up', 'down', 'left', 'right']
 
+        self.connection = None
+
     # Switch the visible frame in the GUI
     def switchFrame(self, command):
         if command == 'launchControl':
@@ -65,6 +67,8 @@ class SolarRemote(tk.Frame):
 
     # Create serial connection
     def serialConnect(self):
+        if self.connection is not None:
+            self.connection.close()
         self.connection = serial.Serial('/dev/ttyUSB0', 38400, timeout = 1)
         time.sleep(1)
 
@@ -84,6 +88,9 @@ class SolarRemote(tk.Frame):
                 print('Connection failed')
             else:
                 if self.connection.isOpen():            
+                    self.connection.flushInput()
+                    self.connection.flushOutput()
+                    self.runCommand('\r\n')
                     self.controlFrame.bindButtons()
                     self.commandFrame.bindButtons()
                     self.statusLabelText.set('Connection established')
@@ -108,6 +115,9 @@ class SolarRemote(tk.Frame):
             except serial.SerialTimeoutException:
                 self.statusLabelText.set('Timeout on serial write')
                 print('Timeout on serial write')
+            except serial.SerialException:
+                self.statusLabelText.set('Serial communication failed')
+                print('Serial communication failed')
 
     # Reads information from the serial connection
     def readAndPrintSerial(self):
