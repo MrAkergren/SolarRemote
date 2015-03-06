@@ -1,8 +1,9 @@
 #! /usr/bin/python3
+# -*- coding: UTF-8 -*-
 # Solar Remote prototype code
 # Group members:    Johan Strand
-#                   Pär Svedberg
-#                   Oskar Åkergren
+#                   PÃ¤r Svedberg
+#                   Oskar Ã…kergren
 # Written for the project course DAT065 in Chalmers University of Technology
 # Code written for Python 3, using TkInter
 
@@ -10,6 +11,7 @@ import sys
 import tkinter as tk
 import serial
 import time
+from builtins import any as any_word
 
 # For ease of use and readability
 N = tk.N
@@ -46,8 +48,13 @@ class SolarRemote(tk.Frame):
         self.statusLabel = tk.Label(self, textvariable=self.statusLabelText, height=2)
         self.statusLabel.grid(row=1, column=0, sticky=(E, W))
 
-        self.ignoreStrings = ['run', 'restart', 'date', 'setup', '#', 'Usage']
+        # Used finding 'junk strings' returned from the panel: isJunkString()
+        self.ignoreStrings = ['run', 'restart', 'date', 'setup', '#', 'Usage', 'lon', 'lat']
 
+        # Used when checking delay in serial read: readSerial()
+        self.steeringStrings = ['up', 'down', 'left', 'right']
+
+    # Switch the visible frame in the GUI
     def switchFrame(self, command):
         if command == 'launchControl':
             self.commandFrame.grid_forget()
@@ -56,6 +63,7 @@ class SolarRemote(tk.Frame):
             self.controlFrame.grid_forget()
             self.commandFrame.showFrame()
 
+    # Create serial connection
     def serialConnect(self):
         self.connection = serial.Serial('/dev/ttyUSB0', 38400, timeout = 1)
         time.sleep(1)
@@ -79,7 +87,6 @@ class SolarRemote(tk.Frame):
                     self.controlFrame.bindButtons()
                     self.commandFrame.bindButtons()
                     self.statusLabelText.set('Connection established')
-                    #self.connection.write('\r\n'.encode('utf-8'))
                 else:
                     self.statusLabelText.set('Serial connection is not open')
 
@@ -93,7 +100,8 @@ class SolarRemote(tk.Frame):
 
             try:
                 if self.connection.write(command.encode('utf-8')) > 0:
-                    self.readAndPrintSerial()
+                    if 'lon' not in self.lastcmd and 'lat' not in self.lastcmd:
+                        self.readAndPrintSerial()
                 else:
                     self.statusLabelText.set('Serial write failed')
                     print('Serial write failed')
@@ -103,25 +111,60 @@ class SolarRemote(tk.Frame):
 
     # Reads information from the serial connection
     def readAndPrintSerial(self):
-        if self.lastcmd.startswith('run'):
+        self.serialDelay()
+        while self.connection.inWaiting() > 0:
+            newText = self.readSerial()
+            if newText:
+                self.updateStatusbar(self.indata)
+
+    # Performs a delay appropriate to the last command sent to the panel,
+    # in order to synchronize the serial read
+    def serialDelay(self):
+        if self.lastcmd.startswith('run') and 'stop' not in self.lastcmd:
             time.sleep(.001)
+            print('Steering string!')
+        elif self.lastcmd.startswith('lon') or self.lastcmd.startswith('lat'):
+            time.sleep(.03)
         else:
-            time.sleep(.01)
-        while self.connection.inWaiting() > 0:        
-            self.indata = self.connection.readline()
-            self.indata = self.indata.decode(encoding='utf-8')
-            self.indata = self.indata.rstrip('\r\n')
-            if self.isJunkString(self.indata):
-                continue
-            if self.lastcmd == 'date' and 'Current date' in self.indata:
-                self.indata = self.indata.replace(': ', ':\n')
-            self.statusLabelText.set(self.indata)
-            print('Serial read:', self.indata)
+            time.sleep(.015)
 
-    def getDate(self):
-        time.sleep(.01)
+    # Reads a line/string from serial input. If the string contains date info,
+    # insert newline character to the string
+    # Returns true if a new (useful) line is read
+    # Returns false if the string is considered 'junk' info the panel
+    def readSerial(self):
+        self.indata = self.connection.readline()
+        self.indata = self.indata.decode(encoding='utf-8')
+        self.indata = self.indata.rstrip('\r\n')
+        if self.isJunkString(self.indata):
+            return False
+        if self.lastcmd == 'date' and 'Current date' in self.indata:
+            self.indata = self.indata.replace(': ', ':\n')
+        return True
 
+    # Updates the status bar in the GUI
+    def updateStatusbar(self, text):
+        self.statusLabelText.set(text)
+        print('Serial read:', text)
 
+    # Gets information about the panels location in longitude and latitude,
+    # which is then shown in the GUI's status bar
+    def getLocation(self):
+        self.runCommand('lon')
+        self.runCommand('lat')
+        self.serialDelay()
+        positions = []
+        while self.connection.inWaiting() > 0:
+            newText = self.readSerial()
+            if newText and self.indata.startswith('Current l'):
+                positions.append(self.indata)
+        self.updateStatusbar('\n'.join(positions))
+
+    # Checks if a string is considered 'junk'. This is used to for checking
+    # strings returned from the panel, and this function filters out strings
+    # that are not supposed to be viewed in the GUI's status bar.
+    # Here 'junk' is defines as empty strings, echoes of commands etc,
+    # as defined in the ignoreStrings list.
     def isJunkString(self, inputString):
         ignoreString = False
         for cmdString in self.ignoreStrings:
@@ -213,7 +256,8 @@ class ButtonFrame(tk.Frame):
         self.btnDate = tk.Button(self, text='DATE', height=3, width=5)
         self.btnDate.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
 
-        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5)
+        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5, \
+            command=self.master.getLocation)
         self.btnLoc.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
 
         self.btnSetLoc = tk.Button(self, text='SET LOC', height=3, width=5)
