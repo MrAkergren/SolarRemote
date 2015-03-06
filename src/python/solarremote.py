@@ -256,22 +256,22 @@ class CommandFrame(tk.Frame):
 
     # Create command buttons
     def setupButtons(self):
-        self.btnDate = tk.Button(self, text='DATE', height=3, width=5)
+        self.btnDate = tk.Button(self, text='DATE', width=5, height=3)
         self.btnDate.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
 
-        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5)
+        self.btnLoc = tk.Button(self, text='LOC', width=5, height=3)
         self.btnLoc.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
 
-        self.btnSetLoc = tk.Button(self, text='SET LOC', height=3, width=5)
-        self.btnSetLoc.grid(row=1, column=2, pady=5, padx=5, sticky=(E, W))
+        self.btnStopcmd = tk.Button(self, text='STOP', width=5, height=3)
+        self.btnStopcmd.grid(row=1, column=2, pady=5, padx=5, sticky=(E, W))
 
-        self.btnRestart = tk.Button(self, text='RESTART', height=3, width=5)
+        self.btnRestart = tk.Button(self, text='RESTART', width=5, height=3)
         self.btnRestart.grid(row=2, column=0, pady=5, padx=5, sticky=(E, W))
         
-        self.btnSetup = tk.Button(self, text='SETUP', height=3, width=5)
+        self.btnSetup = tk.Button(self, text='SETUP', width=5, height=3)
         self.btnSetup.grid(row=2, column=1, pady=5, padx=5, sticky=(E, W))
 
-        self.btnAuto = tk.Button(self, text='AUTO', height=3, width=5)
+        self.btnAuto = tk.Button(self, text='AUTO', width=5, height=3)
         self.btnAuto.grid(row=2, column=2, pady=5, padx=5, sticky=(E, W))
 
         self.btnBack = tk.Button(self, text='BACK TO\nCONTROL', height=3, \
@@ -285,6 +285,7 @@ class CommandFrame(tk.Frame):
         self.btnSetup.configure(command=lambda:self.master.runCommand('setup'))
         self.btnAuto.configure(command=lambda:self.master.runCommand('run auto'))
         self.btnLoc.configure(command=self.master.getLocation)
+        self.btnStopcmd.bind('<Button-1>', lambda x:self.master.runCommand('run stop'))
 
     # Disable button bindings
     def unbindButtons(self):
@@ -293,6 +294,7 @@ class CommandFrame(tk.Frame):
         self.btnSetup.configure(command='')
         self.btnAuto.configure(command='')
         self.btnLoc.configure(command='')
+        self.btnStopcmd.unbind('<Button-1>')
 
 root = tk.Tk()
 root.geometry('240x320')
