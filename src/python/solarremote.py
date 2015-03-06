@@ -39,7 +39,7 @@ class SolarRemote(tk.Frame):
         self.columnconfigure(0, weight=1)
         
         # Initiate frames and start the first frame, the steering controls
-        self.commandFrame = ButtonFrame(self)
+        self.commandFrame = CommandFrame(self)
         self.controlFrame = ControlFrame(self)
         self.controlFrame.showFrame()
         
@@ -243,7 +243,7 @@ class ControlFrame(tk.Frame):
         self.btnDown.unbind('<ButtonRelease-1>')
 
 # Frame containing the command buttons (non-steering)
-class ButtonFrame(tk.Frame):
+class CommandFrame(tk.Frame):
     # Constructor
     def __init__(self, master=None):
         self.master = master
@@ -256,23 +256,22 @@ class ButtonFrame(tk.Frame):
 
     # Create command buttons
     def setupButtons(self):
-        self.btnDate = tk.Button(self, text='DATE', height=3, width=5)
+        self.btnDate = tk.Button(self, text='DATE', width=5, height=3)
         self.btnDate.grid(row=1, column=0, pady=5, padx=5, sticky=(E, W))
 
-        self.btnLoc = tk.Button(self, text='LOC', height=3, width=5, \
-            command=self.master.getLocation)
+        self.btnLoc = tk.Button(self, text='LOC', width=5, height=3)
         self.btnLoc.grid(row=1, column=1, pady=5, padx=5, sticky=(E, W))
 
-        self.btnSetLoc = tk.Button(self, text='SET LOC', height=3, width=5)
-        self.btnSetLoc.grid(row=1, column=2, pady=5, padx=5, sticky=(E, W))
+        self.btnStopcmd = tk.Button(self, text='STOP', width=5, height=3)
+        self.btnStopcmd.grid(row=1, column=2, pady=5, padx=5, sticky=(E, W))
 
-        self.btnRestart = tk.Button(self, text='RESTART', height=3, width=5)
+        self.btnRestart = tk.Button(self, text='RESTART', width=5, height=3)
         self.btnRestart.grid(row=2, column=0, pady=5, padx=5, sticky=(E, W))
         
-        self.btnSetup = tk.Button(self, text='SETUP', height=3, width=5)
+        self.btnSetup = tk.Button(self, text='SETUP', width=5, height=3)
         self.btnSetup.grid(row=2, column=1, pady=5, padx=5, sticky=(E, W))
 
-        self.btnAuto = tk.Button(self, text='AUTO', height=3, width=5)
+        self.btnAuto = tk.Button(self, text='AUTO', width=5, height=3)
         self.btnAuto.grid(row=2, column=2, pady=5, padx=5, sticky=(E, W))
 
         self.btnBack = tk.Button(self, text='BACK TO\nCONTROL', height=3, \
@@ -285,13 +284,17 @@ class ButtonFrame(tk.Frame):
         self.btnRestart.configure(command=lambda:self.master.runCommand('restart'))
         self.btnSetup.configure(command=lambda:self.master.runCommand('setup'))
         self.btnAuto.configure(command=lambda:self.master.runCommand('run auto'))
+        self.btnLoc.configure(command=self.master.getLocation)
+        self.btnStopcmd.bind('<Button-1>', lambda x:self.master.runCommand('run stop'))
 
     # Disable button bindings
     def unbindButtons(self):
-        self.btnDate.configure(command=lambda:self.master.runCommand(''))
-        self.btnRestart.configure(command=lambda:self.master.runCommand(''))
-        self.btnSetup.configure(command=lambda:self.master.runCommand(''))
-        self.btnAuto.configure(command=lambda:self.master.runCommand(''))
+        self.btnDate.configure(command='')
+        self.btnRestart.configure(command='')
+        self.btnSetup.configure(command='')
+        self.btnAuto.configure(command='')
+        self.btnLoc.configure(command='')
+        self.btnStopcmd.unbind('<Button-1>')
 
 root = tk.Tk()
 root.geometry('240x320')
