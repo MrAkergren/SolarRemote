@@ -38,6 +38,8 @@
 %%-SECTION NUMMBERING DEPTH-%%
 %\setcounter{secnumdepth}{3} %3=Default
 
+\hyphenation{pa-nel-en instruktion-er sol-panel-en fatt-ades anse nu-varande av-sedda fungera-nde  kommunikations-stand-ard-er version-er mot-svarande enkorts-dator enhet-ens exempel-vis operativ-system} 
+
 %%-GRAPHICS-%%
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
@@ -88,6 +90,7 @@
             USB till seriell enligt RS232\\
             GUI & Graphical User Interface, grafiskt användargränssnitt \\
             I/O & Input/Output \\
+            Java & Objektorienterat programmeringsspråk \\
             PIC32 & 32-bitars mikrokontroller \\
             Python & Högnivåspråk för programmering \\
             SP3 & Parans solpanel, tredje generationen \\
@@ -155,7 +158,7 @@
     \section{Metod} % (fold)
     \label{sec:metod}
 
-        Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Research (DSR) beskriven i 
+        Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Re\-\hbox{search }(DSR) beskriven i 
         ''A design science research methodology for information systems research'' \cite{method}. \\
 
         \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
@@ -172,11 +175,11 @@
 
     \section{Genomförande} % (fold)
     \label{sec:genomforande}
-        Detta avsnitt avser behandla projektets utförande enligt den i föregående avsnitt beskrivna metoden DSR.
+        Detta avsnitt avser behandla projektets utförande enligt den i föregående avsnitt be\-skrivna metoden DSR.
         
         \subsection{Problemanalys} % (fold)
         \label{sub:problemanalys}
-            Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande skede diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \\
+            Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande \hbox{skede} diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \\
             
             \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att justera panelen vertikalt och horisontellt, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
             
@@ -277,7 +280,7 @@
 
         \subsection{Mjukvara} % (fold)
         \label{sub:mjukvara}
-         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafisk gränssnitt uppbyggt av det medföljande paketetet 'TkInter'. För en översikt av mjukvarans klasser, se figur \ref{fig:uml}. Sträng\-hanteringen är anpassad för det sätt som SP3 hanterar textsträngar på, så att texten visas upp på ett korrekt sätt när den sänds över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
+         Den mjukvara som utvecklats till enheten är skrivet i programmeringsspråket \texttt{Python} och består av en anpassad stränghantering och ett grafiskt gränssnitt uppbyggt av det medföljande paketet 'TkInter'. För en översikt av mjukvarans klasser, se figur \ref{fig:uml}. Sträng\-hanteringen är anpassad till det sätt som SP3 hanterar textsträngar, så att texten visas upp på ett korrekt sätt när den mottagits över den seriella kommunikationen. Gränssnittet är uppdelat i två primära vyer, se figurerna \ref{fig:cross} och \ref{fig:command}, där de olika knapparna genererar de instruktioner som solpanelens styrkort lyssnar efter. \\
 
         \noindent Den första vyn som öppnas när applikationen startar är den i \ref{fig:cross} och innehåller de grund\-läggande styrfunktionerna för justering av solpanelens rotering i X-- och Y--led. Knappen 'command' leder till den andra vyn som visas i figur \ref{fig:command}. Den andra vyn hanterar de olika instruktioner som vanligen används för felsökning av SP3 så som att hämta satt datum, satt plats och omstart av enheten.
         % subsection mjukvara (end)
@@ -293,7 +296,7 @@
             \begin{subfigure}[b]{0.4\textwidth}
                 \centering
                 \includegraphics[scale=0.3]{img/command}
-                \caption{Instruktion--gränssnittet \\ 'command'}
+                \caption{Instruktionsgränssnittet \\ 'command'}
                 \label{fig:command}
             \end{subfigure}
             \caption{Skiss av det grafiska gränssnittet}
@@ -308,7 +311,7 @@
 
             \paragraph{\textrm{Enkel för kunderna att använda?}} % (fold)
             \label{par:enk}
-                Projektet resulterade i en produkt som är att anse som användarvänlig, i synnerhet när produkten sätts i förhållande till den nu\-varande tillväga\-gångs\-sättet. Produktens användar\-gräns\-snitt påminner om andra gränssnitt avsedda för styrning av andra produkter. Vår produkt vänder sig till montörer av solpanelen, så viss kunskap om panelen krävs för att kunna nyttja enheten till fullo.
+                Projektet resulterade i en produkt som är att anse som användarvänlig, i synnerhet när produkten sätts i förhållande till den nuvarande tillväga\-gångs\-sättet. Produktens användar\-gräns\-snitt påminner om andra gränssnitt avsedda för styrning av andra produkter. Vår produkt vänder sig till montörer av solpanelen, så viss kunskap om panelen krävs för att kunna nyttja enheten till fullo.
             % paragraph enk (end)
 
             \paragraph{\textrm{Framtidskompatibel?}} % (fold)
@@ -359,10 +362,11 @@
     \newpage
 
     \clearpage
-    \addcontentsline{toc}{section}{Referenser}
     \printbibliography      
+    \addcontentsline{toc}{section}{Referenser}
     \newpage
-    \section{Bilagor} % (fold)
+    \section*{Appendix} % (fold)
+    \addcontentsline{toc}{section}{Appendix}
     \label{sec:appendix}
     \appendix
         \section{Komponenter} % (fold)
