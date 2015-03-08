@@ -1,0 +1,7 @@
+Fredag
+---
+
+Implementerade funktion för att hämta info om aktuell geoposition.
+
+---
+Tidsåtgång: 7h

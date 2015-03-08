@@ -1,0 +1,26 @@
+Måndag	2015-03-02	Tidsåtgång: 4h
+
+Fortsatte att sammanställa slutrapporten.
+
+-------------------------------------------------------------------------------
+Tisdag	2015-03-03	Tidsåtgång: 1h
+
+Möte med handledare från Chalmers, diskuterade utkast till slutrapport.
+
+-------------------------------------------------------------------------------
+Onsdag	2015-03-04	Tidsåtgång: 1h
+
+Jag och Oskar kollade på UML-representation av koden.
+
+-------------------------------------------------------------------------------
+Torsdag	2015-03-05	Tidsåtgång: 5h
+
+Gruppmöte, planering och lite slipningar på slutrapporten.
+
+-------------------------------------------------------------------------------
+Fredag	2015-03-06	Tidsåtgång: 7h
+
+Implementerade funktion för att hämta info om aktuell geoposition.
+
+-------------------------------------------------------------------------------
+Total tidsåtgång: 18h
