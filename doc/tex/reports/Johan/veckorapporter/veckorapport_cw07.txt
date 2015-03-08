@@ -1,0 +1,39 @@
+﻿Måndag
+---
+Idag fortsatte vi att skriva på slutrapporten.
+
+Jag skrev bland annat text om mjukvaruutveckling samt producerade 
+enkla schematiska bilder föreställande vårt grafiska gränssnitt.
+--
+
+Tisdag
+---
+Möte med vår handledare Lennart för att diskutera vår slutrapport.
+Han var i princip nöjd och ville bara att vi skulle lägga till UML-diagram för vårt grafiska gränssnitt.
+--
+
+Onsdag
+---
+Bara en kort avstämning med Oskar och Pär. I övrigt jobbade vi med en labb i en annan kurs.
+
+Torsdag
+---
+Idag gjorde vi de sista finslipningar på vår rapport innan den ska skickas in.
+Jag passade även på att skriva omdömen om de övriga gruppmedlemmarna.
+
+Fredag
+---
+Fredag
+---
+På besök hos Parans där vi gjorde klart installationen på Parans minneskort.
+Vi skulle även bygga in raspberry + skärmen i det "chassi" vi köpt men tyvärr var chassi för Rasberry Pi Modell B
+och inte modell B+ som är den modell jag har.
+Vi beställde därför en Raspberry Pi Modell B från CDON som förhoppningsvis kommer på måndag eller tisdag så vi har den på
+slutredovisningen.
+
+Kommentar:
+-------
+Näst sista veckan av projektet. Vi har nått dit vi ville när vi startade projektet men det finns fortfarande utrymme för att 
+förbättra några delar. Nästa vecka blir det förberedelse för slutpresentationen på onsdag.
+
+Total tid: 11h
