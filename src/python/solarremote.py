@@ -11,7 +11,7 @@
 import sys
 import tkinter as tk
 import serial
-import time
+from time import sleep
 
 # For ease of use and readability
 N = tk.N
@@ -70,7 +70,7 @@ class SolarRemote(tk.Frame):
         if self.connection is not None:
             self.connection.close()
         self.connection = serial.Serial('/dev/ttyUSB0', 38400, timeout = 1)
-        time.sleep(1)
+        sleep(1)
 
     # To be used to establish serial connection
     def connectRemote(self):
@@ -131,12 +131,12 @@ class SolarRemote(tk.Frame):
     # in order to synchronize the serial read
     def serialDelay(self):
         if self.lastcmd.startswith('run') and 'stop' not in self.lastcmd:
-            time.sleep(.001)
+            sleep(.001)
             print('Steering string!')
         elif self.lastcmd.startswith('lon') or self.lastcmd.startswith('lat'):
-            time.sleep(.03)
+            sleep(.03)
         else:
-            time.sleep(.015)
+            sleep(.015)
 
     # Reads a line/string from serial input. If the string contains date info,
     # insert newline character to the string
