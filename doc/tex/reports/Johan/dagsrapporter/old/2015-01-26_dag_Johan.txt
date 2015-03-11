@@ -1,8 +1,0 @@
-﻿Måndag
----
-Planering av veckans arbete. Pga inlämning i en annan kurs flyttar vi besöket hos Parans till onsdag istället för tisdag.
-Jag skrev färdigt min del av "Project brief" som är en engelsk version av projektbeskrivningen ämnad för kursen LSP127.
-Vi hade även SCRUM-möte och gick igenom vad vi gjorde förra veckan och vad vi håller på med just nu.
-
---
-Tid: 2h

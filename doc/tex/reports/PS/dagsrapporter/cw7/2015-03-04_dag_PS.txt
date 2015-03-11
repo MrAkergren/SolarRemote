@@ -1,7 +1,0 @@
-Onsdag
----
-
-Jag och Oskar kollade på UML-representation av koden.
-
----
-Tidsåtgång: 1h

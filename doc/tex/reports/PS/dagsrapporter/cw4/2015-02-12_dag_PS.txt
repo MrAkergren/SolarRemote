@@ -1,9 +1,0 @@
-Torsdag
----
-
-Har läst och gått igenom grundläggande GUI i Python med TkInter. Resultatet
-blev en enkel uppsättning knappar motsvarande de funktioner vår prototyp skulle
-kunna innehålla.
-
----
-Tidsåtgång: 5h
