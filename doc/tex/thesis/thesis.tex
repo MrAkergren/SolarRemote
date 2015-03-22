@@ -164,19 +164,46 @@
 
     \section{Metod} % (fold)
     \label{sec:metod}
+        Metodavsnittet delas upp i en teoretisk metod och en praktisk metod som beskriver det praktiska arbetsättet och de verktyg som används under processen.
 
-        Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Re\-\hbox{search }(DSR) beskriven i 
-        ''A design science research methodology for information systems research'' \cite{method}. \\
+        \subsection{Teoretisk metod} % (fold)
+        \label{sub:teoretiskkmetod}
+            Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Re\-\hbox{search }(DSR) beskriven i 
+            ''A design science research methodology for information systems research'' \cite{method}. \\
 
-        \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
-        \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
-        I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp.\\
+            \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
+            \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
+            I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp.\\
 
-        \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} and \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}.\\
-        Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
+            \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} and \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}.\\
+            Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
 
-        \noindent En alternativ metod till DSR är 'Action Research' (AR) vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är väldigt lik DSR i sitt utförande \cite{designscience} och båda metoderna skapar om kunskap om specifika situationer och problem. Anledningen att valet föll på DSR var att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
-        Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
+            \noindent En alternativ metod till DSR är 'Action Research' (AR) vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är väldigt lik DSR i sitt utförande \cite{designscience} och båda metoderna skapar om kunskap om specifika situationer och problem. Anledningen att valet föll på DSR var att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
+            Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
+
+        \subsection{Praktisk metod} % (fold)
+        \label{sub:praktiskmetod}
+            Avsnittet behandlar projektets praktiska arbetsmetoder och de verktyg som används under utvecklingsprocessen.
+
+            \subsubsection{Agilt arbetssätt} % (fold)
+            \label{subsub:agilt}
+            I enlighet med den teoretiska metoden DSR utförs arbetsgången agilt, dvs. i iterationer och med ett nära samarbete med kunden Parans.
+            Från systemutvecklingsmetoden \textit{Scrum} plockas konceptet \textit{Product backlog} vilket innebär en samlingsplats för alla önskemål om förändringar och funktioner i produkten.
+            Dessa förändringar och funktioner härrör från ett antal \textit{User stories} som är ett begrepp för att i vardagligt språk beskriva vad en användare av systemet vill uppnå.\\
+
+            \noindent För att lättare åskådliggöra innehållet i backlogen används verktyget \textit{Waffle.io} vilket ger tillgång till ett onlinebaserat virtuellt \textit{Scrum board}. Ett Scrum board är en anslagstavla uppdelad i kolumner där backlogens innehåll är listat som poster i en kolumn och projektets medlemmar flyttar posterna till kolumnerna ''Redo'', ''Pågående'' och ''Klar''
+            beroende på vilken uppgift de arbetar på för stunden. Detta gör det lättare för alla projektets medlemmar att se vilken uppgift varje projektmedlem arbetar på just nu och uppgifterna i backlogen kan sorteras efter prioritet.
+
+            \subsubsection{Utvecklingsmiljö} % (fold)
+            \label{subsub:utvecklingsmiljo}
+            \noindent För utvecklingen av mjukvaran och rapportskrivande används texteditorn Sublime Text som utvecklingsmiljö. Sublime erbjuder ett tydligt användargränssnitt, är plattformsoberoende och erbjuder autokomplettering av ord som existerar i någon av de filer som är öppna i editorn. Detta snabbar avsevärt på både utveckling av programkod och dokumentering av projektet.Den plattformsoberoende miljön underlättar samarbete och felsökning i ett projekt där utvecklarna opererar under både Windows, Linux och OS X. 
+
+            \subsubsection{Versionshantering} % (fold)
+            \label{subsub:versionshantering} % (fold)
+            \noindent All projektrelaterad kod, vilket inkluderar mjukvarukod, rapport och övrig dokumentation, förvaras centralt genom den webbaserade versionshanteringsplattformen \textit{GitHub}.
+            GitHub bygger på versionshanteringssytemet \textit{Git}, som är är ett strikt kommandobaserat system, där utvecklaren ges möjlighet att återskapa tidigare versioner av programfiler, spåra ändringar i dessa och framförallt ger flera utvecklare möjlighet att parallellt arbeta mot samma källkodsfil. Utöver versionshanteringen erbjuder GitHub funktioner för att hantera och fördela uppgifter inom ett projekt, möjlighet att spåra buggar och att visuellt visa vem som producerat ett aktuellt avsnitt kod.\\
+
+            \noindent Den webbaserade plattformen möjliggör även att externa parter som kunden Parans och projektets handledare har möjlighet att följa projekt och produktutveckling på distans genom den öppna tillgången till källkod och rapport samt via sociala funktioner så som flöden och wikis. 
 
     \newpage
 
