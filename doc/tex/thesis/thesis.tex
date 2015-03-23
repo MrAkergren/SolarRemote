@@ -91,12 +91,12 @@
     % subsection abstract (end)
     \subsection*{Sammandrag} % (fold)
     \label{sub:sammandrag}
-            Detta projekt ämnar hitta ett mer användarvänligt sätt att
-            installera och styra en solpanel från Parans Solar Lighting. Idag
-            utförs detta genom att ansluta panelen till en dator, som måste vara
-            korrekt konfigurerad, och på denna köra ett terminalprogram för att
-            skicka instruktioner till panelen. Målsättningen är att utveckla en
-            användarvänlig, handhållen enhet som enkelt kan anslutas och som
+            Detta projekt syftar till att hitta ett mer användarvänligt sätt 
+            att installera och styra en solpanel från Parans Solar Lighting. 
+            Idag utförs detta genom att ansluta panelen till en dator, som 
+            måste vara korrekt konfigurerad, och på denna köra ett 
+            terminalprogram för att skicka instruktioner till panelen. 
+            Målsättningen är att utveckla en            användarvänlig, handhållen enhet som enkelt kan anslutas och som
             genom knapptryckningar kan skicka instruktioner till panelen. Den
             enhet som tagits fram är en Raspberry Pi, försedd med pekskärm och
             batteripaket, som kör mjukvara utvecklad i \texttt{Python}.
@@ -150,7 +150,7 @@
 
         \subsection{Bakgrund} % (fold)
         \label{sub:bakgrund}
-            Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\bigskip
+            Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus in i byggnader, för att användas som en alternativ ljuskälla. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\bigskip
 
             \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\bigskip
 
@@ -167,7 +167,7 @@
         \subsection{Mål} % (fold)
         \label{sub:mal}
           
-          Målet med projektet är att utveckla en produkt som uppfyller syftet i form av en styr\-dosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
+          Målet med projektet är att utveckla en produkt som uppfyller syftet i form av en styr\-dosa/styrbox med ett sådant gränssnitt som underlättar för kunderna, med till exempel tryckknappar för inmatning av data och skärm till uppvisning av information. Denna dosa kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande, men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
         % subsection mal (end)
 
         \subsection{Frågeställning} % (fold)
@@ -200,11 +200,10 @@
             ''A design science research methodology for information systems research'' \cite{method}. \bigskip
 
             \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
-            \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
+            \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} och \textit{Communication}. 
             I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp. \bigskip
 
-            \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} and \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}. \bigskip
-            Resultatet presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \bigskip
+            \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} och \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}. Resultatet presenteras slutligen i fasen \emph{Communication} som dels en muntlig presentation och dels en skriftlig rapport. \bigskip
 
             \noindent En alternativ metod till DSR är 'Action Research' (AR), vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är i sitt utförande väldigt lik DSR \cite{designscience} och båda metoderna skapar kunskap om specifika situationer och problem. Anledningen till att valet föll på DSR är att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
             Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
@@ -255,14 +254,14 @@
         
             \subsubsection{Val av plattform} % (fold)
             \label{subsub:val_av_plattform}
-            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades och jämfördes var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi. Den jämförelse kring respektive plattforms egenskaper redovisas i avsnitt \ref{subsub:comptab}.\bigskip
+            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades och jämfördes var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi. Jämförelsen kring respektive plattforms egenskaper redovisas i avsnitt \ref{subsub:comptab}.\bigskip
 
             \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \bigskip
             
             \noindent Bland Androidenheter, tabell \ref{tab:android}, sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution \cite{SL_AN809}. \bigskip
             
             %\enlargethispage{2\baselineskip}
-            \noindent Arduino och Raspberry Pi, har till viss del gemensamma fördelar och nackdelar, vilket syns i tabell \ref{tab:rpi} och \ref{tab:ardu}. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda å andra sidan har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras.
+            \noindent Arduino och Raspberry Pi, har till viss del gemensamma fördelar och nackdelar, vilket syns i tabell \ref{tab:rpi} och \ref{tab:ardu}. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda å andra sidan har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först utvecklas.
             \enlargethispage{\baselineskip}
 
             \subsubsection{Jämförelsetabeller}
@@ -407,7 +406,7 @@
     \section{Diskussion} % (fold)
     \label{sec:diskussion}
 
-        Syftet för projektet var att ''utveckla en produkt som underlättar installation och felsök\-ning, genom att tillhandahålla gränssnitt som inte kräver någon djupare kunskap för att kunna använda'' vilket projektet även har resulterat i. För de mest grundläggande funktionerna, att kunna styra panelen i X- och Y-led, använder vi ett utseende på gränssnittet som påminner om ett styrkors vilket de flesta personer har någon form av erfarenhet av, då sådana återfinns på diverse olika typer av fjärrkontroller. De övriga instruktionerna som finns tillgängliga i gränssnittet är inte helt självförklarande för en icke insatt person, men de installatörer som ska nyttja vår produkt bör ha en uppfattning om vad de instruktionerna gör, särskilt med stöd från Parans. Framförallt ser vi att denna produkt är betydligt enklare att använda än att koppla upp en dator med en terminal emulator. \bigskip
+        Syftet för projektet var att ''utveckla en produkt som underlättar installation och felsök\-ning, genom att tillhandahålla gränssnitt som inte kräver någon djupare kunskap för att kunna använda'', vilket projektet även har resulterat i. För de mest grundläggande funktionerna, att kunna styra panelen i X- och Y-led, använder vi ett utseende på gränssnittet som påminner om ett styrkors vilket de flesta personer har någon form av erfarenhet av, då sådana återfinns på diverse olika typer av fjärrkontroller. De övriga instruktionerna som finns tillgängliga i gränssnittet är inte helt självförklarande för en icke insatt person, men de installatörer som ska nyttja vår produkt bör ha en uppfattning om vad de instruktionerna gör, särskilt med stöd från Parans. Framförallt ser vi att denna produkt är betydligt enklare att använda än att koppla upp en dator med en terminalemulator. \bigskip
 
         \noindent Målet med projektet var att framställa en produkt som skulle kunna nyttja det gränssnitt som syftet efterfrågade och skulle fungera som en styrdosa eller trådbunden fjärrkontroll. Vi anser att detta projekt har uppnått det målet och produktens olika egenskaper kommer att diskuteras under efterföljande rubriker.
 
