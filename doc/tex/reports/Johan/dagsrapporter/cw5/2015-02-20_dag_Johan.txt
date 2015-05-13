@@ -1,9 +1,0 @@
-Fredag
----
-Satt tillsammans med Pär på förmiddagen och byggde vidare GUI:t som är tänkt att köras på vår touchscreen.
-Efter lunch var vi på möte hos Parans och fick även tillfälle att testa GUI + seriell kommunikation mot deras enhet.
-Efter lite strulande fick vi det att fungera. Jag köpte även en ny touchscreen då vi inte fått igång den andra och
-testade på min egen raspberry pi när jag kom hem. Displayen fungerade som den skulle så antagligen är det något strul
-med vår gamla.
---
-Tid: 9h

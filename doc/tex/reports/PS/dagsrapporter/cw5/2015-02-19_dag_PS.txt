@@ -1,9 +1,0 @@
-Torsdag
----
-
-Hade en kortare rendezvous med Oskar och Johan och pratade kort om morgondagen.
-Jobbade vidare på det initiala GUI från tidigare och tror mig ha fått knapparna
-att reagera på önskvärt vis.
-
----
-Tidsåtgång: 3h
