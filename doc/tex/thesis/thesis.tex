@@ -16,6 +16,7 @@
 %%--SPACING AND MARGIN--%
 \usepackage[margin=4cm, top=2.5cm]{geometry}
 
+
 %%--SANS-SERIF FONTS FOR SECTIONS--%%
 \usepackage{sectsty}
 \usepackage{helvet}
@@ -137,7 +138,11 @@
     \newpage
 
     \tableofcontents
+
+    \newpage
+
     \listoffigures
+    \listoftables
 
     \newpage
 
@@ -207,7 +212,7 @@
 
             \noindent En alternativ metod till DSR är 'Action Research' (AR), vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är i sitt utförande väldigt lik DSR \cite{designscience} och båda metoderna skapar kunskap om specifika situationer och problem. Anledningen till att valet föll på DSR är att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
             Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
-
+        
         \newpage
 
         \subsection{Praktisk metod} % (fold)
@@ -317,9 +322,8 @@
             \subsubsection{Mjukvaruutveckling} % (fold)
             \label{subsub:mjukvaruutveckling}
             Fjärrkontrollens mjukvara har i enlighet med vår metod utvecklats i iterationer där den första prototypen hade som mål att upprätta en seriell anslutning mot solpanelen.
-            När väl anslutning skapats var nästa steg att kunna sända instruktioner för att få solpanelen att vrida sig i önskad riktning. I detta stadie fungerade mjukvaran på samma sätt (men med reducerad funktionalitet) som när användaren är uppkopplad mot solpanelen via en terminalemulator. Instruktioner skrevs via tangentbord och sändes som strängar enligt den formatering som den mottagande mjukvaran på solpanelen kräver. \\
+            När väl anslutning skapats var nästa steg att kunna sända instruktioner för att få solpanelen att vrida sig i önskad riktning. I detta stadie fungerade mjukvaran på samma sätt (men med reducerad funktionalitet) som när användaren är uppkopplad mot solpanelen via en terminalemulator. Instruktioner skrevs via tangentbord och sändes som strängar enligt den formatering som den mottagande mjukvaran på solpanelen kräver. \bigskip
 
-            
             \noindent Nästa steg i processen var att utveckla ett grafiskt användargränssnitt. För att ebjuda användaren ett lättanvänt gränssnitt som fungerar väl ihop med en resistiv pekskärm
             så lades fokus på att implementera stora tydliga tryckknappar. 
             Mjukvaran i solpanelen gör så att panelen börjar vrida sig i en riktning när den får en motsvarande instruktion och fortsätter i den riktningen tills användaren ger en instruktion om att stoppa. Ett första steg var då att utveckla knappar som skickade instruktioner för panelens olika riktningar och en knapp som stoppade all rörelse.
@@ -422,7 +426,9 @@
             \noindent Gällande frågeställningen om vår produkt är enkel att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkel. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet skulle kunna ha resulterat utan någon produkt överhuvudtaget.
 
         % subsection h_rdvara (end)
+        
         \newpage
+
         \subsection{Mjukvara} % (fold)
         \label{sub:d_mjukvara}
 
