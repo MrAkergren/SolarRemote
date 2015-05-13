@@ -16,6 +16,7 @@
 %%--SPACING AND MARGIN--%
 \usepackage[margin=4cm, top=2.5cm]{geometry}
 
+
 %%--SANS-SERIF FONTS FOR SECTIONS--%%
 \usepackage{sectsty}
 \usepackage{helvet}
@@ -38,7 +39,7 @@
 %%-SECTION NUMMBERING DEPTH-%%
 %\setcounter{secnumdepth}{3} %3=Default
 
-\hyphenation{pa-nel-en instruktion-er sol-panel-en fatt-ades anse nu-varande av-sedda fungera-nde  kommunikations-stand-ard-er version-er mot-svarande enkorts-dator enhet-ens exempel-vis operativ-system} 
+\hyphenation{pa-nel-en instruktion-er sol-panel-en fatt-ades anse nu-varande av-sedda fungera-nde  kommunikations-stand-ard-er version-er mot-svarande enkorts-dator enhet-ens exempel-vis operativ-system doku-ment-ation platt-forms-oberoende system-utvecklings-metoden} 
 
 %%-GRAPHICS-%%
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
@@ -68,18 +69,44 @@
     \thispagestyle{empty}
 
     \newpage 
+    
+    \setcounter{page}{1}
+    \pagenumbering{roman}
+
     \subsection*{Abstract} % (fold)
     \label{sub:abstract}
-            The purpose of this research was to find an alternative, and more user friendly way of installing and controlling a sun panel manufactured by Parans Solar Lighting. \\
+            The purpose of this project is to find an alternative and more 
+            user friendly way of installing and controlling a sun panel 
+            manufactured by Parans Solar Lighting. As of today the panel is 
+            installed and controlled by connecting it to a computer, 
+            which has to be correctly configured and able to run a terminal 
+            where commands are sent to the panel. The aim of this project is 
+            to develop a hand held device which is easy to connect and has 
+            buttons that execute the commands needed to install and control 
+            the panel. The resulting device is a Raspberry Pi with an attached
+            touchscreen, running a software developed in \texttt{Python}.  
+            The conclusion is that such a device is easily created with standard
+            hardware, although this results in a large device 
+            compared to other touchscreen devices such as smartphones.
+            
+    % subsection abstract (end)
+    \subsection*{Sammandrag} % (fold)
+    \label{sub:sammandrag}
+            Detta projekt syftar till att hitta ett mer användarvänligt sätt 
+            att installera och styra en solpanel från Parans Solar Lighting. 
+            Idag utförs detta genom att ansluta panelen till en dator, som 
+            måste vara korrekt konfigurerad, och på denna köra ett 
+            terminalprogram för att skicka instruktioner till panelen. 
+            Målsättningen är att utveckla en            användarvänlig, handhållen enhet som enkelt kan anslutas och som
+            genom knapptryckningar kan skicka instruktioner till panelen. Den
+            enhet som tagits fram är en Raspberry Pi, försedd med pekskärm och
+            batteripaket, som kör mjukvara utvecklad i \texttt{Python}.
+            Slutsatsen är att en sådan enhet med lätthet kan framställas genom
+            att använda existerande och vanligt förekommande hårdvara. Detta
+            resulterar dock i en större enhet jämfört med andra
+            pekskärmsenheter, såsom smarttelefoner.
 
-            \noindent Today is the panel installed and controlled by connecting a computer to the panel which have to be correctly configured and able to run a terminal where commands are sent to the panel.\\
-
-            \noindent This research were done in co--operation with Parans Solar Lightning and the aim was to develop a hand held device which is easy to connect and has buttons that executes the commands needed to install and control the panel.\\
-
-            \noindent The resulting device is a GUI developed in \texttt{Python}, with 'TkInter' as GUI--library, running on a Raspberry Pi with an attached touchscreen. The device is connected to the panel via an USB cable and the user controls the panel by pressing the digital buttons on the touchscreen.\\
-
-            \noindent The result provide a solution for Parans which they can take in to further development and provide to their customers as an easy way of installing and troubleshoot the sun panel.
-    % subsection beteckningar(end)
+    % subsection sammandrag (end)
 
     \newpage 
     \subsection*{Beteckningar} % (fold)
@@ -111,9 +138,16 @@
     \newpage
 
     \tableofcontents
-    \listoffigures
 
     \newpage
+
+    \listoffigures
+    \listoftables
+
+    \newpage
+
+    \setcounter{page}{1}
+    \pagenumbering{arabic}
 
     \section{Introduktion} % (fold)
     \label{sec:introduktion}
@@ -121,19 +155,25 @@
 
         \subsection{Bakgrund} % (fold)
         \label{sub:bakgrund}
-            Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\\
+            Parans har utvecklat en produkt som via optiska fibrer levererar naturligt solljus in i byggnader, för att användas som en alternativ ljuskälla. Som ett av få bolag i världen levererar de system globalt och deras för närvarande största installationer finns i Malaysia och Los Angeles.\bigskip
 
-            \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\\
+            \noindent Med hjälp av linser fokuseras solljus in i optiska fibrer och panelen styrs med hjälp av två stegmotorer. Styrningen sker på input dels från en algoritm som, baserat på position (longitud, latitud) och tid, ger en solposition i grader och dels från en solsensor med fotocell som ger data för en finstyrning av panelens positionering då solen är framme. Detta för att alltid maximera solljusets fokusering in i fibern.\bigskip
 
             \noindent Själva panelen drivs av en spänning om tolv (12) volt och dess systemdesign bygger på en PIC32; koden är skriven i \texttt{C}. Parans kommunicerar med enheten via USB--port och en terminalemulator. 
         % subsection bakgrund (end)
         
         \subsection{Syfte} % (fold)
         \label{sub:syfte}
-            Vid installation och felsökning styrs panelen till rätt position via en terminalemulator i dagsläget, vilket är en tröskel för Parans kunder.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \\
+            Vid installation och felsökning styrs panelen till rätt position via en terminalemulator i dagsläget, vilket är en tröskel för Parans kunder.  Exempelvis har alla inte vana av att jobba i terminaler och det kan vara krångligt att konfigurera datorns USB--portar så att kommunikation kan ske med panelen. \bigskip
 
-            \noindent Parans vill därför utveckla en styrdosa/box med tryckknappar, lysdioder och eventuellt en display som minskar problemen för kunderna. Denna box kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
+            \noindent Syftet med detta projekt är således att utveckla en produkt som underlättar vid installation och felsökningen av Parans solpaneler, genom att tillhandahålla ett gränssnitt som inte kräver någon djupare kunskap för att kunna använda.
         % subsection syfte (end)
+        
+        \subsection{Mål} % (fold)
+        \label{sub:mal}
+          
+          Målet med projektet är att utveckla en produkt som uppfyller syftet i form av en styr\-dosa/styrbox med ett sådant gränssnitt som underlättar för kunderna, med till exempel tryckknappar för inmatning av data och skärm till uppvisning av information. Denna dosa kan vara i form av ett befintligt kort som t.ex. Raspberry Pi, Arduino eller liknande, men skulle också kunna vara en applikation för Android/iOS som kan installeras på kundens mobila enhet.
+        % subsection mal (end)
 
         \subsection{Frågeställning} % (fold)
         \label{sub:fragestallning}
@@ -150,26 +190,54 @@
 
         \subsection{Avgränsning} % (fold)
         \label{sub:avgransning}
-            Vi ser att detta projekt kommer kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att vi kommer att begränsa projektet till dessa former och inte utveckla ett eget mönsterkort.\\
+            Detta projekt kommer sannolikt att kunna skapas med existerande hårdvara i form av mikrokontrollerkort, telefoner eller enkortsdatorer. Detta ger att projektet kommer att begränsas till dessa former och att ett eget mönsterkort inte kommer att utvecklas.\bigskip
 
             \noindent Dagens paneler kan i dagsläget kommunicera med externa enheter via en USB--port men saknar övriga kommunikationsmöjligheter. Detta gör att projektet begränsas till kommunikation via en ansluten USB--kabel och att trådlös kommunikation ej är möjlig.
         % subsection avgr_nsning (end)
 
     \section{Metod} % (fold)
     \label{sec:metod}
+        Metodavsnittet är uppdelat i en teoretisk och en praktisk del, där den sistnämnda be\-skriver det praktiska arbetsättet och de verktyg som används under processen.
 
-        Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Re\-\hbox{search }(DSR) beskriven i 
-        ''A design science research methodology for information systems research'' \cite{method}. \\
+        \subsection{Teoretisk metod} % (fold)
+        \label{sub:teoretiskkmetod}
+            Denna rapport är skriven utifrån en variant av forskningsmetoden Design Science Re\-\hbox{search }(DSR) beskriven i 
+            ''A design science research methodology for information systems research'' \cite{method}. \bigskip
 
-        \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
-        \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} and \textit{Communication}. 
-        I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp.\\
+            \noindent Metoden beskriver forskningsprocessen uppdelad i fem faser; 
+            \textit{Problem Analysis \& Motivation, Design \& Development, Demonstration, Evaluation} och \textit{Communication}. 
+            I den första fasen, \textit{Problem Analysis \& Motivation}, identifieras problemområdet tillsammans med Parans och projektets krav med möjliga lösningar sätts upp. \bigskip
 
-        \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} and \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}.\\
-        Resultat presenteras slutligen i fasen \textit{Communication} som dels en muntlig presentation och dels en skriven rapport. \\
+            \noindent Över de följande tre faserna, \textit{Design \& Development, Demonstration} och \textit{Evaluation}, sker en iteration där \textit{Design \& Development} handlar om att ta fram en prototyp som i varje iteration demonstreras för Parans och utvärderas för att se hur väl den uppfyller de krav som sattes upp i \textit{Problem Analysis \& Motivation}. Resultatet presenteras slutligen i fasen \emph{Communication} som dels en muntlig presentation och dels en skriftlig rapport. \bigskip
 
-        \noindent En alternativ metod till DSR är 'Action Research' (AR) vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är väldigt lik DSR i sitt utförande \cite{designscience} och båda metoderna skapar om kunskap om specifika situationer och problem. Anledningen att valet föll på DSR var att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
-        Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
+            \noindent En alternativ metod till DSR är 'Action Research' (AR), vars mål är att iterativt lösa ett problem med hjälp av en grupp av definierade metoder \cite{actionresearch}. AR är i sitt utförande väldigt lik DSR \cite{designscience} och båda metoderna skapar kunskap om specifika situationer och problem. Anledningen till att valet föll på DSR är att metoden strävar mot att utveckla och skapa artefakter, vilket går väl ihop med projektet om att utveckla en handhållen fysisk enhet. 
+            Med artefakt menas i det här sammanhanget en prototyp som evalueras hur väl den löser ett uppsatta problem. 
+        
+        \newpage
+
+        \subsection{Praktisk metod} % (fold)
+        \label{sub:praktiskmetod}
+            Avsnittet behandlar projektets praktiska arbetsmetoder och de verktyg som används under utvecklingsprocessen.
+
+            \subsubsection{Agilt arbetssätt} % (fold)
+            \label{subsub:agilt}
+            I enlighet med den teoretiska metoden DSR utförs arbetsgången agilt, dvs. i iterationer och med ett nära samarbete med uppdragsgivaren Parans.
+            Från systemutvecklingsmetoden \hbox{\textit{Scrum}} plockas konceptet \textit{Product backlog}, vilket innebär en samlingsplats för alla önskemål om förändringar och funktioner i produkten.
+            Dessa härrör från ett antal \textit{User stories} som är ett begrepp för att i vardagligt språk beskriva vad en användare av systemet vill uppnå.\\
+
+            \noindent För att lättare åskådliggöra innehållet i backlogen används verktyget \textit{Waffle.io}, vilket ger tillgång till en onlinebaserad virtuell \textit{Scrum board}. En Scrum board är en anslagstavla uppdelad i kolumner där backlogens innehåll är listat som poster i en kolumn och projektets medlemmar flyttar posterna till kolumnerna ''Redo'', ''Pågående'' och ''Klar''
+            beroende på vilken uppgift de arbetar på för stunden. Detta gör det lättare för projektets medlemmar att se vilken uppgift varje projektmedlem för tillfället arbetar på och uppgifterna i backlogen kan sorteras efter prioritet.
+
+            \subsubsection{Utvecklingsmiljö} % (fold)
+            \label{subsub:utvecklingsmiljo}
+            \noindent För utvecklingen av mjukvaran och rapportskrivande används texteditorn Sublime Text som utvecklingsmiljö. Sublime erbjuder ett tydligt användargränssnitt, är plattformsoberoende och erbjuder autokomplettering av ord som existerar i någon av de filer som är öppna i editorn. Detta snabbar avsevärt på både utveckling av programkod och dokumentation av projektet. Den plattformsoberoende miljön underlättar samarbete och felsökning i ett projekt där utvecklarna opererar under Windows, Linux och OS X. 
+
+            \subsubsection{Versionshantering} % (fold)
+            \label{subsub:versionshantering} % (fold)
+            \noindent All projektrelaterad kod, vilket inkluderar mjukvarukod, rapport och övrig dokumentation, förvaras centralt genom den webbaserade versionshanteringsplattformen \textit{GitHub}.
+            GitHub bygger på versionshanteringssytemet \textit{Git}, som är är ett strikt kommandobaserat system där utvecklaren ges möjlighet att återskapa tidigare versioner av programfiler, spåra ändringar i dessa och ger framförallt flera utvecklare möjlighet att parallellt arbeta mot samma källkodsfil. Utöver versionshanteringen erbjuder GitHub funktioner för att hantera och fördela uppgifter inom ett projekt, möjlighet att spåra buggar och att visuellt visa vem som producerat ett aktuellt avsnitt kod.\\
+
+            \noindent Den webbaserade plattformen möjliggör även att externa parter, som uppdragsgivaren Parans och projektets handledare, har möjlighet att följa projekt. Dessutom öppnar detta för en smidig produktutveckling på distans genom den öppna tillgången till källkod och rapport samt via sociala funktioner så som flöden och wikis. 
 
     \newpage
 
@@ -179,9 +247,9 @@
         
         \subsection{Problemanalys} % (fold)
         \label{sub:problemanalys}
-            Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande \hbox{skede} diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \\
+            Parans vision var att utveckla en mobil, handhållen enhet som via seriell kommunikation kan kommunicera med och agera fjärrkontroll till solpanelen SP3.  I ett inledande \hbox{skede} diskuterades tekniska lösningar och vilka funktioner som var önskvärda från bolagets sida. Dessa funktioner var indelade i ett grundutförande och två nivåer av extrafunktioner. \bigskip
             
-            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att justera panelen vertikalt och horisontellt, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \\
+            \noindent Grundutförandet innehöll funktioner för att kunna skicka styrkommandon i syfte att justera panelen vertikalt och horisontellt, omstart, läsa av tids- och geopositionsinställningar och att kunna försätta panelen i installationsläge. \bigskip
             
             \noindent Extrafunktionerna innebar att ansluta en GPS-modul till fjärrkontrollen. Den första nivån av extrafunktioner var att kunna verifiera panelens geoposition medan den andra nivån bestod av att i panelen kunna ställa in tids-- och geopositionsuppgifter, bägge med hjälp av information givet av GPS-modulen. Projektets mål var att inom den givna tidsramen utveckla en fjärrkontroll enligt grundutförande och om tid återstod efter detta att påbörja implementation av extrafunktioner.
         % subsection problemanalys (end)
@@ -191,61 +259,70 @@
         
             \subsubsection{Val av plattform} % (fold)
             \label{subsub:val_av_plattform}
-            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi.\\
-            
-            \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \\
-            
-            \noindent Bland Androidenheter sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution \cite{SL_AN809}. \\
-            
-            \enlargethispage{2\baselineskip}
-            \noindent Arduino och Raspberry Pi har till viss del gemensamma fördelar och nackdelar. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda å andra sidan har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först programmeras. \\
+            För att kunna konstruera den typ av fjärrkontroll som möter projektets krav var först ett beslut tvunget att tas om vilken teknisk plattform som skulle användas. De alternativ som diskuterades och jämfördes var Androidbaserade enheter, Arduinosystem och enkortsdatorer, främst Raspberry Pi. Jämförelsen kring respektive plattforms egenskaper redovisas i avsnitt \ref{subsub:comptab}.\bigskip
 
+            \noindent Egenskaper som beaktades var utvecklingskomplexitet, användarvänlighet, kostnad och kompatibilitet med SP3s enhet för seriell kommunikation, CP2102. USB-anslutningar kräver att en av enheterna agerar värd (eng. 'host') och för att kunna kommunicera seriellt till CP2102 behöver plattformen ha stöd för 'USB-host', då SP3 saknar stöd för detta. \bigskip
+            
+            \noindent Bland Androidenheter, tabell \ref{tab:android}, sågs fördelar i att de har en färdigutvecklad produkt innehållande pekskärm, komplett datorsystem, integrerat batteri och att drivrutiner finns tillgängliga till CP2102. Nackdelar var att de är relativt dyra, information om vilka enheter som stöder USB-host är bristfällig och att för att använda drivrutinen till CP2102 krävs i de allra flesta fall att denna integreras manuellt i en egenbyggd Androiddistribution \cite{SL_AN809}. \bigskip
+            
+            %\enlargethispage{2\baselineskip}
+            \noindent Arduino och Raspberry Pi, har till viss del gemensamma fördelar och nackdelar, vilket syns i tabell \ref{tab:rpi} och \ref{tab:ardu}. Båda plattformarna har stöd för USB-host, tillgång till mycket information då de är populära bland entusiaster och att det finns många utbyggnadsmoduler. Vad som kan ses som negativt är att ingendera levereras med skärm eller tryckknappar och att enheten kan bli otymplig vid anslutning av flera tilläggsmoduler. En fördel Arduino har gentemot Raspberry Pi är att den förstnämnda har lägre energiförbrukning medan den sistnämnda å andra sidan har drivrutiner till CP2102 integrerade i Linuxkärnan. Till Arduino måste alltså en drivrutin först utvecklas.
+            \enlargethispage{\baselineskip}
 
-            \noindent\textsf{\textbf{Androidenhet}}\\
-            \begin{tabularx}{\textwidth}{@{}cXcX}
-                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-                $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
-                                                  stöder USB-host \\
-                $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
-                $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt \\
-                $+$ &  Drivrutiner till CP2102 existerar &
-                                            $-$ & Kräver egenbyggd Androiddistribution \\
-            \end{tabularx}\\
-
+            \subsubsection{Jämförelsetabeller}
+            \label{subsub:comptab}
+            \begin{table}[ht]
+                \caption{Androidenhet}\label{tab:android}
+                \begin{tabularx}{\textwidth}{@{}cXcX}
+                    & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                    $+$ & Pekskärm medför stor valfrihet i utförande av användargränssnitt     &                            $-$ & Otydligt vilka enheter som
+                                                      stöder USB-host \\
+                    $+$ &  Etablerat OS     &   $-$ & Relativt dyr \\
+                    $+$ &  Stor skärmyta    &   $-$ & Mer prestanda än nödvändigt \\
+                    $+$ &  Drivrutiner till CP2102 existerar &
+                                                $-$ & Kräver egenbyggd Androiddistribution \\
+                \end{tabularx}\\
+            \end{table}
                 
-            \noindent\textsf{\textbf{Raspberry Pi}}\\
-            \begin{tabularx}{\textwidth}{@{}cXcX}
-                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-                $+$ & God tillgång till information & 
-                                        $-$ & Mer prestanda än nödvändigt \\
-                $+$ & God tillgång till utbyggnads\-moduler & 
-                                        $-$ & Saknar skärm och knappar i 
-                                              grundutförande \\
-                $+$ & Drivrutiner till CP2102 i Linuxkärnan &
-                                        $-$ & Kan bli otymplig vid användande av   
-                                              många tilläggsmoduler \\   
-                $+$ & Lågt pris \\   
-            \end{tabularx}\\
-            
-            \noindent\textsf{\textbf{Arduinosystem}} \\ 
-            \begin{tabularx}{\textwidth}{@{}cXcX} 
-                & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
-                $+$ & God tillgång till information & 
-                                        $-$ & Saknar skärm och knappar i 
-                                            grundutförande \\
-                $+$ & God tillgång till utbyggnads\-moduler & 
-                                        $-$ & Otymplig vid användande av   
-                                            många tilläggsmoduler \\
-                $+$ & Låg energiförbrukning &
-                                        $-$ & Saknar drivrutiner till CP2102 \\
+            \begin{table}[ht]
+                \caption{Raspberry Pi}\label{tab:rpi}
+                \begin{tabularx}{\textwidth}{@{}cXcX}
+                    & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                    $+$ & God tillgång till information & 
+                                            $-$ & Mer prestanda än nödvändigt \\
+                    $+$ & God tillgång till utbyggnads\-moduler & 
+                                            $-$ & Saknar skärm och knappar i 
+                                                  grundutförande \\
+                    $+$ & Drivrutiner till CP2102 i Linuxkärnan &
+                                            $-$ & Kan bli otymplig vid användande av   
+                                                  många tilläggsmoduler \\   
+                    $+$ & Lågt pris \\   
+                \end{tabularx}\\
+            \end{table}
 
-            \end{tabularx}
+            \begin{table}[h!]
+            \caption{Arduinosystem}\label{tab:ardu}
+                \begin{tabularx}{\textwidth}{@{}cXcX} 
+                    & \textbf{Fördelar}     & & \textbf{Nackdelar} \\
+                    $+$ & God tillgång till information & 
+                                            $-$ & Saknar skärm och knappar i 
+                                                grundutförande \\
+                    $+$ & God tillgång till utbyggnads\-moduler & 
+                                            $-$ & Otymplig vid användande av   
+                                                många tilläggsmoduler \\
+                    $+$ & Låg energiförbrukning &
+                                            $-$ & Saknar drivrutiner till CP2102 \\
+
+                \end{tabularx}\\
+            \end{table}
             % subsubsection val_av_plattform (end)
+
+            \newpage
 
             \subsubsection{Mjukvaruutveckling} % (fold)
             \label{subsub:mjukvaruutveckling}
             Fjärrkontrollens mjukvara har i enlighet med vår metod utvecklats i iterationer där den första prototypen hade som mål att upprätta en seriell anslutning mot solpanelen.
-            När väl anslutning skapats var nästa steg att kunna sända instruktioner för att få solpanelen att vrida sig i önskad riktning. I detta stadie fungerade mjukvaran på samma sätt (men med reducerad funktionalitet) som när användaren är uppkopplad mot solpanelen via en terminalemulator. Instruktioner skrevs via tangentbord och sändes som strängar enligt den formatering som den mottagande mjukvaran på solpanelen kräver. \\
+            När väl anslutning skapats var nästa steg att kunna sända instruktioner för att få solpanelen att vrida sig i önskad riktning. I detta stadie fungerade mjukvaran på samma sätt (men med reducerad funktionalitet) som när användaren är uppkopplad mot solpanelen via en terminalemulator. Instruktioner skrevs via tangentbord och sändes som strängar enligt den formatering som den mottagande mjukvaran på solpanelen kräver. \bigskip
 
             \noindent Nästa steg i processen var att utveckla ett grafiskt användargränssnitt. För att ebjuda användaren ett lättanvänt gränssnitt som fungerar väl ihop med en resistiv pekskärm
             så lades fokus på att implementera stora tydliga tryckknappar. 
@@ -256,7 +333,7 @@
             \noindent Utöver funktionalitet för att manuellt styra panelen i önskad riktning har solpanelen instruktioner för att automatiskt lokalisera solen, starta om mjukvaran, försätta panelen i installationsläge och skriva ut information som tid, datum och geoposition. Då pekskärmens yta är begränsad beslutades att inte lägga alla motsvarande knappar för dessa funktioner i samma vy utan att separera den del som manuellt manövrerar solpanelen från övriga funktioner.\\
 
             \noindent Efter att solpanelen kunde styras med hjälp av det grafiska gränssnittet var nästa steg att läsa in den information som panelen skickar som feedback till användaren. Denna information skickas som  en samling strängar och innehållet består av den instruktion som användaren har skickat och åt vilket håll panelen rör sig åt. 
-            Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom vi med pekskärmen hade en begränsad yta att presentera informationen på så beslutades att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
+            Informationen skrivs vid användning av terminalemulator ut rad för rad men eftersom pekskärmen hade en begränsad yta att presentera informationen på så beslutades att implementera ett tvåradigt statusfält i botten på displayen. Detta statusfält är tillgängligt oavsett vilken vy användaren befinner sig.
             Här behövdes relevant information om panelens status filtreras ut så att användaren inte behöver ta del av de instruktioner som skickas fram och tillbaka mellan fjärrkontrollens mjukvara och mjukvaran i solpanelen. \\
 
 
@@ -332,6 +409,11 @@
 
     \section{Diskussion} % (fold)
     \label{sec:diskussion}
+
+        Syftet för projektet var att ''utveckla en produkt som underlättar installation och felsök\-ning, genom att tillhandahålla gränssnitt som inte kräver någon djupare kunskap för att kunna använda'', vilket projektet även har resulterat i. För de mest grundläggande funktionerna, att kunna styra panelen i X- och Y-led, använder vi ett utseende på gränssnittet som påminner om ett styrkors vilket de flesta personer har någon form av erfarenhet av, då sådana återfinns på diverse olika typer av fjärrkontroller. De övriga instruktionerna som finns tillgängliga i gränssnittet är inte helt självförklarande för en icke insatt person, men de installatörer som ska nyttja vår produkt bör ha en uppfattning om vad de instruktionerna gör, särskilt med stöd från Parans. Framförallt ser vi att denna produkt är betydligt enklare att använda än att koppla upp en dator med en terminalemulator. \bigskip
+
+        \noindent Målet med projektet var att framställa en produkt som skulle kunna nyttja det gränssnitt som syftet efterfrågade och skulle fungera som en styrdosa eller trådbunden fjärrkontroll. Vi anser att detta projekt har uppnått det målet och produktens olika egenskaper kommer att diskuteras under efterföljande rubriker.
+
         \subsection{Hårdvara} % (fold)
         \label{sub:d_hardvara}
         
@@ -344,6 +426,8 @@
             \noindent Gällande frågeställningen om vår produkt är enkel att använda för kunderna, så ger vår produkt ett enkelt gränssnitt att använda, men en annan produkt med pekskärm kan komma att upplevas som lika enkel. Vår produkt är något klumpig, vilket vi även påtalar i avsnitt \ref{subsub:val_av_plattform}, något som kan påverka användarvänligheten. En Androidenhet kan vara enklare att greppa om och visa upp samma gränssnitt, så ur en användares synsätt kan vår produkt inte vara den enklaste att nyttja, men ur en utvecklares perspektiv är det svårare att forma Android att göra det vi vill, så projektet skulle kunna ha resulterat utan någon produkt överhuvudtaget.
 
         % subsection h_rdvara (end)
+        
+        \newpage
 
         \subsection{Mjukvara} % (fold)
         \label{sub:d_mjukvara}
